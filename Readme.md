@@ -3,7 +3,6 @@
 ## Develop tools
 Visual Studio 2013 Ultimate  
 Visual Studio Code  
-IIS Express  
 SQL Server 2012 Express
 
 ## Languages
@@ -35,5 +34,9 @@ SqlCommand, ExecuteNonQuery
 ## Vietnamese to English
 
 Them (thêm): add  
-Sua (sửa): edit
+Sua (sửa): edit  
 Xoa (xóa): delete  
+BaoCao (báo cáo): report  
+QuanLy (quản lý): manager  
+ThietBi (thiết bị): Product  
+TaiLieu (tài liệu): document
