@@ -1,0 +1,72 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Styles/qlthietbi.css" rel="stylesheet" type="text/css" />
+    <link href="Resourcers/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="Resourcers/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="top-header">
+        <asp:Image ID="Image5" runat="server" class="logo-header" ImageUrl="~/Resourcers/Images/logo-vietsugar.png" />
+        <div class="header-menu"><h1>QUẢN LÝ THIẾT BỊ - BẢO TRÌ</h1></div>        
+        </div>
+    <form id="form1" runat="server">
+    <div>
+        <div class="left-menu-qltbbt">            
+            <div id="main-left-menu" class="left-menu">
+                <div class="menu-tl-2">
+                    <asp:Image runat="server" class="menu-icon-2" ImageUrl="~/Resourcers/Images/menu-icon.png" />
+                    <p>MENU</p>
+                    <%--<img src="Resourcers/Images/thumbtacks.png" onclick="hideleftmenu()" class="icon-pin icon-pin-close"/>
+                    <script type="text/javascript">
+                        function hideleftmenu() {
+                            document.getElementById("main-left-menu").style.display = "none";
+                            document.getElementById("pin-image").style.display = "block";
+                        }                        
+                    </script>--%>
+                    <asp:Image ID="Image6" runat="server" ImageUrl="~/Resourcers/Images/thumbtacks.png" Width="20px" onclick="hideleftmenu()" CssClass="pin-icon-close"/>
+                    <script type="text/javascript">
+                        function hideleftmenu() {
+                            document.getElementById("main-left-menu").style.display = "none";
+                            document.getElementById("ctl00_ContentPlaceHolder1_Image1").style.display = "block";
+                        }
+                        function visibleleftmenu() {
+                            document.getElementById("main-left-menu").style.display = "block";
+                            document.getElementById("ctl00_ContentPlaceHolder1_Image1").style.display = "none";
+                        }
+                    </script>
+                </div>
+                <div class="menu-chl">
+                    <asp:Image ID="Image1" runat="server" class="menu-icon-cl" ImageUrl="~/Resourcers/Images/icons8-dashboard-50.png" />
+                    <asp:LinkButton 
+                        ID="LinkButton1" runat="server" PostBackUrl="~/Dashboard.aspx">Dashboard</asp:LinkButton>                    
+                </div>
+                <div class="menu-chl">                    
+                    <asp:Image ID="Image2" runat="server" class="menu-icon-cl" ImageUrl="~/Resourcers/Images/icons8-manager-16.png" />
+                    <asp:LinkButton 
+                        ID="LinkButton2" runat="server" PostBackUrl="~/Pages/QuanLyThietBi.aspx">Quản lý thiết bị</asp:LinkButton>
+                </div>
+                <div class="menu-chl">
+                    <asp:Image ID="Image3" runat="server" class="menu-icon-cl" ImageUrl="~/Resourcers/Images/icons8-order-history-30.png" />
+                    <asp:LinkButton 
+                        ID="LinkButton3" runat="server" PostBackUrl="~/Pages/QuanLyBaoTri.aspx">Quản lý bảo trì</asp:LinkButton>
+                </div>
+                <div class="menu-chl">
+                    <asp:Image ID="Image4" runat="server" class="menu-icon-cl" ImageUrl="~/Resourcers/Images/icons8-report-60.png" />
+                    <asp:LinkButton 
+                        ID="LinkButton4" runat="server" PostBackUrl="~/Pages/BaoCao.aspx">Báo cáo</asp:LinkButton>                
+                </div>
+            </div>
+        </div>
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+        </asp:contentplaceholder>
+    </div>
+    </form>
+</body>
+</html>
