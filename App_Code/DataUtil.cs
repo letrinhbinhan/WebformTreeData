@@ -1034,4 +1034,123 @@ public class DataUtil
         conn.Close();
         return ds;
     }
+    public List<PhieuMuaHang> dsPhieuMuaHang()
+    {
+        List<PhieuMuaHang> ds = new List<PhieuMuaHang>();
+        string sql = "SELECT * FROM tblphieumuahang";
+        SqlCommand cmd = new SqlCommand(sql, conn);
+        conn.Open();
+        SqlDataReader dr = cmd.ExecuteReader();
+        while (dr.Read())
+        {
+            PhieuMuaHang pmh = new PhieuMuaHang();
+            if (dr.IsDBNull(0) != true)
+            {
+                pmh.Id1 = (int)dr["Id"];
+            }
+            else
+            {
+                pmh.Id1 = 0;
+            }
+            if (dr.IsDBNull(1) != true)
+            {
+                pmh.Tenphieumuahang = (string)dr["tenphieumuahang"];
+            }
+            else
+            {
+                pmh.Tenphieumuahang = "null";
+            }
+            if (dr.IsDBNull(2) != true)
+            {
+                pmh.Ngaylap = (DateTime)dr["ngaylap"];
+            }
+            else
+            {
+                pmh.Ngaylap = new DateTime(1900, 1, 1);
+            }
+            if (dr.IsDBNull(3) != true)
+            {
+                pmh.Loaiphieu = (int)dr["loaiphieu"];
+            }
+            else
+            {
+                pmh.Loaiphieu = 0;
+            }
+            if (dr.IsDBNull(4) != true)
+            {
+                pmh.Nguoinhan = (string)dr["nguoinhan"];
+            }
+            else
+            {
+                pmh.Nguoinhan = "";
+            }
+            if (dr.IsDBNull(5) != true)
+            {
+                pmh.Kehoachmuahang = (string)dr["kehoachmuahang"];
+            }
+            else
+            {
+                pmh.Kehoachmuahang = "";
+            }
+            if (dr.IsDBNull(6) != true)
+            {
+                pmh.Phieuyeucausuachua = (int)dr["phieuyeucausuachua"];
+            }
+            else
+            {
+                pmh.Phieuyeucausuachua = 0;
+            }
+            if (dr.IsDBNull(7) != true)
+            {
+                pmh.Ngaypheduyetkehoachmuahang = (DateTime)dr["ngaypheduyetkehoachmuahang"];
+            }
+            else
+            {
+                pmh.Ngaypheduyetkehoachmuahang = new DateTime(1900,1,1);
+            }
+            if (dr.IsDBNull(8) != true)
+            {
+                pmh.Hanghoa = (int)dr["hanghoa"];
+            }
+            else
+            {
+                pmh.Hanghoa = 0;
+            }
+            if (dr.IsDBNull(9) != true)
+            {
+                pmh.Thongtin = (string)dr["thongtin"];
+            }
+            else
+            {
+                pmh.Thongtin = "";
+            }
+            if (dr.IsDBNull(10) != true)
+            {
+                pmh.Hinhthucmuasam = (int)dr["hinhthucmuasam"];
+            }
+            else
+            {
+                pmh.Hinhthucmuasam = 0;
+            }
+            if (dr.IsDBNull(11) != true)
+            {
+                pmh.DanhsachNCC = (int)dr["danhsachNCC"];
+            }
+            else
+            {
+                pmh.DanhsachNCC = 0;
+            }
+            if (dr.IsDBNull(12) != true)
+            {
+                pmh.Dsnguoiduyet = (int)dr["dsnguoiduyet"];
+            }
+            else
+            {
+                pmh.Dsnguoiduyet = 0;
+            }
+            ds.Add(pmh);
+        }
+        conn.Close();
+        return ds;
+    }
 }
