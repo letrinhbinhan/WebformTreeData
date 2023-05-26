@@ -14,8 +14,10 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
 {
     DataUtil data = new DataUtil();
     ThietBi tb = new ThietBi();
+    public int MaLoaiThietBi;
     public string TenLoaiThietBi;
     public string TenPhongBan;
+    public int MaPhongBan;
     public DateTime NgayNhap;    
 	public string MaThietBi;
     public string TenThietBi;
@@ -23,7 +25,7 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
     public string ThongSoKyThuat;
     public string GiaThanh;
     public string ViTri;
-    public string NCC;
+    public string MaNhaCungCap;
     public string PhieuMuaHang;
     public string HuHong;
     public string NguoiDuyet;
@@ -42,8 +44,8 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
     public string NuocSX;
     public string Serial;
     public string Model;
-    public DateTime Ngaylapdat;
-    public DateTime Ngaymua;
+    public DateTime NgayLapDat;
+    public DateTime NgayMua;
     public List<PhuTung> dsphutung = new List<PhuTung>();
     public List<TBBT> dsLBTThietBi = new List<TBBT>();
     public List<ThietBiTaiLieu> dsThietBiTaiLieu = new List<ThietBiTaiLieu>();
@@ -53,11 +55,14 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
     public string lbtvisible;
     public string tbllbt;
     public string mathietbi;   
-    public string chitietvsb; 
+    public string chitietvsb;
     protected void Page_Load(object sender, EventArgs e)
     {
-        string tenloaithietbi, tenphongban, thietbicha;
+        string tenloaithietbi, tenphongban, thietbicha, manhacungcap;
+        int maloaithietbi, maphongban;
+        MaLoaiThietBi = 0;
         TenLoaiThietBi = "";
+        MaPhongBan = 0;
         TenPhongBan = "";
         NgayNhap = new DateTime(2000, 1, 1);
 	    MaThietBi = "";
@@ -66,7 +71,7 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
         ThongSoKyThuat = "";
         GiaThanh="";
         ViTri = "";
-        NCC = "";
+        MaNhaCungCap = "";
         PhieuMuaHang = "";
         HuHong = "";
         NguoiDuyet = "";
@@ -85,17 +90,20 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
         NuocSX = "";
         Serial = "";
         Model = "";
-        Ngaylapdat = new DateTime(2000,1,1);
-        Ngaymua = new DateTime(2000,1,1);
+        NgayLapDat = new DateTime(2000, 1, 1);
+        NgayMua = new DateTime(2000,1,1);
         tblvsb = "";
         giamoi = "";
         lbtvisible = "";
         tbllbt = "";
-        mathietbi = "";        
+        mathietbi = "";
+        maloaithietbi = 0;
         tenloaithietbi = "";
+        maphongban = 0;
         tenphongban = "";
         thietbicha = "";
         chitietvsb = "";
+        manhacungcap = "";
         string RequestID = Request.QueryString["ID"];
         int idch = Convert.ToInt32(RequestID);
         mathietbi = idch.ToString();
@@ -162,6 +170,7 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
         {
             if (tb.Loaitb == data.dsLoaiThietBi()[i].Maloaitb)
             {
+                maloaithietbi = data.dsLoaiThietBi()[i].Maloaitb;
                 tenloaithietbi = data.dsLoaiThietBi()[i].Tenloaitb;
             }
         }
@@ -169,6 +178,7 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
         {
             if(tb.Phongban == data.dsPhongBan()[i].Idphongban)
             {
+                maphongban = data.dsPhongBan()[i].Idphongban;
                 tenphongban = data.dsPhongBan()[i].Tenphongban;
             }
         }
@@ -181,14 +191,16 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
         }
             try
             {
+                MaLoaiThietBi = maloaithietbi;
                 TenLoaiThietBi = tenloaithietbi;
+                MaPhongBan = maphongban;
                 TenPhongBan = tenphongban;
                 NgayNhap = tb.Ngaynhap;
                 TinhTrang = tb.Tinhtrang;
                 ThongSoKyThuat = tb.Thongsokthuat;
                 GiaThanh = tb.Giathanh;
                 ViTri = tb.Vitri.ToString();
-                NCC = tb.NCC1;
+                MaNhaCungCap = tb.NCC1;
                 PhieuMuaHang = tb.Phieumuahang;
                 HuHong = tb.Huhong;
                 NguoiDuyet = tb.Nguoiduyet;
@@ -209,18 +221,20 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
                 NuocSX = tb.Nuocsanxuat;
                 Serial = tb.Serial;
                 Model = tb.Model;
-                Ngaylapdat = tb.Ngaylapdat;
-                Ngaymua = tb.Ngaymua;
+                NgayLapDat = tb.Ngaylapdat;
+                NgayMua = tb.Ngaymua;
             }
             catch
             {
+                MaLoaiThietBi = 0;
                 TenLoaiThietBi = "";
+                MaPhongBan = 0;
                 TenPhongBan = "";
                 TinhTrang = "";
                 ThongSoKyThuat = "";
                 GiaThanh = "";
                 ViTri = "";
-                NCC = "";
+                MaNhaCungCap = "";
                 PhieuMuaHang = "";
                 HuHong = "";
                 NguoiDuyet = "";
@@ -242,10 +256,9 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
                 NuocSX = "";
                 Serial = "";
                 Model = "";
-                Ngaylapdat = new DateTime(2000, 1, 1);
-                Ngaymua = new DateTime(2000, 1, 1);
+                NgayLapDat = new DateTime(2000, 1, 1);
+                NgayMua = new DateTime(2000, 1, 1);
             }
-
     }
 
     public string FormatVND(int x) {

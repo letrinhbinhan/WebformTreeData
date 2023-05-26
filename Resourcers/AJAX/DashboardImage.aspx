@@ -7,6 +7,6 @@
     <title>Untitled Page</title>
 </head>
 <body>
-    <img src="Resourcers/Images/ThietBi/<%= LinkImage %>" alt="<%= AltImage %>"/>
+    <img src="Resourcers/Images/ThietBi/<%= LinkImage %>" alt="<%= AltImage %>" class="db-image"/>
 </body>
 </html>

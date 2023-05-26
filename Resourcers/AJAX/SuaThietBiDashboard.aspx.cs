@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Resourcers_AJAX_ThemChiTiet : System.Web.UI.Page
+public partial class Resourcers_AJAX_SuaThietBiDashboard : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {

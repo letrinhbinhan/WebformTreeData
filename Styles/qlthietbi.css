@@ -1600,6 +1600,7 @@ textarea {
 	margin:0 !important;
 }
 .dashboardlblphutung {
+    float:left;
 	margin:0 !important;
 }
 /* .dctxtlinkimage {
@@ -1895,3 +1896,89 @@ textarea {
 .dctblnguoilap {
     width: 521px !important;
 }
+.btnSuaThietBi {
+    background-color: #0000ff;
+    color: white;
+    text-align: center;
+    line-height: 2.5;
+    width: 91px;
+    height: 32px;
+    -moz-user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none!important;
+    cursor: pointer;
+}
+.btnSuaThietBi:hover {
+    background-color: #0040ff;
+}
+.btnSuaThietBi:active {
+    background-color: #0000ff;
+}
+.them-chi-tiet {
+    float: left;
+    width: 100%;
+}
+.them-chi-tiet table {
+    font-family: 'math';
+    margin-left: 5px;
+}
+.txt-ten-chi-tiet{
+    width: 325px;
+    margin-top: 10px;
+    margin-left: 58px;
+    margin-bottom: 5px;
+}
+.txt-thong-so-ky-thuat {
+    width: 470px !important;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.txt-don-vi, .lblmodel, .txt-model, .lblpartno, .txt-partno {
+    margin-left: 5px;
+}
+.txt-don-vi {
+    width: 60px;
+}
+.dc-tbtn-them-chi-tiet {
+        color: white;
+    background-color: blue;
+    line-height: 0.9;
+    text-align: center;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    width: 82px;
+    height: 34px;
+    margin-top: 5px;
+    margin-right: 7px;
+    float: left;
+    -moz-user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none!important;
+    cursor: pointer;
+}
+.dc-tbtn-them-chi-tiet:hover {
+    background-color:#0040ff;
+}
+.dc-tbtn-them-chi-tiet:active {
+    background-color:blue;
+}
+.them-chi-tiet-button {
+    float: left;
+}
+.db-image {
+    max-width: 786px;
+}
+.modal-them-chi-tiet {
+    width: 645px !important;
+    margin-left: -93px;
+}    
