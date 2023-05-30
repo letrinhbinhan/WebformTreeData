@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server"></head>
 <body>
+  <div id="mathietbi" class="d-none"><%= MaThietBi %></div>
     <% DataUtil data = new DataUtil(); %>
     <div class="dbctdivtitle">
         <h1 class="center-title"><%= TenThietBi %></h1>
@@ -29,7 +30,7 @@
             Tài liệu thiết bị
         </div>
     </div>
-    <hr />    
+    <hr />
     <div id="panelttc" class="tcgm-noidung-thongtinchung">
     <div class="container mt-3">
         <div class="dc-btn-nav">
@@ -298,62 +299,65 @@
         </table>
     </div>
     <div id="panelchitiet" class="tcgm-noidung-chitiet">
+    <div id="testpanelchitiet"></div>
             <div class="container mt-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                     Thêm chi tiết
                 </button>
             </div>
-
             <!-- The Modal -->
             <div class="modal" id="myModal">
                 <div class="modal-dialog">
                     <div class="modal-content modal-them-chi-tiet">
-
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">Thêm chi tiết</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
-
                         <!-- Modal body -->
                         <div class="modal-body">
                             <table>
                                 <tr>
-                                    <td colspan="3">
-                                        <label>Tên chi tiết:</label><input id="txttenchitiet" type="text" class="txt-ten-chi-tiet" /></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <label>Thông số kỹ thuật:</label><input id="txtthongsokythuat" type="text" class="txt-thong-so-ky-thuat" /></td>
+                                    <td>
+                                        <label>Tên chi tiết:</label><input id="txttenchitiet" type="text" class="txt-ten-chi-tiet" />
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label>Đơn vị:</label><input id="txtdonvi" type="text" class="txt-don-vi" /></td>
+                                        <label>Thông số kỹ thuật:</label><input id="txtthongsokythuat" type="text" class="txt-thong-so-ky-thuat" />
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>
-                                        <label class="lblmodel">Model:</label><input id="txtchitietmodel" type="text" class="txt-model" /></td>
+                                        <label class="lbldonvi">Đơn vị:</label><input id="txtdonvi" type="text" class="txt-don-vi" /></td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <label class="lblmodel">Model:</label><input id="txtctmodel" type="text" class="txt-model" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <label class="lblpartno">Part No:</label><input id="txtpartno" type="text" class="txt-partno" />
+                                  </td>
+                                </tr>
+                                <tr>
                                     <td>
-                                        <label class="lblpartno">Part No:</label><input id="txtpartno" type="text" class="txt-partno" /></td>
+                                        <label id="kqthemchitiet"></label>
+                                    </td>
                                 </tr>
                             </table>
                         </div>
-
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" onclick="ThemChiTiet()">Thêm</button>
-                            <button type="button" class="btn btn-primary" onclick="LamMoiFormThemChiTiet()">Làm mới</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Thoát</button>
+                            <button type="button" class="btn btn-dark" onclick="ThemChiTiet()">Thêm</button>
+                            <button type="button" class="btn btn-dark" onclick="LamMoiFormThemChiTiet()">Làm mới</button>
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Thoát</button>
                         </div>
-
                     </div>
                 </div>
             </div>
-            
-            <%--<div class="them-chi-tiet-button">
-                <div class="dc-tbtn-them-chi-tiet">Thêm</div>
-                <div class="dc-tbtn-them-chi-tiet">Làm mới</div>
-            </div>--%>
-        
-        <div class="dashboardlblphutung">Danh sách chi tiết:</div>        
+        <div class="dashboardlblphutung" id="testClick">Danh sách chi tiết:</div>
         <table id="dcdanhsachchitiet" class="tbborder <%= chitietvsb %>">
             <tr>
                 <th>Xóa</th>
@@ -366,28 +370,133 @@
             </tr>
             <% for (int ct = 0; ct < dsChiTietThietBi.Count; ct++)
                {%>
-            <tr id="cttbrow<%= dsChiTietThietBi[ct].Id %>">
-                <td>
+            <tr id="cttbrow<%= dsChiTietThietBi[ct].Id %>" class="tbl-row-chitiet">
+                <td class="tdchitiet" onclick="suachitietthietbi()">
                     <input
                         type="checkbox"
                         onchange="xoachitiet(this)"
                         value="<%= dsChiTietThietBi[ct].Id %>" />
                 </td>
-                <td><%= ct + 1 %></td>
-                <td><%= dsChiTietThietBi[ct].Tenchitiet %></td>
-                <td><%= dsChiTietThietBi[ct].Thongsokythuat %></td>
-                <td><%= dsChiTietThietBi[ct].Donvi %></td>
-                <td><%= dsChiTietThietBi[ct].Model %></td>
-                <td><%= dsChiTietThietBi[ct].Partno %></td>
+                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= ct + 1 %></td>
+                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Tenchitiet %></td>
+                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Thongsokythuat %></td>
+                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Donvi %></td>
+                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Model %></td>
+                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Partno %></td>
+                <td class="tdchitiet d-none"><button type="button" class="btn-sua-chi-tiet-thiet-bi btn btn-primary" onclick="luusuachitiet(this)">
+                    Lưu
+                </button></td>
             </tr>
             <% } %>
         </table>
     </div>
     <div id="panelphutung" class="tcgm-noidung-phutung">
+      <div class="container mt-3">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#themPhuTungModal">
+              Thêm phụ tùng
+          </button>
+      </div>
+      <!-- The Modal -->
+      <div class="modal" id="themPhuTungModal">
+          <div class="modal-dialog">
+              <div class="modal-content modal-them-phu-tung">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                      <h4 class="modal-title">Thêm phụ tùng</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                      <table class="tbl-table-them-phu-tung">
+                          <tr>
+                              <td>
+                                  <label>Mã phụ tùng:</label>
+                              </td>
+                              <td>
+                                <input id="txtmaphutung" type="text" class="txt-ma-phu-tung dc-them-phu-tung-input-ma-phu-tung-modal" />
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <label>Tên phụ tùng:</label>
+                              </td>
+                              <td>
+                                <input id="txttenphutung" type="text" class="txt-ten-phu-tung dc-them-phu-tung-input-modal" />
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <label>Ngày nhập:</label>
+                              </td>
+                              <td>
+                                <select id="sltngaynhapphutung">
+                                  <% for(int i = 0; i < 31; i++){%>
+                                      <% if(i+1 == DateTime.Now.Day) {%>
+                                          <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                      <%} else {%>
+                                        <option value="<%= i+1 %>"><%= i+1 %></option>
+                                        <%} %>
+                                  <%} %>
+                                </select>
+                                <select id="sltthangnhapphutung">
+                                  <% for(int i = 0; i < 12; i++) {%>
+                                      <% if(i+1 == DateTime.Now.Month){%>
+                                          <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                      <%} else {%>
+                                          <option value="<%= i+1 %>"><%= i+1 %></option>
+                                      <%} %>
+                                  <%} %>
+                                </select>
+                                <select id="sltnamnhapphutung">
+                                  <% nam = 1990; %>
+                                  <% for(int i = 0; i < 60; i++) {%>
+                                        <% if(nam+i == DateTime.Now.Year){%>
+                                            <option value="<%= nam+i %>" selected="selected"><%= nam+i %></option>
+                                        <%} else {%>
+                                            <option value="<%= nam+i %>"><%= nam+i %></option>
+                                        <%} %>
+                                  <%} %>
+                              </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label>Giá cả:</label>
+                            </td>
+                            <td>
+                              <input id="txtgiaca" type="text" class="txt-gia-ca dc-them-phu-tung-input-gia-ca-modal" />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label>Tình trạng:</label>
+                            </td>
+                            <td>
+                              <select id="slttinhtrang">
+                                <option value="true" selected="selected">Tốt</option>
+                                <option value="false">Hư hỏng</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                              <td colspan="2">
+                                  <label id="kqthemphutung"></label>
+                              </td>
+                          </tr>
+                      </table>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-dark" onclick="ThemPhuTung()">Thêm</button>
+                      <button type="button" class="btn btn-dark" onclick="LamMoiFormThemPhuTung()">Làm mới</button>
+                      <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Thoát</button>
+                  </div>
+              </div>
+          </div>
+      </div>
         <p class="dashboardlblphutung">Danh sách phụ tùng:</p>
-        <a
+        <!--<a
             href="/Pages/ThemPhuTung.aspx?mathietbi=<%= mathietbi %>"
-            class="dctbtnthemphutung">Thêm</a>
+            class="dctbtnthemphutung">Thêm</a>-->
         <table id="dcdanhsachphutung" class="tbborder <%= tblvsb %>">
             <tr>
                 <th>STT</th>
@@ -396,19 +505,22 @@
                 <th>Ngày nhập</th>
                 <th>Giá cả</th>
                 <th>Tình trạng</th>
+                <th></th>
             </tr>
             <% for (int i = 0; i < dsphutung.Count; i++)
                {%>
             <tr
-                id="<%= dsphutung[i].Mapt %>"
-                class="rowphutung"
-                onclick="rowdsphutungclick(this)">
+                id="pttbrow<%= dsphutung[i].Mapt %>"
+                class="rowphutung">
                 <td><%= (i + 1).ToString() %></td>
-                <td><%= dsphutung[i].Mapt%></td>
-                <td><%= dsphutung[i].Tenpt %></td>
-                <td><%= dsphutung[i].Ngaynhap.ToString("dd-MM-yyyy") %></td>
-                <td><%= FormatVND(dsphutung[i].Giaca) %></td>
-                <td><%= dsphutung[i].Tinhtrang?"Hư hỏng":"Tốt" %></td>
+                <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Mapt%></td>
+                <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Tenpt %></td>
+                <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Ngaynhap.ToString("dd-MM-yyyy") %></td>
+                <td onclick='suaphutungthietbi(this)'><%= FormatVND(dsphutung[i].Giaca) %></td>
+                <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Tinhtrang?"Tốt":"Hư hỏng" %></td>
+                <td class="tdphutung d-none"><button type="button" class="btn-sua-phu-tung-thiet-bi btn btn-primary" onclick="luusuaphutung(this)">
+                    Lưu
+                </button></td>
             </tr>
             <% } %>
         </table>

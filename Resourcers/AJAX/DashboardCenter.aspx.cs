@@ -18,8 +18,8 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
     public string TenLoaiThietBi;
     public string TenPhongBan;
     public int MaPhongBan;
-    public DateTime NgayNhap;    
-	public string MaThietBi;
+    public DateTime NgayNhap;
+    public string MaThietBi;
     public string TenThietBi;
     public string TinhTrang;
     public string ThongSoKyThuat;
@@ -54,7 +54,7 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
     public string giamoi;
     public string lbtvisible;
     public string tbllbt;
-    public string mathietbi;   
+    public string mathietbi;
     public string chitietvsb;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -65,7 +65,7 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
         MaPhongBan = 0;
         TenPhongBan = "";
         NgayNhap = new DateTime(2000, 1, 1);
-	    MaThietBi = "";
+	      MaThietBi = "";
         TenThietBi = "";
         TinhTrang = "";
         ThongSoKyThuat = "";
@@ -125,9 +125,9 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
         {
             chitietvsb = "unvisible";
         }
-        else 
+        else
         {
-            chitietvsb = "visible";        
+            chitietvsb = "visible";
         }
         for (int i = 0; i < data.dsPhuTung().Count; i++)
         {
@@ -298,7 +298,7 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
         {
             formatcrrency = formatcrrency + stringreturn[e];
         }
-            
+
         return formatcrrency;
     }
 }
