@@ -784,11 +784,11 @@ public class DataUtil
             }
             if (dr.IsDBNull(2) != true)
             {
-                tb.Ngaynhap = (DateTime)dr["ngaynhap"];
+                tb.Ngaythaythe = (DateTime)dr["ngaythaythe"];
             }
             else
             {
-                tb.Ngaynhap = new DateTime(2012, 1, 1);
+                tb.Ngaythaythe = new DateTime(1900, 1, 1);
             }
             if (dr.IsDBNull(3) != true)
             {
@@ -813,6 +813,14 @@ public class DataUtil
             else
             {
                 tb.Thietbi = 0;
+            }
+            if (dr.IsDBNull(6) != true)
+            {
+                tb.Soluong = (int)dr["soluong"];
+            }
+            else
+            {
+                tb.Soluong = 0;
             }
             ds.Add(tb);
         }

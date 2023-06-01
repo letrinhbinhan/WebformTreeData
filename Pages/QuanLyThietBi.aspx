@@ -5,12 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Quản lý thiết bị</title>
-    <link href="../Styles/qlthietbi.css" rel="stylesheet" />    
+    <link href="../Styles/qlthietbi.css" rel="stylesheet" />
+    <link type="text/css" href="../Styles/qlthietbi.css" rel="stylesheet" />
 </head>
 <body>
     <div class="top-header">
-        <img id="ctl00_Image5" class="logo-header" src="../Resourcers/Images/logo-vietsugar.png" style="border-width:0px;">
-        <div class="header-menu"><h1>QUẢN LÝ THIẾT BỊ - BẢO TRÌ</h1></div>        
+        <asp:Image ID="Image5" runat="server" class="logo-header" ImageUrl="~/Resourcers/Images/logo-vietsugar.png" onclick="vetrangchu()" />
+        <div id="maintitle" onclick="vetrangchu()"><h1 class="header-title-ql-thiet-bi">QUẢN LÝ THIẾT BỊ - BẢO TRÌ</h1></div>        
     </div>
     <form runat="server">    
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="matb" DataSourceID="SqlDataSource1" EnableModelValidation="True" OnRowDataBound="GridView1_RowDataBound" CssClass="QuanLyThietBiGridView" AllowPaging="True" AllowSorting="True">
@@ -182,5 +183,6 @@
         </asp:SqlDataSource>
         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Dashboard.aspx">Quay về</asp:HyperLink>
     </form>
+    <script src="../Resourcers/Javascripts/mp.js"></script>
 </body>
 </html>

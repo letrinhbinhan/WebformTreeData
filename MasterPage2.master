@@ -11,8 +11,8 @@
 </head>
 <body>
     <div class="top-header-m2">
-        <asp:Image ID="Image5" runat="server" class="logo-header" ImageUrl="~/Resourcers/Images/logo-vietsugar.png" />
-        <div class="header-menu"><h1>QUẢN LÝ THIẾT BỊ - BẢO TRÌ</h1></div>
+        <asp:Image ID="Image5" runat="server" class="logo-header" ImageUrl="~/Resourcers/Images/logo-vietsugar.png" onclick="vetrangchu()"/>
+        <div class="header-menu" onclik="vetrangchu()"><h1>QUẢN LÝ THIẾT BỊ - BẢO TRÌ</h1></div>
     </div>
     <form id="form1" runat="server">
     <div>        

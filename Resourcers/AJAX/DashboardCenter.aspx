@@ -6,8 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server"></head>
 <body>
+    <% DataUtil data = new DataUtil();%>
   <div id="mathietbi" class="d-none"><%= MaThietBi %></div>
-    <% DataUtil data = new DataUtil(); %>
+  <div id="mathietbilonnhat" class="d-none"><%= MaThietBiLonNhat.ToString() %></div>
     <div class="dbctdivtitle">
         <h1 class="center-title"><%= TenThietBi %></h1>
         <img
@@ -34,7 +35,285 @@
     <div id="panelttc" class="tcgm-noidung-thongtinchung">
     <div class="container mt-3">
         <div class="dc-btn-nav">
-            <div class="btnSuaThietBi btn btn-primary" onclick="SuaThietBi()">Sửa</div>
+            <button type="button" class="btn btn-primary" onclick="SuaThietBi()">
+                Sửa
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#themThietBiModal">
+                Thêm thiết bị
+            </button>
+        </div>
+    </div>
+    <div class="modal" id="themThietBiModal">
+        <div class="modal-dialog them-thiet-bi-model">
+            <div class="modal-content modal-them-thiet-bi">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm thiết bị</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="dc-tbl-model-them-thiet-bi">
+                        <tr>
+                            <td>
+                                <label>Loại thiết bị:</label>
+                            </td>
+                            <td>                                
+                                <select id="sltmodelthemthietbi">
+                                <% for(int i=0; i < data.dsLoaiThietBi().Count; i++){%>
+                                    <option value="<%= data.dsLoaiThietBi()[i].Maloaitb%>"><%= data.dsLoaiThietBi()[i].Tenloaitb %></option>
+                                <%}%>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Phòng ban:</label>
+                            </td>
+                            <td>                                
+                                <select id="sltmodelphongban">
+                                <% for(int i=0; i < data.dsPhongBan().Count; i++){%>
+                                    <option value="<%= data.dsPhongBan()[i].Idphongban%>"><%= data.dsPhongBan()[i].Tenphongban %></option>
+                                <%}%>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label>Ngày nhập:</label></td><td>
+                            <select id="sltttbngaynhap">
+                                <% for(int i = 0; i < 31; i++){%>
+                                    <%if(i+1==DateTime.Now.Day){%>
+                                        <% if(i+1<10){%>
+                                            <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                                        <%} else {%>
+                                            <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                        <%}%>                                        
+                                    <%} else {%>
+                                            <% if(i+1<10){%>
+                                                <option value="<%= i+1 %>">0<%= i+1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>"><%= i+1 %></option>
+                                            <%}%>
+                                    <%}%>
+                                <%}%>
+                            </select>
+                            <select id="sltttbthangnhap">
+                                <% for (int i = 0; i < 12; i++) { %>
+                                    <% if (DateTime.Now.Month == i + 1) { %>
+                                        <% if(i+1 <10){%>
+                                        <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                                        <%} else {%>
+                                            <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                        <%}%>
+                                    <% } else { %>
+                                        <% if(i+1<10){%>
+                                            <option value="<%= i+1 %>">0<%= i + 1 %></option>
+                                        <%} else {%>
+                                            <option value="<%= i+1 %>"><%= i + 1 %></option>
+                                        <%}%>
+                                        
+                                    <% } %>
+                                <% } %>
+                            </select>
+                            <select id="sltttbnamnhap">
+                                <% int nam; %>
+                                <% nam = 1995; %>
+                                <% for (int i = 0; i < 60; i++) { %>
+                                        <% if (DateTime.Now.Year == nam + i){ %>                                            
+                                            <option value="<%= nam + i %>" selected="selected"><%= nam + i %></option>
+                                        <% } else { %>
+                                            <option value="<%= nam+i %>"><%= nam+i %></option>
+                                        <% } %>
+                                <% } %>
+                            </select>
+                            </td>                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Tên thiết bị:</label></td><td><input id="txtttbtenthietbi" type="text" class="txt-ttb-ten-thiet-bi" /></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Nhà cung cấp:</label></td>
+                                <td>
+                                    <select id="sltttbnhacungcap">
+                                        <% for(int i=0; i < data.dsNhaCungCap().Count; i++){%>
+                                            <option value="<%= data.dsNhaCungCap()[i].Id1 %>"><%= data.dsNhaCungCap()[i].Tennhacungcap %></option>
+                                        <%}%>
+                                    </select>
+                                </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Hư hỏng:</label></td><td><input id="txtttbhuhong" type="text" class="txt-ttb-hu-hong" /></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Thời hạn bảo hành:</label></td><td><input id="txtttbthoihanbaohanh" type="text" class="txt-ttb-thoi-han-bao-hanh" /></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Nhà sản xuất:</label></td><td><input id="txtttbnhasanxuat" type="text" class="txt-ttb-nha-san-xuat" /></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Nước sản xuất:</label></td><td><input id="txtttbnuocsanxuat" type="text" class="txt-ttb-nuoc-san-xuat" /></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Serial:</label></td><td><input id="txtttbserial" type="text" class="txt-ttb-serial" /></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Model:</label></td><td><input id="txtttbmodel" type="text" class="txt-ttb-model" /></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Ngày lắp đặt:</label></td><td>
+                                <select id="sltttbngaylapdat">
+                                    <% for(int i = 0; i < 31; i++){%>
+                                        <%if(i+1==DateTime.Now.Day){%>
+                                            <% if(i+1<10){%>
+                                                <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                                <%}%>
+                                        <%} else {%>
+                                                <% if(i+1<10){%>
+                                                    <option value="<%= i+1 %>">0<%= i+1 %></option>
+                                                <%} else {%>
+                                                    <option value="<%= i+1 %>"><%= i+1 %></option>
+                                                <%}%>
+                                        <%}%>
+                                    <%}%>
+                                </select>
+                                <select id="sltttbthanglapdat">
+                                    <% for (int i = 0; i < 12; i++){ %>
+                                        <% if (DateTime.Now.Month == i + 1) { %>
+                                            <% if(i+1<10){ %>
+                                                <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                            <%}%>
+                                    <% } else { %>
+                                            <% if(i+1 <10){%>
+                                                <option value="<%= i+1 %>">0<%= i + 1 %></option>
+                                            <%} else {%>                                                
+                                                    <option value="<%= i+1 %>"><%= i + 1 %></option>
+                                            <%}%>                                                
+                                    <% } %>
+                                    <% } %>
+                                </select>
+                                <select id="sltttbnamlapdat">
+                                    <% nam = 1995; %>
+                                    <% for (int i = 0; i < 60; i++) { %>
+                                        <% if (DateTime.Now.Year == nam + i) { %>
+                                            <option value="<%= nam + i %>" selected="selected"><%= nam + i %></option>
+                                        <% } else { %>
+                                            <option value="<%= nam+i %>"><%= nam+i %></option>
+                                        <% } %>
+                                    <% } %>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Ngày mua:</label></td><td>
+                                <select id="sltttbngaymua">
+                                    <% for(int i = 0; i < 31; i++){%>
+                                        <%if(i+1==DateTime.Now.Day){%>
+                                            <% if(i+1<10){%>
+                                                <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                            <%}%>
+                                            
+                                        <%} else {%>
+                                            <% if(i+1<10){%>
+                                                <option value="<%= i+1 %>">0<%= i+1 %></option>
+                                                <%} else {%>
+                                                    <option value="<%= i+1 %>"><%= i+1 %></option>
+                                                <%}%>                                                
+                                        <%}%>
+                                    <%}%>
+                                </select>
+                                <select id="sltttbthangmua">
+                                    <% for (int i = 0; i < 12; i++)
+                                        { %>
+                                        <% if (DateTime.Now.Month == i + 1)
+                                        { %>
+                                            <% if(i+1<10){%>
+                                                <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                            <%}%>                                    
+                                    <% }
+                                        else
+                                        { %>
+                                            <% if(i+1<10){%>
+                                                <option value="<%= i+1 %>">0<%= i + 1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>"><%= i + 1 %></option>
+                                            <%}%>                                    
+                                    <% } %>
+                                    <% } %>
+                                </select>
+                                <select id="sltttbnammua">
+                                    <% nam = 1995; %>
+                                    <% for (int i = 0; i < 60; i++)
+                                        { %>
+                                    <% if (DateTime.Now.Year == nam + i)
+                                    { %>
+                                        <option value="<%= nam + i %>" selected="selected"><%= nam + i %></option>
+                                    <% }
+                                        else
+                                        { %>
+                                    <option value="<%= nam+i %>"><%= nam+i %></option>
+                                    <% } %>
+                                    <% } %>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label>Mã quản lý:</label></td><td><input id="txtttbmaquanly" type="text" class="txt-ttb-ma-quan-ly" />
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Là con của:
+                            </td>
+                            <td>
+                              <select id="sltthietbicha">
+                                <% for(int i = 0; i < data.dsThietBi().Count; i++){%>
+                                    <option value="<%= data.dsThietBi()[i].Matb %>"><%= data.dsThietBi()[i].Tentb %></option>
+                                <%}%>
+                              </select>
+                            </td>
+                          </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label id="kqthemthietbi"></label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" onclick="ThemThietBi()">Thêm</button>
+                    <button type="button" class="btn btn-dark" onclick="LamMoiFormThemThietBi()">Làm mới</button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Thoát</button>
+                </div>
+            </div>
         </div>
     </div>
         <table class="dctblthongtinchitiet">
@@ -115,7 +394,6 @@
                         <% } %>
                     </select>
                     <select id="sltnamnhap" class="dcsltthoigiannam">
-                        <% int nam; %>
                         <% nam = 1995; %>
                         <% for (int i = 0; i < 60; i++)
                            { %>
@@ -299,7 +577,6 @@
         </table>
     </div>
     <div id="panelchitiet" class="tcgm-noidung-chitiet">
-    <div id="testpanelchitiet"></div>
             <div class="container mt-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                     Thêm chi tiết
@@ -407,15 +684,7 @@
                   </div>
                   <!-- Modal body -->
                   <div class="modal-body">
-                      <table class="tbl-table-them-phu-tung">
-                          <tr>
-                              <td>
-                                  <label>Mã phụ tùng:</label>
-                              </td>
-                              <td>
-                                <input id="txtmaphutung" type="text" class="txt-ma-phu-tung dc-them-phu-tung-input-ma-phu-tung-modal" />
-                              </td>
-                          </tr>
+                      <table class="tbl-table-them-phu-tung">                         
                           <tr>
                               <td>
                                   <label>Tên phụ tùng:</label>
@@ -426,29 +695,46 @@
                           </tr>
                           <tr>
                               <td>
-                                  <label>Ngày nhập:</label>
+                                  <label>Ngày thay thế:</label>
                               </td>
                               <td>
-                                <select id="sltngaynhapphutung">
+                                <select id="sltngaythaythephutung">
                                   <% for(int i = 0; i < 31; i++){%>
                                       <% if(i+1 == DateTime.Now.Day) {%>
-                                          <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                            <% if(i+1<10){%>
+                                                <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                            <%}%>
+                                          
                                       <%} else {%>
-                                        <option value="<%= i+1 %>"><%= i+1 %></option>
+                                            <% if(i+1 < 10){%>
+                                                <option value="<%= i+1 %>">0<%= i+1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>"><%= i+1 %></option>
+                                            <%}%>                                        
                                         <%} %>
                                   <%} %>
                                 </select>
-                                <select id="sltthangnhapphutung">
+                                <select id="sltthangthaythephutung">
                                   <% for(int i = 0; i < 12; i++) {%>
                                       <% if(i+1 == DateTime.Now.Month){%>
-                                          <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                            <% if(i+1 <10){%>
+                                                <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                                            <%}%>                                          
                                       <%} else {%>
-                                          <option value="<%= i+1 %>"><%= i+1 %></option>
+                                            <% if(i+1 <10){ %>
+                                                <option value="<%= i+1 %>">0<%= i+1 %></option>
+                                            <%} else {%>
+                                                <option value="<%= i+1 %>"><%= i+1 %></option>
+                                            <%}%>                                          
                                       <%} %>
                                   <%} %>
                                 </select>
-                                <select id="sltnamnhapphutung">
-                                  <% nam = 1990; %>
+                                <select id="sltnamthaythephutung">
+                                  <% nam = 1995; %>
                                   <% for(int i = 0; i < 60; i++) {%>
                                         <% if(nam+i == DateTime.Now.Year){%>
                                             <option value="<%= nam+i %>" selected="selected"><%= nam+i %></option>
@@ -478,6 +764,10 @@
                             </td>
                           </tr>
                           <tr>
+                            <td>Số lượng:</td>
+                            <td><input id="txtphutungsoluong" type="text" value="" class="txt-mpt-so-luong"/></td>
+                          </tr>
+                          <tr>
                               <td colspan="2">
                                   <label id="kqthemphutung"></label>
                               </td>
@@ -493,18 +783,17 @@
               </div>
           </div>
       </div>
-        <p class="dashboardlblphutung">Danh sách phụ tùng:</p>
-        <!--<a
-            href="/Pages/ThemPhuTung.aspx?mathietbi=<%= mathietbi %>"
-            class="dctbtnthemphutung">Thêm</a>-->
+        <p class="dashboardlblphutung">Danh sách phụ tùng:</p>        
         <table id="dcdanhsachphutung" class="tbborder <%= tblvsb %>">
             <tr>
+                <th>Xóa</th>
                 <th>STT</th>
                 <th>Mã phụ tùng</th>
                 <th>Tên phụ tùng</th>
-                <th>Ngày nhập</th>
+                <th>Ngày thay thế</th>
                 <th>Giá cả</th>
                 <th>Tình trạng</th>
+                <th>Số lượng</th>
                 <th></th>
             </tr>
             <% for (int i = 0; i < dsphutung.Count; i++)
@@ -512,12 +801,14 @@
             <tr
                 id="pttbrow<%= dsphutung[i].Mapt %>"
                 class="rowphutung">
+                <td><input type="checkbox" onchange="xoaphutung(this)" value="<%= dsphutung[i].Mapt %>"/></td>
                 <td><%= (i + 1).ToString() %></td>
                 <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Mapt%></td>
                 <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Tenpt %></td>
-                <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Ngaynhap.ToString("dd-MM-yyyy") %></td>
+                <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Ngaythaythe.ToString("dd-MM-yyyy") %></td>
                 <td onclick='suaphutungthietbi(this)'><%= FormatVND(dsphutung[i].Giaca) %></td>
                 <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Tinhtrang?"Tốt":"Hư hỏng" %></td>
+                <td onclick='suaphutungthietbi(this)'><%= dsphutung[i].Soluong %></td>
                 <td class="tdphutung d-none"><button type="button" class="btn-sua-phu-tung-thiet-bi btn btn-primary" onclick="luusuaphutung(this)">
                     Lưu
                 </button></td>
@@ -526,42 +817,12 @@
         </table>
     </div>
     <div id="panelbaotri" class="tcgm-noidung-baotri">
-        <p class="dashboardlbllichbaotri">Lịch bảo trì:</p>
-        <a
-            href="/Pages/ThemBaoTri3.aspx?mathietbi=<%= mathietbi %>"
-            class="dcbtnthemlichbaotri">Thêm</a>
-        <table class="tbborder <%= tbllbt %>">
-            <tr>
-                <th>Mã bảo trì</th>
-                <th class="dcbaotrilblmathietbibaotri">Mã thiết bị</th>
-                <th class="dctblbaotrithoigianbd">Thời gian bắt đầu</th>
-                <th class="dctblbaotrithoigiankt">Thời gian kết thúc</th>
-                <th>Ghi chú</th>
-                <th class="dctblnguoilap">Người lập</th>
-                <th>Loại hình</th>
-            </tr>
-            <% for (int l = 0; l < dsLBTThietBi.Count; l++)
-               {%>
-            <tr
-                id="<%= dsLBTThietBi[l].Matbbt %>"
-                class="rowtbbt"
-                onclick="rowtbbtclick(this)">
-                <td><%= dsLBTThietBi[l].Matbbt %></td>
-                <td class="dcbaotrilblmathietbibaotri">
-                    <%= dsLBTThietBi[l].Mathietbibt %>
-                </td>
-                <td class="dctblbaotrithoigianbd">
-                    <%= dsLBTThietBi[l].Thoigianbatdau.ToString("dd-MM-yyyy") %>
-                </td>
-                <td class="dctblbaotrithoigiankt">
-                    <%= dsLBTThietBi[l].Thoigianketthuc.ToString("dd-MM-yyyy") %>
-                </td>
-                <td><%= dsLBTThietBi[l].Ghichu %></td>
-                <td class="dctblnguoilap"><%= dsLBTThietBi[l].Nguoilap %></td>
-                <td><%= dsLBTThietBi[l].Loaihinh %></td>
-            </tr>
-            <% } %>
-        </table>
+        <div class="container mt-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#themBaoTriModal">
+                Thêm bảo trì
+            </button>
+        </div>        
+        <p class="dashboardlbllichbaotri">Lịch bảo trì:</p>        
     </div>
     <div id="paneltailieu" class="tcgm-noidung-tailieuthietbi">
         <p class="dashboardlbltailieuthietbi">Tài liệu thiết bị:</p>

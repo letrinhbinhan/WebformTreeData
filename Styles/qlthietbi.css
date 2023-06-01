@@ -11,7 +11,6 @@ body
 }
 body {
     line-height: 1.375;
-    /*min-height: 100vh;*/
     background: #fff;
 }
 html {
@@ -33,7 +32,6 @@ html {
 {
     height: 92px;
     position: static;
-    /*background-image: linear-gradient(180deg, #0099D0, #ffffff);*/
     -moz-user-select: none !important;
     -webkit-touch-callout: none !important;
     -webkit-user-select: none !important;
@@ -65,7 +63,6 @@ html {
     width: 320px;
     height: 820px;
     background-color: #990000;
-    /*box-shadow: 13px 11px 51px black;*/
     padding: 4px;
     float: left;
     position: relative;
@@ -83,7 +80,6 @@ html {
     width: 16px;
     margin-top: 2px;
     margin-left: 4px;
-    /*pointer-events: none;*/
 }
 .search-footer
 {
@@ -107,28 +103,13 @@ li:hover
 {
     cursor: pointer;
 }
-
-li:hover > .mt
-{
-    /*text-shadow: 1px 1px;*/
-}
 li:active > .mt
 {
-    /*text-shadow: 0px 0px;*/
-    color: #ffeb99; /*#c4271b;*/
-}
-li:active > .plus-icon
-{
-    /*box-shadow: inset 1px 0px 2px 0px black;*/
-}
-li:active > .minus-icon
-{
-    /*box-shadow: inset 1px 0px 2px 0px black;*/
+    color: #ffeb99;
 }
 .mt
 {
     color: #FFCC61; /*#520701;*/
-    /*text-shadow: 1px 1px 37px black;*/
     -moz-user-select: none !important;
     -webkit-touch-callout: none !important;
     -webkit-user-select: none !important;
@@ -155,22 +136,6 @@ li:active > .minus-icon
 {
     display: none;
 }
-.plus-icon:hover
-{
-    /*box-shadow: 1px 2px 3px 0px black;*/
-}
-.plus-icon:active
-{
-    /*box-shadow: inset 1px 0px 2px 0px black;*/
-}
-.minus-icon:hover
-{
-    /*box-shadow: 1px 2px 3px 0px black;*/
-}
-.minus-icon:active
-{
-    /*box-shadow: inset 1px 0px 2px 0px black;*/
-}
 .minus-icon
 {
     background-image: url(../Resourcers/Images/MinusPlusIcon.png);
@@ -189,10 +154,8 @@ li:active > .minus-icon
 {
     width: 1491px;
     height: 828px;
-    /*background-color: #3385ff;*/
     float: left;
     margin-left: 6px;
-    /*box-shadow: -3px 2px 7px black;*/
     position: relative;
     z-index: 1;
 }
@@ -205,7 +168,6 @@ li:active > .minus-icon
 .top-menu
 {
     height: 56px;
-    /*background-image: linear-gradient(180deg, #0099E7, #ffffff);*/
     position: relative;
     z-index: 5;
 }
@@ -325,6 +287,12 @@ td {font-size: 15px;}
     width: 100%;
     float: left;
     background-color: Blue;
+}
+.top-header img {
+    cursor: pointer;
+}
+#maintitle {
+    cursor: pointer;
 }
 .top-header-m2
 {
@@ -951,7 +919,7 @@ td {font-size: 15px;}
     -webkit-user-select: none !important;
     -khtml-user-select: none !important;
     -moz-user-select: none !important;
-    -ms-user-select: none!import;
+    -ms-user-select: none !important;
 }
 .ttmhkgclh .button
 {
@@ -1468,13 +1436,6 @@ textarea {
     border-collapse: collapse !important;
     text-align: center;
 }
-/* đặt class cho table bảo trì */
-/* .tbbaotri, .tbbaotri tr, .tbbaotri th, .tbbaotri td {
-    width: 778px;
-    border-bottom: 1px solid lavenderblush;
-    border-collapse: collapse !important;
-    text-align: center;
-} */
 .tbborder th, .tbborder td {
     padding-left: 5px;
     padding-right: 5px;
@@ -1556,17 +1517,6 @@ textarea {
     float: left;
     line-height: 3.2;
 }
-.dctbtnthemphutung {
-    color: white;
-    background-color: blue;
-    line-height: 3.3;
-    text-align: center;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-decoration: none;
-}
 .dctbtnthemphutung:hover {
     background-color:#0000ff;
 }
@@ -1584,12 +1534,6 @@ textarea {
 .dctbtnthemchitiet:hover {
     background-color:#0000ff;
 }
-.rowtbbt:hover {
-    background-color:gray;
-}
-.rowtbbt:active {
-    background-color:darkgray;
-}
 .tbt3ghichu {
     width: 540px;
     height: 296px;
@@ -1598,47 +1542,11 @@ textarea {
     height: 50px;
     width: 170px;
 }
-.dashboardlbllichbaotri {
-	margin:0 !important;
-}
 .dashboardlblphutung {
     float:left;
 	margin:0 !important;
     width: 100%;
 }
-/* .dctxtlinkimage {
-    width: 350px;
-}
-.dctxtmathietbi {
-    width: 100px;
-}
-.dctxtloaithietbi {
-    width: 145px;
-}
-.dctxtphongban {
-    width: 256px;
-}
-.dctxttinhtrang {
-    width: 350px;
-}
-.dctxtthongsokythuat {
-    margin-bottom: 0 !important;
-}
-.dctxtnhacungcap {
-    width: 250px;
-}
-.dctxtmathietbicha {
-    width: 100px;
-}
-.dctxtserial {
-    width: 118px;
-}
-.dctxtmodel {
-    width: 118px;
-}
-.dctxtngaylapdat {
-    width: 87px;
-} */
 .dctxtttthietbi {
     width: 500px;
     padding-left: 10px;
@@ -1648,20 +1556,6 @@ textarea {
 }
 .dcsltthoigiannam {
     width: 267px;
-}
-.dcbtnthemlichbaotri {
-    color: white;
-    background-color: blue;
-    line-height: 3.3;
-    text-align: center;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-decoration: none;
-}
-.dcbtnthemlichbaotri:hover {
-    background-color:#0000ff;
 }
 .tptlvlthongbao {
     padding-left: 246px;
@@ -1713,19 +1607,6 @@ textarea {
 .dashboardlbltailieuthietbi {
     margin:0 !important;
 }
-/*.icon-pin {
-    width: 17px;
-    float: left;
-}
-.icon-pin:hover {
-    box-shadow: 0px 1px 0px black;
-}
-.icon-pin-open {
-    display: none;
-}
-.icon-pin-close {
-    float: right !important;
-}*/
 .tchm-chitiet {
     width: 132px;
     float: left;
@@ -1881,18 +1762,6 @@ textarea {
 .dclblngaylapdat {
     padding-left: 94px !important;
 }
-.dctblbaotrithoigianbd {
-    width: 1005px !important;
-}
-.dctblbaotrithoigiankt {
-    width: 1048px !important;
-}
-.dcbaotrilblmathietbibaotri {
-    width: 10px;
-}
-.dctblnguoilap {
-    width: 521px !important;
-}
 .btnSuaThietBi {
     background-color: #0000ff;
     color: white;
@@ -2006,33 +1875,67 @@ textarea {
 .modal-them-chi-tiet {
   font-family: sans-serif;
 }
-/*su dung ten bien de thuc hien thuc thi function*/
-/*string tenthietbi = tb.TenThietBi;*/
-/*
-string tentb;
-*/
-/*public string TenThietBi() {
-  get { return tentb; };
-  set { tentb = value; };
-}
-public string Tentb
-{
-    get { return tentb; }
-    set { tentb = value; }
-}
-*/
 .dc-them-phu-tung-input-modal {
   width: 365px !important;
 }
 .dc-them-phu-tung-input-gia-ca-modal {
   width: 175px;
 }
-.dc-them-phu-tung-input-ma-phu-tung-modal {
-  width: 113px;
-}
 .tbl-table-them-phu-tung tr td:nth-child(2) {
   padding-left: 5px;
 }
 .lbldonvi{
   margin-right: 13px;
+}
+.lblmatbbt {
+    margin-right: 8px;
+}
+.txt-bao-tri-ghi-chu {
+    width: 530px;
+}
+.txt-loai-hinh {
+    width: 530px;
+}
+.header-title-ql-thiet-bi {
+    font-family: system-ui;    
+    top: -1px !important;
+    font-weight: lighter;
+    font-size: 15px;
+    position: absolute;
+    margin-left: 95px;
+    color: white;
+    top: 10px;
+}
+.them-thiet-bi-model {
+    max-width: 701px !important;
+}
+.dc-tbl-model-them-thiet-bi td {
+    min-width: 241px;
+}
+.txt-ttb-ten-thiet-bi {
+    width: 352px;
+}
+.txt-ttb-hu-hong {
+    width: 81px;
+}
+.txt-ttb-thoi-han-bao-hanh {
+    width: 100px;
+}
+.txt-ttb-nha-san-xuat {
+    width: 230px;
+}
+.txt-ttb-nuoc-san-xuat {
+    width: 230px;
+}
+.txt-ttb-serial {
+    width: 100px;
+}
+.txt-ttb-model {
+    width: 100px;
+}
+.txt-ttb-ma-quan-ly {
+    width: 115px;
+}
+.txt-mpt-so-luong {
+    width: 365px !important;
 }

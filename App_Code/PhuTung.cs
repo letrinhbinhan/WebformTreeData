@@ -9,19 +9,20 @@ public class PhuTung
 {
     private int mapt;
     private string tenpt;
-    private DateTime ngaynhap;    
+    private DateTime ngaythaythe;    
     private int giaca;
     private bool tinhtrang;
     private int thietbi;
-
-    public PhuTung(int mapt, string tenpt, DateTime ngaynhap, int giaca, bool tinhtrang, int thietbi)
+    private int soluong;
+    public PhuTung(int mapt, string tenpt, DateTime ngaythaythe, int giaca, bool tinhtrang, int thietbi, int soluong)
     {
         this.mapt = mapt;
         this.tenpt = tenpt;
-        this.ngaynhap = ngaynhap;
+        this.ngaythaythe = ngaythaythe;
         this.giaca = giaca;
         this.tinhtrang = tinhtrang;
         this.thietbi = thietbi;
+        this.soluong = soluong;
     }
 	public PhuTung()
 	{
@@ -39,15 +40,10 @@ public class PhuTung
         get { return tenpt; }
         set { tenpt = value; }
     }
-    //public DateTime Ngaythem
-    //{
-    //    get { return ngaythem; }
-    //    set { ngaythem = value; }
-    //}
-    public DateTime Ngaynhap
+    public DateTime Ngaythaythe
     {
-        get { return ngaynhap; }
-        set { ngaynhap = value; }
+        get { return ngaythaythe; }
+        set { ngaythaythe = value; }
     }
     public int Giaca
     {
@@ -59,14 +55,14 @@ public class PhuTung
         get { return tinhtrang; }
         set { tinhtrang = value; }
     }
-    //public int Phutung
-    //{
-    //    get { return phutung; }
-    //    set { phutung = value; }
-    //}
     public int Thietbi
     {
         get { return thietbi; }
         set { thietbi = value; }
+    }
+    public int Soluong
+    {
+        get { return soluong; }
+        set { soluong = value; }
     }
 }

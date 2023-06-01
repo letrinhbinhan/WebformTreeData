@@ -37,7 +37,7 @@ public partial class Resources_AJAX_DashboardChildTree : System.Web.UI.Page
             {
                 if (data.dsThietBi()[i].Matb == idch)
                 {
-                    caythumuccon += "<span id='" + data.dsThietBi()[i].Matb + "' class='minus-icon mtree-p-icon 0'></span>";                                                //plus-icon 1
+                    caythumuccon += "<span id='" + data.dsThietBi()[i].Matb + "' class='minus-icon mtree-p-icon 0' onclick='pmclick(this)'></span>";                                                //plus-icon 1
                     caythumuccon += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='0' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";    //mt 1                    
                 }
 

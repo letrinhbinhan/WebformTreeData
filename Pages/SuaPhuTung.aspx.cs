@@ -31,7 +31,7 @@ public partial class Pages_SuaPhuTung : System.Web.UI.Page
             if(idch == data.dsPhuTung()[i].Mapt)
             {                
                 TenPhuTung = data.dsPhuTung()[i].Tenpt;
-                NgayNhap = data.dsPhuTung()[i].Ngaynhap;
+                NgayNhap = data.dsPhuTung()[i].Ngaythaythe;
                 GiaCa = FormatVND(data.dsPhuTung()[i].Giaca);
                 TinhTrang = data.dsPhuTung()[i].Tinhtrang?"Tốt":"Hư hỏng";
                 MaThietBi = data.dsPhuTung()[i].Thietbi.ToString();                         

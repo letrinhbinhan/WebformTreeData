@@ -56,6 +56,7 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
     public string tbllbt;
     public string mathietbi;
     public string chitietvsb;
+    public int MaThietBiLonNhat;
     protected void Page_Load(object sender, EventArgs e)
     {
         string tenloaithietbi, tenphongban, thietbicha, manhacungcap;
@@ -182,13 +183,17 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
                 tenphongban = data.dsPhongBan()[i].Tenphongban;
             }
         }
+        MaThietBiLonNhat = 1;
         for (int i = 0; i < data.dsThietBi().Count; i++)
         {
             if (tb.Thietbicha == data.dsThietBi()[i].Matb)
             {
                 thietbicha = data.dsThietBi()[i].Tentb;
             }
+            if(data.dsThietBi()[i].Matb > MaThietBiLonNhat)
+                MaThietBiLonNhat = data.dsThietBi()[i].Matb;
         }
+        
             try
             {
                 MaLoaiThietBi = maloaithietbi;

@@ -24,7 +24,7 @@ public partial class Resourcers_AJAX_DashboardChildTreeByViTri : System.Web.UI.P
         {
             if (data.dsViTri()[i].Id1 == idch && trch == 1)
             {			
-				caythumuccon += "<span class='mtree-text'><a id='"+data.dsViTri()[i].Id1+"' class='2' href='#'> <span id='"+data.dsViTri()[i].Id1+"' class='minus-icon mtree-p-icon'></span> "+data.dsViTri()[i].Tenvitri+"</a></span>";
+				caythumuccon += "<span class='mtree-text'><a id='"+data.dsViTri()[i].Id1+"' class='2' href='#'> <span id='"+data.dsViTri()[i].Id1+"' class='minus-icon mtree-p-icon' onclick='pmclick(this)'></span> "+data.dsViTri()[i].Tenvitri+"</a></span>";
                 for (int j = 0; j < data.dsThietBi().Count; j++)
                 {
                     if (data.dsThietBi()[j].Vitri == idch && data.dsThietBi()[j].Thietbicha == 0)
