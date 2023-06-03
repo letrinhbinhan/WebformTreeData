@@ -130,7 +130,8 @@ li:active > .mt
     display: inline-block;
     vertical-align: top;
     margin-top: 3px;
-    margin-right: 5px;
+    margin-right: 5px;    
+    pointer-events: none;
 }
 .none-icon
 {
@@ -147,7 +148,8 @@ li:active > .mt
     display: inline-block;
     vertical-align: top;
     margin-top: 3px;
-    margin-right: 5px;
+    margin-right: 5px;    
+    pointer-events: none;
 }
 
 .content
@@ -434,6 +436,7 @@ td {font-size: 15px;}
     color: blue;
     margin: 1px;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 .button-add:hover
 {
@@ -1678,14 +1681,6 @@ textarea {
 .dstltb {
     float: left;
 }
-.wrench {
-    width: 20px;
-    filter: grayscale(100);
-    float: left;
-    margin-left: 10px;
-    margin-top: 18px;
-    cursor: pointer;
-}
 .dbctdivtitle {
     display: inline-table;
 }
@@ -1910,7 +1905,7 @@ textarea {
     max-width: 701px !important;
 }
 .dc-tbl-model-them-thiet-bi td {
-    min-width: 241px;
+    min-width: 153px;
 }
 .txt-ttb-ten-thiet-bi {
     width: 352px;
@@ -1934,8 +1929,61 @@ textarea {
     width: 100px;
 }
 .txt-ttb-ma-quan-ly {
-    width: 115px;
+    width: 207px;
 }
 .txt-mpt-so-luong {
     width: 365px !important;
+}
+.p-none {    
+    pointer-events: none;
+}
+.dc-tbl-model-them-thiet-bi tr {
+    height: 42px;
+}
+.c-plus-icon {
+    background-image: url(../Resourcers/Images/plus-left-icon.png);
+    background-repeat: no-repeat;
+}
+.c-minus-icon {
+    background-image: url(../Resourcers/Images/minus-left-icon.png);
+    background-repeat: no-repeat;
+}
+.div-plus-icon {
+    background-image: url(../Resourcers/Images/plus-left-icon.png);
+    background-repeat: no-repeat;
+    width: 11px;
+    float: left;
+    margin-right: 5px;
+    margin-left: 6px;
+    top: 2px;
+}
+.div-minus-icon {
+    background-image: url(../Resourcers/Images/minus-left-icon.png);
+    background-repeat: no-repeat;
+    width: 11px;
+    float: left;
+    margin-right: 6px;
+    margin-left: 6px;
+    top: 2px;
+}
+.position-row-icon{
+    margin-left: 3px;
+    margin-right: 5px;    
+}
+.position-row-icon-nc {
+    
+    margin-left: 21px;
+    margin-right: 5px;
+}
+.dc-btn-xoa-thiet-bi {
+    float:right;
+}
+.vitri-icon-new {
+    margin-left: 25px;
+}
+.db-model-sltthietbicha {
+    width: 126px;
+}
+.db-model-sltvitri {
+    width: 126px;
 }

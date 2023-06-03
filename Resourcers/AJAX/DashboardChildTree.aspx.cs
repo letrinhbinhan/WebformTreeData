@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-
+// <i class="fa-solid fa-plus"></i>
 public partial class Resources_AJAX_DashboardChildTree : System.Web.UI.Page
 {
     DataUtil data = new DataUtil();
@@ -37,7 +37,8 @@ public partial class Resources_AJAX_DashboardChildTree : System.Web.UI.Page
             {
                 if (data.dsThietBi()[i].Matb == idch)
                 {
-                    caythumuccon += "<span id='" + data.dsThietBi()[i].Matb + "' class='minus-icon mtree-p-icon 0' onclick='pmclick(this)'></span>";                                                //plus-icon 1
+                    // caythumuccon += "<span id='" + data.dsThietBi()[i].Matb + "' class='minus-icon mtree-p-icon 0'></span>";                                                //plus-icon 1
+                    caythumuccon += "<div class='mtree-text div-minus-icon'><a id='" + data.dsThietBi()[i].Matb + "' class='0' href='#'>&nbsp;&nbsp;</a></div>";    //anh icon
                     caythumuccon += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='0' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";    //mt 1                    
                 }
 
@@ -54,7 +55,9 @@ public partial class Resources_AJAX_DashboardChildTree : System.Web.UI.Page
                     {
                         //caythumuccon += "<li id='" + data.dsThietBi()[i].Matb + "' class='row' name='dsCha'> <span id='" + data.dsThietBi()[i].Matb + "' class='plus-icon 1' value='1'></span> <span id='" + data.dsThietBi()[i].Matb + "' class='mt 1' value='1'>" + data.dsThietBi()[i].Tentb + "</span></li>";
                         caythumuccon += "<li id='" + data.dsThietBi()[i].Matb + "' class='row-tree-tb'>";                                                                          //row
-                        caythumuccon += "<span id='" + data.dsThietBi()[i].Matb + "' class='plus-icon mtree-p-icon'></span>";                                                   //plus-icon 1
+                        // caythumuccon += "<span id='" + data.dsThietBi()[i].Matb + "' class='plus-icon mtree-p-icon'></span>";                                                   //plus-icon 1
+                        // caythumuccon += "<span class='mtree-text c-plus-icon'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>&nbsp;&nbsp;</a></span>";    //plus-icon
+                        caythumuccon += "<div class='mtree-text div-plus-icon'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>&nbsp;&nbsp;</a></div>";    //anh icon
                         caythumuccon += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";    //mt 1
                         caythumuccon += "</li>";
                         //<li class='row-tree-tb'><span class='plus-icon mtree-p-icon'></span><span class='mtree-text'><a class='1' href='#'> Tên thiết bị </a></span></li>

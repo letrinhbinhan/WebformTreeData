@@ -1,9 +1,3 @@
-function RedirectToThemThietBi2() {
-    location.replace("./Pages/ThemThietBi2.aspx");
-}
-document
-  .getElementById("addthietbi")
-  .addEventListener("click", RedirectToThemThietBi2);
 function showThongtinChung() {
     document.getElementById("panelchitiet").style.display = "none";
     document.getElementById("panelphutung").style.display = "none";
@@ -71,37 +65,37 @@ function SuaThietBi() {
 function Row_Device_Show(str, pst, state) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
-        document.getElementById(pst).innerHTML = this.responseText;
+        document.getElementById(pst).innerHTML = this.responseText; 
         const xhttp2 = new XMLHttpRequest();
         xhttp2.onload = function () {
-            document.getElementById("center-ct").innerHTML = this.responseText;
+            document.getElementById("center-ct").innerHTML = this.responseText; 
         };
         xhttp2.open("GET", "Resourcers/AJAX/DashboardCenter.aspx?ID=" + pst);
         xhttp2.send();
         const xhttp3 = new XMLHttpRequest();
         xhttp3.onload = function () {
-            document.getElementById("ccimg").innerHTML = this.responseText;
+            document.getElementById("ccimg").innerHTML = this.responseText; 
         };
-        xhttp3.open("GET", "Resourcers/AJAX/DashboardImage.aspx?ID=" + pst); // in ra hình
+        xhttp3.open("GET", "Resourcers/AJAX/DashboardImage.aspx?ID=" + pst); 
         xhttp3.send();
     };
     xhttp.open("GET", "Resourcers/AJAX/DashboardChildTree.aspx?ID=" + pst);
     xhttp.send();
 }
-function Row_Device_Show_Close(str, pst, state) {
+function Row_Device_Show_Close(str, pst, state) { 
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         const xhttp2 = new XMLHttpRequest();
         xhttp2.onload = function () {
-            document.getElementById("center-ct").innerHTML = this.responseText;
+            document.getElementById("center-ct").innerHTML = this.responseText; 
         };
         xhttp2.open("GET", "Resourcers/AJAX/DashboardCenter.aspx?ID=" + pst);
         xhttp2.send();
         const xhttp3 = new XMLHttpRequest();
         xhttp3.onload = function () {
-            document.getElementById("ccimg").innerHTML = this.responseText;
+            document.getElementById("ccimg").innerHTML = this.responseText; 
         };
-        xhttp3.open("GET", "Resourcers/AJAX/DashboardImage.aspx?ID=" + pst); // in ra hình
+        xhttp3.open("GET", "Resourcers/AJAX/DashboardImage.aspx?ID=" + pst); 
         xhttp3.send();
     };
     xhttp.open("GET", "Resourcers/AJAX/DashboardChildTree.aspx?ID=" + pst);
@@ -110,10 +104,10 @@ function Row_Device_Show_Close(str, pst, state) {
 function Row_Position_Show(str, pst, state) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
-        document.getElementById(pst).innerHTML = this.responseText; //sau khi gọi đến trang hiển thị AJAX thì trả về kết quả và hiển thị trên page kết quả sẽ hiện thị tại vị trí pst mà
-        if (state == 1 || state == 2 || state == 3) { //Row_Position_Show đã gửi
-            document.getElementById("center-ct").innerHTML = "";
-            document.getElementById("ccimg").innerHTML = "";
+        document.getElementById(pst).innerHTML = this.responseText; 
+        if (state == 1 || state == 2 || state == 3) { 
+            document.getElementById("center-ct").innerHTML = ""; 
+            document.getElementById("ccimg").innerHTML = ""; 
         }
     };
     xhttp.open(
@@ -128,9 +122,10 @@ function Row_Position_Show(str, pst, state) {
 var row = 3;
 const buttons = document.getElementsByTagName("li");
 const result = document.getElementById("result");
-const buttonPressed = (e) => { // nhưng function này chỉ hoạt động khi li được click và nó chỉ nhận diện chữ
-if (e.target.classList[0] == "1") {
-  Row_Device_Show("open", e.target.id);
+const buttonPressed = (e) => { 
+if (e.target.classList[0] == "1") { 
+  Row_Device_Show("open", e.target.id); 
+  document.getElementById(e.target.id).style.removeProperty("padding-left");
   document.getElementById(e.target.id).className = document.getElementById(e.target.id).classList[0] + " 0";
   if (document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon" && document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon-m")
   {
@@ -140,23 +135,21 @@ if (e.target.classList[0] == "1") {
   document.getElementById(e.target.id).getElementsByTagName("a")[0].className = 0;
   row = e.target.id;
 }
-else if (e.target.classList[0] == "0") 
+else if (e.target.classList[0] == "0")
 {
-    if (e.target.classList[0] == "0") 
-    {
-        if (document.getElementById(e.target.id).innerText.indexOf("\n") != -1) 
-        {
-            Row_Device_Show_Close("open", e.target.id);
-            document.getElementById(e.target.id).innerHTML = document.getElementById(e.target.id).innerText.slice(0, document.getElementById(e.target.id).innerText.indexOf("\n") + 1);
-            document.getElementById(e.target.id).className = "row-tree-tb 1";
-            var noidung = document.getElementById(e.target.id).innerHTML;
-            document.getElementById(e.target.id).innerHTML = "<span id='" + e.target.id + "' class='plus-icon mtree-p-icon'></span> <span class='mtree-text'><a id='" + e.target.id + "' class='1'>" + noidung + "</a></span>";
-            document.getElementById(e.target.id).getElementsByTagName("a")[0].className = 1;
-            document.getElementById(e.target.id).getElementsByTagName("span")[0].style.marginRight = 0;
-            row = e.target.id;
-        }
-    }
-} else if (e.target.classList[0] == "2") 
+  if (e.target.classList[0] == "0") 
+  {
+      if (document.getElementById(e.target.id).innerText.indexOf("\n") != -1) 
+      {
+          Row_Device_Show_Close("open", e.target.id);           
+          var noidung;
+          noidung = document.getElementById(e.target.id).innerText.trim().split("\n")[0];
+          document.getElementById(e.target.id).innerHTML = "<li id='"+e.target.id+"' class='1 row-tree-tb'><span class='1 mtree-text'><a id='"+e.target.id+"' class='1' href='#'> <span id='"+e.target.id+"' class='plus-icon mtree-p-icon'></span>"+noidung+"</a></span></li>";
+          document.getElementById(e.target.id).style.paddingLeft = 0;
+          row = e.target.id;                    
+      }
+  }
+} else if(e.target.classList[0] == "2") 
       {
         if (e.target.classList[0] == "2") {
             var tinhtrang;
@@ -178,127 +171,13 @@ else if (e.target.classList[0] == "0")
             {
                 tinhtrang = 3;
             }
-            Row_Position_Show("open", e.target.id, tinhtrang);
+            Row_Position_Show("open", e.target.id, tinhtrang); 
         }
       }
 };
 for (let button of buttons) {
   button.addEventListener("click", buttonPressed);
 }
-// var row = 3;
-// //var buttons2 = document.getElementsByTagName("li");
-// var buttons2 = document.getElementsByClassName("");
-// result = document.getElementById("result");
-// //function để hiển thị thiết bị con, hay hiển thị cây thư mục nhỏ hơn
-// //li là nơi ta click vào thì sẽ thay đổi nội dung trong cây thư mục
-// //buttonPressed là function dùng để áp dụng thực hiện
-// //khi buttonPressed thực hiện thì cây thư mục bên trái sẽ thay đổi
-// //li được click sẽ được đổ html vào với nội dung gồm các con của nó
-// //để làm cho hình cảnh kia click vào là hiển thị
-// //ta phải thay đổi như sau
-// //tìm hình ảnh là định dạng gì img
-// //công việc thực hiện tương tự với click tại định dạng này
-// //để áp dụng click cho định dạng này ta phải getElementByTagName("li")
-// //sau đó trên mỗi tagname vừa tạo được ta thêm chức năng cho các danh sách tag name này
-// //đang tìm gì vậy?
-// //lấy toàn bộ các nút + và -
-// //xử lý ở phần trên này là một function 
-// //function này có chức năng là 
-// //AJAX nội dung vào cây thư mục theo dữ liệu đã cho trước
-// //Các để xác định được đối tượng được chọn
-// //đối tượng được chọn là tất cả các li
-// // tương tác với đối tượng được chọn bằng e là giá trị nhân của đối tượng được chọn và cũng là đối tượng được tương tác
-// //mục đích bây giờ là 
-// //hoạt động function với đối tượng hình icon
-// //hướng dẫn hoạt động function đối với hình icon
-// //chỉ cần click vào icon , hiển thị AJAX đối với cây thư mục đã tạo sẵn
-// //tìm các code AJAX
-// //tìm các code tương tác
-// buttonPressed = (e) => {
-//     if (e.target.classList[0] == "1") {
-//     Row_Device_Show("open", e.target.id); //code AJAX
-// document.getElementById(e.target.id).className =
-//   document.getElementById(e.target.id).classList[0] + " 0";
-// if (
-//   document.getElementById(e.target.id).getElementsByTagName("span")[0]
-//     .classList[0] != "none-icon" &&
-//   document.getElementById(e.target.id).getElementsByTagName("span")[0]
-//     .classList[0] != "none-icon-m"
-// )
-//     document
-//       .getElementById(e.target.id)
-//       .getElementsByTagName("span")[0].className =
-//       "minus-icon 0 mtree-p-icon";
-// document
-//   .getElementById(e.target.id)
-//   .getElementsByTagName("span")[1].className =
-//   document.getElementById(e.target.id).getElementsByTagName("span")[1]
-//     .classList[0] + " 0";
-// document
-//   .getElementById(e.target.id)
-//   .getElementsByTagName("a")[0].className = 0;
-// row = e.target.id;
-// }
-// else if (e.target.classList[0] == "0") {
-//     if (e.target.classList[0] == "0") {
-//         if (document.getElementById(e.target.id).innerText.indexOf("\n") != -1) {
-//             Row_Device_Show_Close("open", e.target.id); //code AJAX
-//             document.getElementById(e.target.id).innerHTML = document
-//               .getElementById(e.target.id)
-//               .innerText.slice(
-//                 0,
-//                 document.getElementById(e.target.id).innerText.indexOf("\n") + 1
-//               );
-//             document.getElementById(e.target.id).className = "row-tree-tb 1";
-//             var noidung = document.getElementById(e.target.id).innerHTML;
-//             document.getElementById(e.target.id).innerHTML =
-//               "<span id='" +
-//               e.target.id +
-//               "' class='plus-icon mtree-p-icon'></span> <span class='mtree-text'><a id='" +
-//               e.target.id +
-//               "' class='1'>" +
-//               noidung +
-//               "</a></span>";
-//             document
-//               .getElementById(e.target.id)
-//               .getElementsByTagName("a")[0].className = 1;
-//             document
-//               .getElementById(e.target.id)
-//               .getElementsByTagName("span")[0].style.marginRight = 0;
-//             row = e.target.id;
-//         }
-//     }
-// } else if (e.target.classList[0] == "2") {
-//     if (e.target.classList[0] == "2") {
-//         var tinhtrang;
-//         tinhtrang = "3";
-//         if (e.target.classList == "2 0") { //nếu classList có giá trị là "2 0" thì thực hiện theo kịch bản phía dưới
-//             document.getElementById("center-ct").innerHTML = ""; //chuẩn bị dữ liệu cho các hoạt động sau, giá trị trong center-ct rỗng
-//             document.getElementById("ccimg").innerHTML = ""; //dữ liệu này là cho giá trị được hiển thị trong ccimg rỗng
-//         }
-//         if (
-//           e.target.getElementsByTagName("span")[0].classList[0] == "plus-icon"
-//         ) {
-//             tinhtrang = 1; //plus-icon công dụng của dòng này là nếu giá trị classList[0] kia là "plus-icon" thì sẽ thực hiện lệnh tinhtrang = 1, biến tình trạng này dùng để xác định tình trạng cho các lần hoạt động sau
-//         }
-//         if (
-//           e.target.getElementsByTagName("span")[0].classList[0] == "minus-icon"
-//         ) {
-//             tinhtrang = 2; //minus-icon nếu classList[0] có gí trị là "minus-icon" thì cho tinhtrang = 2 nếu tình trạng bằng 2 thì sẽ hành động theo một kịch bản sau
-//         }
-//         if (
-//           e.target.getElementsByTagName("span")[0].classList[0] == "none-icon"
-//         ) {
-//             tinhtrang = 3; //nếu classList[0] có gí trị là none-icon thì cho tinhtrang = 3 nếu tình trạng bằng 3 thì sẽ hành động theo một kịch bản sau
-//         }
-//         Row_Position_Show("open", e.target.id, tinhtrang); //==>hoạt động kịch bản theo giá trị tinhtrang vừa xét phía trên
-//         //các tình trạng này xác định hình thức thể hiện của Row_Position_Show
-//     }
-// }
-// };
-// for (let button of buttons) {
-//   button.addEventListener("click", buttonPressed);
-// }
 function UploadTaiLieu(str, pst, state) {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function () {
@@ -588,7 +467,7 @@ function luusuaphutungmoi(obj) {
     xhttp.send();    
 }
 function ThemThietBi(){
-  var loaithietbi, phongban, ngaynhap, thangnhap, namnhap, tenthietbi, nhacungcap, huhong, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, ngaylapdat, thanglapdat, namlapdat, ngaymua, thangmua, nammua, maquanly;
+  var loaithietbi, phongban, ngaynhap, thangnhap, namnhap, tenthietbi, nhacungcap, huhong, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, ngaylapdat, thanglapdat, namlapdat, ngaymua, thangmua, nammua, maquanly, vitri, mathietbivuathem;
   loaithietbi = document.getElementById("sltmodelthemthietbi").value;
   phongban = document.getElementById("sltmodelphongban").value;
   ngaynhap = document.getElementById("sltttbngaynhap").value;
@@ -611,14 +490,81 @@ function ThemThietBi(){
   maquanly = document.getElementById("txtttbmaquanly").value;
   mathietbi = document.getElementById("mathietbilonnhat").innerHTML;
   thietbicha = document.getElementById("sltthietbicha").value;
+  vitri = document.getElementById("sltvitri").value;
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function () {
+      mathietbivuathem = this.responseText;
       document.getElementById("kqthemthietbi").innerHTML = "Thêm thành công thiết bị " + (parseInt(mathietbi) + 1) + ".";
       //mathietbilon nhat thay đỏi và tăng thêm 1
       document.getElementById("mathietbilonnhat").innerHTML = parseInt(mathietbi) + 1;
       //cho hiển thị thiết bị vừa tạo lên cây thư mục
+      //khi không có thiết bị cha thì cho nó hiển thị vào thẻ vị trí đang mở
+      //thietbicha == null
+      //row-tree-tb khi mà thẻ vị trí mở
+      //row-tree-tb row-tree-none-icon khi mà thẻ vị trí đóng
+      //"<li id='"+id+"' class='row-tree-tb'><span class='mtree-text'><a id='"+id+"' class='1' href='#'> <span id='"+id+"' class='none-icon mtree-p-icon'></span> 111</a></span></li>"
+      //if(thietbicha=="null")
+      //document.getElementById("vt")
+      //cho vào form thêm vị trí
+      //thêm vào xong thì xét nếu vị trí rỗng là không cần hiển thị
+      //vị trí không rỗng và cha rỗng thì thêm và gốc vị trí
+      //vị trí rkhoong rỗng và cha không rỗng thì thêm vào gốc cha
+      if(vitri!="NULL"){
+        if(thietbicha=="NULL"){
+          if(document.getElementById("vt"+vitri).classList[1]=="row-tree-none-icon"){ //theem vao vi tri rong dau +
+            document.getElementById("vt"+vitri).innerHTML = "<span id='"+vitri+"' class=plus-icon mtree-p-icon vitri-icon-new></span>" + document.getElementById("vt"+vitri).innerHTML;
+            //cho vị trí làm cha thiết bị            
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {              
+              document.getElementById("vt"+vitri).innerHTML = "<li id='vt"+mathietbivuathem+"' class='row-tree-tb row-tree-none-icon'><span class='mtree-text'><a id='"+mathietbivuathem+"' class='2 0' href='#'><span id='"+mathietbivuathem+"' class='plus-icon mtree-p-icon'></span><img src='/Resourcers/Images/ngoi-nha.ico' alt='ngoinhaicon' class='position-row-icon-nc'>"+tenvitri+"</a></span></li>";
+            };
+            xhttp.open("POST", "Resourcers/AJAX/LamChaThietBi.aspx?mavitri="+vitri);
+            xhttp.send();
+            /*
+            <li id="vt1" class="row-tree-tb row-tree-none-icon">
+               <img src="/Resourcers/Images/ngoi-nha.ico" alt="ngoinhaicon" class="position-row-icon-nc">
+               <span class="mtree-text">
+                  <a id="1" class="2 0" href="#">P.Hóa Nghiệm</a>
+               </span>
+            </li>      
+            <li id='"+id+"' class='row-tree-tb row-tree-none-icon'>
+               <span class='mtree-text'>
+                  <a id='"+id+"' class="2 0" href="#">
+                  <span id='"+id+"' class='plus-icon mtree-p-icon'>                     
+                  </span>
+                  <img src='/Resourcers/Images/ngoi-nha.ico' alt='ngoinhaicon' class='position-row-icon-nc'>
+                  "+tenvitri+"
+                  </a>
+               </span>
+            </li>           
+            <li id="vt3" class="row-tree-tb">
+               <span class="mtree-text">
+                  <a id="3" class="2" href="#"> 
+                     <span id="3" class="plus-icon mtree-p-icon">                     
+                     </span>
+                     <img src="/Resourcers/Images/ngoi-nha.ico" alt="ngoinhaicon" class="position-row-icon">
+                     Lò Hơi
+                  </a>
+                </span>
+            </li>
+            */
+            //cho thêm nội dung sau vào vị trí vị trí mà thiết bị vừa thêm
+            //<span id="3" class="plus-icon mtree-p-icon"></span>
+            //kiểm tara nội dung thêm có hiển thị đúng với ý mình muốn không
+            //<li id='vt"+id+"' class='row-tree-tb row-tree-none-icon'><span class='mtree-text'><a id='"+id+"' class="2 0" href="#"><span id='"+id+"' class='plus-icon mtree-p-icon'></span><img src='/Resourcers/Images/ngoi-nha.ico' alt='ngoinhaicon' class='position-row-icon-nc'>"+tenvitri+"</a></span></li>          
+          } else if(document.getElementById("vt"+vitri).classList[1]=="row-tree-tb" && document.getElementById("vt"+vitri).childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].classList[0] == "minus-icon"){
+            document.getElementById("vt"+vitri).childNodes[0].childNodes[0].innerHTML = document.getElementById("vt3").childNodes[0].childNodes[0].innerHTML + "<li id='"+mathietbivuathem+"' class='row-tree-tb'><span class='mtree-text'><a id='"+mathietbivuathem+"' class='1' href='#'> <span id='"+mathietbivuathem+"' class='none-icon mtree-p-icon'></span>"+tenthietbi+"</a></span></li>";            
+          }//them vao vi tri thiet bi mo          
+        } else if(thietbicha!="NULL") {
+          if(document.getElementById(thietbicha).childNodes[0].classList[1]=="div-minus-icon"){
+            document.getElementById(thietbicha).innerHTML = document.getElementById(thietbicha).innerHTML + "<li id='"+mathietbivuathem+"' class='row-tree-tbc 0'><span id='"+mathietbivuathem+"' class='none-icon mtree-p-icon'></span><span class='mtree-text'><a id='"+mathietbivuathem+"' class='1' href='#'>"+tenthietbi+"</a></span></li>";
+          }
+        }
+      }
   };
-  xhttp.open("POST", "Resourcers/AJAX/ThemThietBiMoi.aspx?&mathietbi="+mathietbi+"&loaithietbi="+loaithietbi+"&phongban="+phongban+"&ngaynhap="+ngaynhap+"&thangnhap="+thangnhap+"&namnhap="+namnhap+"&tenthietbi="+tenthietbi+"&nhacungcap="+nhacungcap+"&huhong="+huhong+"&thoihanbaohanh="+thoihanbaohanh+"&nhasanxuat="+nhasanxuat+"&nuocsanxuat="+nuocsanxuat+"&serial="+serial+"&model="+model+"&ngaylapdat="+ngaylapdat+"&thanglapdat="+thanglapdat+"&namlapdat="+namlapdat+"&ngaymua="+ngaymua+"&thangmua="+thangmua+"&nammua="+nammua+"&maquanly="+maquanly+"&thietbicha="+thietbicha);
+  xhttp.open("POST", "Resourcers/AJAX/ThemThietBiMoi.aspx?&mathietbi="+mathietbi+"&loaithietbi="+loaithietbi+"&phongban="+phongban+"&ngaynhap="+ngaynhap+"&thangnhap="+thangnhap+"&namnhap="+namnhap+"&tenthietbi="+tenthietbi+"&nhacungcap="+nhacungcap+"&huhong="+huhong+"&thoihanbaohanh="+thoihanbaohanh+"&nhasanxuat="+nhasanxuat+"&nuocsanxuat="+nuocsanxuat+"&serial="+serial+"&model="+model+"&ngaylapdat="+ngaylapdat+"&thanglapdat="+thanglapdat+"&namlapdat="+namlapdat+"&ngaymua="+ngaymua+"&thangmua="+thangmua+"&nammua="+nammua+"&maquanly="+maquanly+"&thietbicha="+thietbicha+"&vitri="+vitri);
+  //?loaithietbi=1&phongban=1&ngaynhap=1&thangnhap=1&namnhap=2023&tenthietbi=123&nhacungcap=1&huhong=false&thoihanbaohanh=123&nhasanxuat=Dell&nuocsanxuat=China&serial=123&model=123&ngaylapdat=1&thanglapdat=1&namlapdat=2023&ngaymua=1&thangmua=1&nammua=2023&maquanly=1&mathietbi=245&thietbicha=NULL&vitri=NULL
+  //?loaithietbi=1&phongban=1&ngaynhap=3&thangnhap=6&namnhap=2023&tenthietbi=123&nhacungcap=1&huhong=     &thoihanbaohanh=   &nhasanxuat=    &nuocsanxuat=     &serial=   &model=   &ngaylapdat=3&thanglapdat=6&namlapdat=2023&ngaymua=3&thangmua=6&nammua=2023&maquanly= &mathietbi=246&thietbicha=NULL&vitri=NULL
   xhttp.send();
 }
 function xoaphutung(obj){
@@ -639,30 +585,66 @@ function LamMoiFormThemPhuTung(){
   document.getElementById("txtgiaca").value = "";  
   document.getElementById("slttinhtrang").value = "true";
 }
-
-//khi thêm vào thì kiểm tra trong cây thư mục đang mở ra nó đang nằm vị trí nào để áp dụng vào cho đúng
-//check xem vì sao dấu cộng không bấm được
-//có 1 chỗ in ra hình minus và plus icon
-//1 là trên vị trí
-//1 là trên các thiết bị và thiết bị con
-//có hàm nào thực thi thì gọi ra lệnh giống như ở phần trên không thì bỏ vô
-//vì sử lỹ dữ liệu khó khăn
-//nếu xử lý trên code sẽ cần tìm các class và các trường hợp cảu class khác nhau
-//chuyển hướng sang sử dụng hình ảnh nền thay thế
-function pmclick(e) {
-
+function LamMoiFormThemThietBi(){
+  var currentdate = new Date();
+  document.getElementById("sltmodelthemthietbi").value = 1;
+  document.getElementById("sltmodelphongban").value = 1;
+  document.getElementById("sltttbngaynhap").value = currentdate.getDate();
+  document.getElementById("sltttbthangnhap").value = currentdate.getMonth() + 1;
+  document.getElementById("sltttbnamnhap").value = currentdate.getFullYear();  
+  document.getElementById("txtttbtenthietbi").value = "";
+  document.getElementById("sltttbnhacungcap").value = 1;
+  document.getElementById("txtttbhuhong").value = "";
+  document.getElementById("txtttbthoihanbaohanh").value = "";
+  document.getElementById("txtttbnhasanxuat").value = "";
+  document.getElementById("txtttbnuocsanxuat").value = "";
+  document.getElementById("txtttbserial").value = "";
+  document.getElementById("txtttbmodel").value = "";
+  document.getElementById("sltttbngaylapdat").value = currentdate.getDate();
+  document.getElementById("sltttbthanglapdat").value = currentdate.getMonth();
+  document.getElementById("sltttbnamlapdat").value = currentdate.getFullYear();
+  document.getElementById("sltttbngaymua").value = currentdate.getDate();
+  document.getElementById("sltttbthangmua").value = currentdate.getMonth() + 1;
+  document.getElementById("sltttbnammua").value = currentdate.getFullYear();
+  document.getElementById("txtttbmaquanly").value = "";
+  document.getElementById("sltthietbicha").value = 0;
+  document.getElementById("sltvitri").value = 0;
 }
-//dưới đây là hiển thị dòng trên cây thư mục bằng hiển thị các thiết bị con
-//thông qua AJAX /AJAX/DashboardChildTreeByViTri.aspx
-//vào file này xóa đi title
-//thay thế toàn bộ hình ảnh bằng hình ảnh đúng trên thẻ a
-{/* <li id="133" class="row-tree-tb 0">
-<title>
-</title>
-    <span id="133" class="minus-icon mtree-p-icon 0" onclick="pmclick(this)"></span>
-    <span class="mtree-text"><a id="133" class="0" href="#">Bút bi</a></span>
-    <li id="134" class="row-tree-tbc">
-      <span id="134" class="none-icon mtree-p-icon"></span>
-      <span class="mtree-text"><a id="134" class="1" href="#">bút bi 2</a></span>
-    </li>
-</li> */}
+function XoaThietBi(){
+  var id;
+  id = document.getElementById("mathietbi").innerHTML;
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function () {
+    document.getElementById("center-ct").innerHTML = ""; 
+    document.getElementById("ccimg").innerHTML = ""; 
+    document.getElementById(id).remove();
+  };
+  xhttp.open("POST", "Resourcers/AJAX/XoaThietBi.aspx?mathietbi="+id);
+  xhttp.send();
+}
+//nếu như thiết bị không cọn thiết bị cha thì tìm đến position nào của nó thêm nó vào
+//hiển thị
+//nếu như thiết bị có thiết bị cha ta thêm nó vào thiết bị cha của nó
+//document.getElementById("đặc trưng cho một thiết bị")
+//document.getElementById("đặc trưng cho một vị trí")
+//vị trí cũng có id và thiết bị con cũng có id
+//thay đổi id vị trí thành vt+id
+//id vị trí xuất hiện khi hiển thị đầu tiên
+//hiển thị mở
+//hiển thị đóng
+//hoặc là đang mở 
+//hoặc là đang đóng
+//nếu đang đóng thì không phải làm gì
+//nếu đang mở thì phải thêm vào danh sách thiết bị đang hiển thị trên màn hình
+function selectvitri(obj) {
+  var mathietbicha;
+  mathietbicha = obj.value;
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function () {
+    document.getElementById("sltvitri").value = parseInt(this.responseText);
+  };
+  xhttp.open("POST", "Resourcers/AJAX/TimViTriUngVoiThietBiCha.aspx?mathietbicha="+mathietbicha);
+  xhttp.send();
+  //tim vi tri ung voi thiet bi cha vua chon
+  //chon vi tri tren frm nhap thiet bi
+}
