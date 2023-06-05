@@ -462,6 +462,8 @@ td {font-size: 15px;}
     padding: 0;
     position: relative;
     left: -25px;
+    font-family: fangsong;
+    font-size: 15px;
 }
 .tree-ul li
 {
@@ -556,7 +558,7 @@ td {font-size: 15px;}
     background-color: White;
     float: left;
     width: 786px;
-    height: 700px;
+    height: 1085px;
     border-right: 1px solid gainsboro;
     padding-right: 3px;
 }
@@ -569,6 +571,7 @@ td {font-size: 15px;}
 {
     width:300px;
     float:left;
+    padding-left: 8px;
 }
 .tchm-phutung
 {
@@ -1586,20 +1589,6 @@ textarea {
 .sptbtnsua:active {
     background-color: #e6e6ff;
 }
-.dcbtnthemtailieu {
-    color: white;
-    background-color: blue;
-    line-height: 3.3;
-    text-align: center;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-decoration: none;
-}
-.dcbtnthemtailieu:hover {
-    background-color:#0000ff;
-}
 .dstltb {
     color: blue;
     text-decoration: underline;
@@ -1666,18 +1655,6 @@ textarea {
 .QuanLyThietBiGridView td {
     padding: 5px;
 }
-.dstltbbtnxoa {
-    margin-left: 5px;
-    float: left;
-    background-color: blue;
-    color: white;
-    padding-left: 6px;
-    padding-right: 5px;
-    cursor:pointer;
-}
-.dstltbbtnxoa:hover {
-    box-shadow: 1px 1px 1px black;
-}
 .dstltb {
     float: left;
 }
@@ -1724,38 +1701,17 @@ textarea {
 }
 .tcgm-noidung-thongtinchung table tr td:nth-child(1) {
     width: 189px;
-    padding-left: 101px;
+    padding-left: 50px;
     padding-top: 11px;
 }
 .dctbltailieu {
     margin-top: 17px;
 }
-.dclblnhacungcap {
-    padding-left: 83px !important;
-}
 .dclblthoihanbaohanh {
     padding-left: 52px !important;
 }
-.dclblhuhong {
-    padding-left: 116px !important;
-}
 .dclblthoihanbaohanh {
     padding-left: 49px !important;
-}
-.dclblnhasanxuat {
-    padding-left: 79px !important;
-}
-.dclblnuocsanxuat {
-    padding-left: 79px !important;
-}
-.dclblserial {
-    padding-left: 136px !important;
-}
-.dclblmodel {
-    padding-left: 130px !important;
-}
-.dclblngaylapdat {
-    padding-left: 94px !important;
 }
 .btnSuaThietBi {
     background-color: #0000ff;
@@ -1790,12 +1746,10 @@ textarea {
     width: 470px;
     margin-top: 10px;
     margin-left: 58px;
-    margin-bottom: 5px;
 }
 .txt-thong-so-ky-thuat {
     width: 470px !important;
     margin-left: 12px;
-    margin-bottom: 5px;
 }
 
 .txt-don-vi, .lblmodel, .txt-model, .lblpartno, .txt-partno {
@@ -1974,9 +1928,6 @@ textarea {
     
     margin-left: 21px;
     margin-right: 5px;
-}
-.dc-btn-xoa-thiet-bi {
-    float:right;
 }
 .vitri-icon-new {
     margin-left: 25px;

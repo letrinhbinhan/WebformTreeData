@@ -31,7 +31,7 @@
                 <button type="button" class="btn btn-primary" onclick="SuaThietBi()">
                     Sửa
                 </button>
-                <button type="button" class="btn btn-primary dc-btn-xoa-thiet-bi" onclick="XoaThietBi()">
+                <button type="button" class="btn btn-primary" onclick="XoaThietBi()">
                     Xóa
                 </button>
             </div>
@@ -141,7 +141,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="dclblnhacungcap">Nhà cung cấp:</td>
+                <td>Nhà cung cấp:</td>
                 <td>
                     <select id="sltnhacungcap">
                         <% for (int i = 0; i < data.dsNhaCungCap().Count; i++)
@@ -159,7 +159,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="dclblhuhong">Hư hỏng:</td>
+                <td>Hư hỏng:</td>
                 <td>
                     <input id="txthuhong" type="text" value="<%= HuHong %>" class="dctxtttthietbi" />
                 </td>
@@ -176,31 +176,31 @@
                 </td>
             </tr>
             <tr>
-                <td class="dclblnhasanxuat">Nhà sản xuất:</td>
+                <td>Nhà sản xuất:</td>
                 <td>
                     <input id="txtnhasanxuat" type="text" value="<%= NSX %>" class="dctxtttthietbi" />
                 </td>
             </tr>
             <tr>
-                <td class="dclblnuocsanxuat">Nước sản xuất:</td>
+                <td>Nước sản xuất:</td>
                 <td>
                     <input id="txtnuocsanxuat" type="text" value="<%= NuocSX %>" class="dctxtttthietbi" />
                 </td>
             </tr>
             <tr>
-                <td class="dclblserial">Serial:</td>
+                <td>Serial:</td>
                 <td>
                     <input id="txtserial" type="text" value="<%= Serial %>" class="dctxtttthietbi" />
                 </td>
             </tr>
             <tr>
-                <td class="dclblmodel">Model:</td>
+                <td>Model:</td>
                 <td>
                     <input id="txtmodel" type="text" value="<%= Model %>" class="dctxtttthietbi" />
                 </td>
             </tr>
             <tr>
-                <td class="dclblngaylapdat">Ngày lắp đặt:</td>
+                <td>Ngày lắp đặt:</td>
                 <td>
                     <select id="sltngaylapdat" class="dcsltthoigiannt">
                         <% for (int i = 0; i < 31; i++)
@@ -546,10 +546,12 @@
         <p class="dashboardlbllichbaotri">Lịch bảo trì:</p>        
     </div>
     <div id="paneltailieu" class="tcgm-noidung-tailieuthietbi">
-        <p class="dashboardlbltailieuthietbi">Tài liệu thiết bị:</p>
-        <a
-            href="/Pages/ThemTaiLieu.aspx?mathietbi=<%= mathietbi %>"
-            class="dcbtnthemtailieu">Thêm</a>
+        <div class="container mt-3">
+            <button id="btnthemtailieu" type="button" class="btn btn-primary" onclick="openthemtailieu()">
+                Thêm tài liệu
+            </button>
+        </div> 
+        <p class="dashboardlbltailieuthietbi">Tài liệu thiết bị:</p>        
         <table class="dctbltailieu">
             <% for (int tl = 0; tl < dsThietBiTaiLieu.Count; tl++)
                {%>
@@ -563,7 +565,13 @@
                         <%= dsThietBiTaiLieu[tl].Tentailieu %> <%--: <%=
               dsThietBiTaiLieu[tl].Linktailieu %>--%>
                     </p>
-                    <div class="dstltbbtnxoa" onclick="deletetailieu(this)">Xóa</div>
+                </td>
+                <td>
+                    <div class="container mt-3">
+                        <button type="button" class="btn btn-primary" onclick="deletetailieu(this)">
+                            Xóa
+                        </button>
+                    </div>
                 </td>
             </tr>
             <% } %>

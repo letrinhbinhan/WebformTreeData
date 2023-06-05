@@ -58,6 +58,7 @@ function SuaThietBi() {
     maquanly = document.getElementById("txtmaquanly").value;
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
+      document.getElementById(mathietbi)
     };
     xhttp.open("GET", "Resourcers/AJAX/SuaThietBiDashboard.aspx?mathietbi="+ mathietbi +"&loaithietbi="+loaithietbi+"&phongban="+phongban+"&ngaynhap="+ngaynhap+"&thangnhap="+thangnhap+"&namnhap="+namnhap+"&tenthietbi="+tenthietbi+"&nhacungcap="+nhacungcap+"&huhong="+huhong+"&thoihanbaohanh="+thoihanbaohanh+"&nhasanxuat="+nhasanxuat+"&nuocsanxuat="+nuocsanxuat+"&serial="+serial+"&model="+model+"&ngaylapdat="+ngaylapdat+"&thanglapdat="+thanglapdat+"&namlapdat="+namlapdat+"&ngaymua="+ngaymua+"&thangmua="+thangmua+"&nammua="+nammua+"&maquanly="+maquanly+"");
     xhttp.send();
@@ -230,6 +231,7 @@ function ThemChiTiet() {
     xhttp.onload = function () {
         document.getElementById("kqthemchitiet").innerHTML = "Thêm thành công chi tiết " + tenchitiet + ".";
         document.getElementById("dcdanhsachchitiet").innerHTML = document.getElementById("dcdanhsachchitiet").innerHTML+ "<tr id='cttbrow"+this.responseText+"' class='tbl-row-chitiet'><td class='tdchitiet' onclick='suachitietthietbimoi(this)''><input type='checkbox' onchange='xoachitiet(this)' value='"+this.responseText+"' /></td><td class='tdchitiet'>" + document.getElementById("dcdanhsachchitiet").getElementsByTagName("tr").length +"</td><td class='tdchitiet' onclick='suachitietthietbimoi(this)'>"+tenchitiet+"</td><td class='tdchitiet' onclick='suachitietthietbimoi(this)'>"+thongsokythuat+"</td><td class='tdchitiet' onclick='suachitietthietbimoi(this)'>"+donvi+"</td><td class='tdchitiet' onclick='suachitietthietbimoi(this)'>"+model+"</td><td class='tdchitiet' onclick='suachitietthietbimoi(this)'>"+partno+"</td><td class='tdchitiet d-none'><button type='button' class='btn-sua-chi-tiet-thiet-bi btn btn-primary' onclick='luusuachitietmoi(this)'>Lưu</button></td></tr>";
+        document.getElementById("dcdanhsachchitiet").classList.remove("unvisible");
     };
     xhttp.open("POST", "Resourcers/AJAX/ThemChiTiet.aspx?&tenchitiet="+tenchitiet+"&thongsokythuat="+thongsokythuat+"&donvi="+donvi+"&model="+model+"&partno="+partno+"&thietbi="+thietbi);
     xhttp.send();
@@ -647,4 +649,9 @@ function selectvitri(obj) {
   xhttp.send();
   //tim vi tri ung voi thiet bi cha vua chon
   //chon vi tri tren frm nhap thiet bi
+}
+function openthemtailieu() {
+  var mathietbi;
+  mathietbi = document.getElementById("mathietbi").innerHTML;
+  window.location.href = "/Pages/ThemTaiLieu.aspx?mathietbi="+mathietbi;
 }
