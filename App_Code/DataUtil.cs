@@ -1161,4 +1161,98 @@ public class DataUtil
         conn.Close();
         return ds;
     }
+    public List<LichBaoTri> dsLichBaoTri()
+    {
+        List<LichBaoTri> ds = new List<LichBaoTri>();
+        string sql = "SELECT * FROM tblLichBaoTri";
+        SqlCommand cmd = new SqlCommand(sql, conn);
+        conn.Open();
+        SqlDataReader dr = cmd.ExecuteReader();
+        while (dr.Read())
+        {
+            LichBaoTri tb = new LichBaoTri();
+            if (dr.IsDBNull(1) != true)
+            {
+                tb.Id = (int)dr["id"];
+            }
+            else
+            {
+                tb.Id = 0;
+            }
+            if (dr.IsDBNull(1) != true)
+            {
+                tb.Mabaotri = (string)dr["mabaotri"];
+            }
+            else
+            {
+                tb.Mabaotri = "null";
+            }
+            if (dr.IsDBNull(2) != true)
+            {
+                tb.Tenbaotri = (string)dr["tenbaotri"];
+            }
+            else
+            {
+                tb.Tenbaotri = "null";
+            }
+            if (dr.IsDBNull(3) != true)
+            {
+                tb.Chuki = (string)dr["chuki"];
+            }
+            else
+            {
+                tb.Chuki = "";
+            }
+            if (dr.IsDBNull(4) != true)
+            {
+                tb.Socong = (int)dr["socong"];
+            }
+            else
+            {
+                tb.Socong = 0;
+            }
+            if (dr.IsDBNull(5) != true)
+            {
+                tb.Bophan = (int)dr["bophan"];
+            }
+            else
+            {
+                tb.Bophan = 0;
+            }
+            ds.Add(tb);
+        }
+        conn.Close();
+        return ds;
+    }
+    public List<BoPhan> dsBoPhan()
+    {
+        List<BoPhan> ds = new List<BoPhan>();
+        string sql = "SELECT * FROM tblbophan";
+        SqlCommand cmd = new SqlCommand(sql, conn);
+        conn.Open();
+        SqlDataReader dr = cmd.ExecuteReader();
+        while (dr.Read())
+        {
+            BoPhan tb = new BoPhan();
+            if (dr.IsDBNull(1) != true)
+            {
+                tb.Id = (int)dr["id"];
+            }
+            else
+            {
+                tb.Id = 0;
+            }
+            if (dr.IsDBNull(1) != true)
+            {
+                tb.Tenbophan = (string)dr["tenbophan"];
+            }
+            else
+            {
+                tb.Tenbophan = "null";
+            }            
+            ds.Add(tb);
+        }
+        conn.Close();
+        return ds;
+    }
 }

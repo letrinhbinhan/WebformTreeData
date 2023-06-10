@@ -26,61 +26,7 @@
     maquanly = Request.QueryString["maquanly"];
     mathietbi = Request.QueryString["mathietbi"];
     thietbicha = Request.QueryString["thietbicha"];
-    vitri = Request.QueryString["vitri"];
-    /*if(thietbicha == "null") {
-        using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["QLThietBiConnectionString"].ConnectionString))
-        {
-            connection.Open();
-            string sql = "INSERT INTO tblthietbi (loaitb, phongban, ngaynhap, tentb, NCC, huhong, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, ngaylapdat, ngaymua, maql, matb, vitri) VALUES(@param1, @param2, @param3, @param4, @param5, @param6, @param7, @param8, @param9, @param10, @param11, @param12, @param13, @param14, @param15, @param16)";        
-            using (System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, connection))
-            {       
-                cmd.Parameters.Add("@param1", System.Data.SqlDbType.Int).Value = loaithietbi;
-                cmd.Parameters.Add("@param2", System.Data.SqlDbType.Int).Value = phongban;
-                cmd.Parameters.Add("@param3", System.Data.SqlDbType.DateTime).Value = new DateTime(Int32.Parse(namnhap),Int32.Parse(thangnhap),Int32.Parse(ngaynhap));
-                cmd.Parameters.Add("@param4", System.Data.SqlDbType.NVarChar).Value = tenthietbi; 
-                cmd.Parameters.Add("@param5", System.Data.SqlDbType.Int).Value = nhacungcap; 
-                cmd.Parameters.Add("@param6", System.Data.SqlDbType.NVarChar).Value = huhong; 
-                cmd.Parameters.Add("@param7", System.Data.SqlDbType.NVarChar).Value = thoihanbaohanh; 
-                cmd.Parameters.Add("@param8", System.Data.SqlDbType.NVarChar).Value = nhasanxuat; 
-                cmd.Parameters.Add("@param9", System.Data.SqlDbType.NVarChar).Value = nuocsanxuat; 
-                cmd.Parameters.Add("@param10", System.Data.SqlDbType.NVarChar).Value = serial; 
-                cmd.Parameters.Add("@param11", System.Data.SqlDbType.NVarChar).Value = model; 
-                cmd.Parameters.Add("@param12", System.Data.SqlDbType.DateTime).Value = new DateTime(Int32.Parse(namlapdat),Int32.Parse(thanglapdat),Int32.Parse(ngaylapdat));            
-                cmd.Parameters.Add("@param13", System.Data.SqlDbType.DateTime).Value = new DateTime(Int32.Parse(nammua),Int32.Parse(thangmua),Int32.Parse(ngaymua));  
-                cmd.Parameters.Add("@param14", System.Data.SqlDbType.NVarChar).Value = maquanly;
-                cmd.Parameters.Add("@param15", System.Data.SqlDbType.Int).Value = (Int32.Parse(mathietbi) + 1);
-                cmd.Parameters.Add("@param16", System.Data.SqlDbType.Int).Value = vitri;
-                cmd.ExecuteNonQuery();            
-            }
-        }
-    } else {
-        using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["QLThietBiConnectionString"].ConnectionString))
-        {
-            connection.Open();
-            string sql = "INSERT INTO tblthietbi (loaitb, phongban, ngaynhap, tentb, NCC, huhong, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, ngaylapdat, ngaymua, maql, matb, vitri, thietbicha) VALUES(@param1, @param2, @param3, @param4, @param5, @param6, @param7, @param8, @param9, @param10, @param11, @param12, @param13, @param14, @param15, @param16, @param17)";        
-            using (System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, connection))
-            {       
-                cmd.Parameters.Add("@param1", System.Data.SqlDbType.Int).Value = loaithietbi;
-                cmd.Parameters.Add("@param2", System.Data.SqlDbType.Int).Value = phongban;
-                cmd.Parameters.Add("@param3", System.Data.SqlDbType.DateTime).Value = new DateTime(Int32.Parse(namnhap),Int32.Parse(thangnhap),Int32.Parse(ngaynhap));
-                cmd.Parameters.Add("@param4", System.Data.SqlDbType.NVarChar).Value = tenthietbi; 
-                cmd.Parameters.Add("@param5", System.Data.SqlDbType.Int).Value = nhacungcap; 
-                cmd.Parameters.Add("@param6", System.Data.SqlDbType.NVarChar).Value = huhong; 
-                cmd.Parameters.Add("@param7", System.Data.SqlDbType.NVarChar).Value = thoihanbaohanh; 
-                cmd.Parameters.Add("@param8", System.Data.SqlDbType.NVarChar).Value = nhasanxuat; 
-                cmd.Parameters.Add("@param9", System.Data.SqlDbType.NVarChar).Value = nuocsanxuat; 
-                cmd.Parameters.Add("@param10", System.Data.SqlDbType.NVarChar).Value = serial; 
-                cmd.Parameters.Add("@param11", System.Data.SqlDbType.NVarChar).Value = model; 
-                cmd.Parameters.Add("@param12", System.Data.SqlDbType.DateTime).Value = new DateTime(Int32.Parse(namlapdat),Int32.Parse(thanglapdat),Int32.Parse(ngaylapdat));            
-                cmd.Parameters.Add("@param13", System.Data.SqlDbType.DateTime).Value = new DateTime(Int32.Parse(nammua),Int32.Parse(thangmua),Int32.Parse(ngaymua));  
-                cmd.Parameters.Add("@param14", System.Data.SqlDbType.NVarChar).Value = maquanly;
-                cmd.Parameters.Add("@param15", System.Data.SqlDbType.Int).Value = (Int32.Parse(mathietbi) + 1);
-                cmd.Parameters.Add("@param16", System.Data.SqlDbType.Int).Value = vitri;
-                cmd.Parameters.Add("@param17", System.Data.SqlDbType.Int).Value = thietbicha;            
-                cmd.ExecuteNonQuery();            
-            }
-        }
-    }*/
+    vitri = Request.QueryString["vitri"];    
     using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["QLThietBiConnectionString"].ConnectionString))
         {
             connection.Open();

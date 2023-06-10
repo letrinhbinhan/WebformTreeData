@@ -4,6 +4,7 @@ function showThongtinChung() {
     document.getElementById("panelttc").style.display = "block";
     document.getElementById("panelbaotri").style.display = "none";
     document.getElementById("paneltailieu").style.display = "none";
+    document.getElementById("modeltailieuthietbi").style.display = "none";
 }
 function showChiTiet() {
     document.getElementById("panelchitiet").style.display = "block";
@@ -11,6 +12,7 @@ function showChiTiet() {
     document.getElementById("panelttc").style.display = "none";
     document.getElementById("panelbaotri").style.display = "none";
     document.getElementById("paneltailieu").style.display = "none";
+    document.getElementById("modeltailieuthietbi").style.display = "none";
 }
 function showPhuTung() {
     document.getElementById("panelchitiet").style.display = "none";
@@ -18,6 +20,7 @@ function showPhuTung() {
     document.getElementById("panelttc").style.display = "none";
     document.getElementById("panelbaotri").style.display = "none";
     document.getElementById("paneltailieu").style.display = "none";
+    document.getElementById("modeltailieuthietbi").style.display = "none";
 }
 function showBaoTri() {
     document.getElementById("panelchitiet").style.display = "none";
@@ -25,6 +28,7 @@ function showBaoTri() {
     document.getElementById("panelttc").style.display = "none";
     document.getElementById("panelbaotri").style.display = "block";
     document.getElementById("paneltailieu").style.display = "none";
+    document.getElementById("modeltailieuthietbi").style.display = "none";
 }
 function showTaiLieu() {
     document.getElementById("panelchitiet").style.display = "none";
@@ -32,6 +36,7 @@ function showTaiLieu() {
     document.getElementById("panelttc").style.display = "none";
     document.getElementById("panelbaotri").style.display = "none";
     document.getElementById("paneltailieu").style.display = "block";
+    document.getElementById("modeltailieuthietbi").style.display = "block";
 }
 function SuaThietBi() {
     var mathietbi, loaithietbi, phongban, ngaynhap, thangnhap, namnhap, tenthietbi, nhacungcap, tinhtrang, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, ngaylapdat, thanglapdat, namlapdat, ngaymua, thangmua, nammua, maquanly;
@@ -67,8 +72,24 @@ function Row_Device_Show(str, pst, state) {
     xhttp.onload = function () {
         document.getElementById(pst).innerHTML = this.responseText; 
         const xhttp2 = new XMLHttpRequest();
-        xhttp2.onload = function () {
-            document.getElementById("center-ct").innerHTML = this.responseText; 
+        xhttp2.onload = function () {    
+            var soluongdulieu = document.getElementById("tree-data").getElementsByTagName("a").length;
+            for(var i =0; i < soluongdulieu; i++){
+                document.getElementById("tree-data").getElementsByTagName("a")[i].style.fontWeight = "Normal";
+            }            
+            document.getElementById("center-ct").innerHTML = this.responseText;
+            if(document.getElementById(pst).getElementsByTagName("a")[0].classList[0] != 'defined' && document.getElementById(pst).getElementsByTagName("a")[0].classList[0] == "1")
+            {
+                document.getElementById(pst).getElementsByTagName("a")[0].style.fontWeight = 'Bold';
+            }            
+            if(typeof document.getElementById(pst).getElementsByTagName("a")[1] != "undefined")
+            {
+                if(document.getElementById(pst).getElementsByTagName("a")[1].classList[0] == "0")
+                {
+                    document.getElementById(pst).getElementsByTagName("a")[1].style.fontWeight = 'Bold';
+                }
+            }                        
+            setCookie("lastpst",pst,30);
         };
         xhttp2.open("GET", "Resourcers/AJAX/DashboardCenter.aspx?ID=" + pst);
         xhttp2.send();
@@ -123,8 +144,12 @@ var row = 3;
 const buttons = document.getElementsByTagName("li");
 const result = document.getElementById("result");
 const buttonPressed = (e) => { 
-if (e.target.classList[0] == "1") { 
-  Row_Device_Show("open", e.target.id); 
+  setCookie("lastchoose", e.target.id, 1);
+  document.getElementById("mathietbi").innerHTML = e.target.id;
+  if (e.target.classList[0] == "1") { 
+  //in dam khi click vao li (row) thiet bi
+  Row_Device_Show("open", e.target.id);  
+  var lastpst = getCookie('lastpst');
   document.getElementById(e.target.id).style.removeProperty("padding-left");
   document.getElementById(e.target.id).className = document.getElementById(e.target.id).classList[0] + " 0";
   if (document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon" && document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon-m")
@@ -144,7 +169,14 @@ else if (e.target.classList[0] == "0")
           Row_Device_Show_Close("open", e.target.id);           
           var noidung;
           noidung = document.getElementById(e.target.id).innerText.trim().split("\n")[0];
+          //"<li id='"+e.target.id+"' class='1 row-tree-tb'>"
+          //</li>
           document.getElementById(e.target.id).innerHTML = "<li id='"+e.target.id+"' class='1 row-tree-tb'><span class='1 mtree-text'><a id='"+e.target.id+"' class='1' href='#'> <span id='"+e.target.id+"' class='plus-icon mtree-p-icon'></span>"+noidung+"</a></span></li>";
+          console.log(document.getElementById(e.target.id).classList);          
+          // document.getElementById(e.target.id).classList.remove("0");
+          // document.getElementById(e.target.id).classList.remove("row-tree-tb");
+          // document.getElementById(e.target.id).classList.add("1");
+          // document.getElementById(e.target.id).classList.add("row-tree-tb");
           document.getElementById(e.target.id).style.paddingLeft = 0;
           row = e.target.id;                    
       }
@@ -203,20 +235,19 @@ function xoachitiet(obj) {
     xhttp.send();
 }
 function deletetailieu(obj) {
-    var id = obj.parentNode.getElementsByTagName("p")[0].id;
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
-        var soluongdstltb = document.getElementsByClassName("dstltb").length;
-        for (var i = 0; i < soluongdstltb; i++) {
-            if (document.getElementsByClassName("dstltb")[i].id == id) {
-                document
-                  .getElementsByClassName("dstltb")
-                  [i].parentNode.parentNode.remove();
-            }
-        }
-    };
-    xhttp.open("POST", "Resourcers/AJAX/XoaTaiLieu.aspx?matailieu=" + id);
-    xhttp.send();
+  console.log(obj.parentNode.getElementsByTagName("p")[0].id);
+    // var id = obj.parentNode.getElementsByTagName("p")[0].id;
+    // const xhttp = new XMLHttpRequest();
+    // xhttp.onload = function () {
+    //     var soluongdstltb = document.getElementsByClassName("dstltb").length;
+    //     for (var i = 0; i < soluongdstltb; i++) {
+    //         if (document.getElementsByClassName("dstltb")[i].id == id) {
+    //             document.getElementsByClassName("dstltb")[i].parentNode.parentNode.remove();
+    //         }
+    //     }
+    // };
+    // xhttp.open("POST", "Resourcers/AJAX/XoaTaiLieu.aspx?matailieu=" + id);
+    // xhttp.send();
 }
 function ThemChiTiet() {
     var thietbi, tenchitiet, thongsokythuat, donvi, model, partno;
@@ -611,12 +642,19 @@ function LamMoiFormThemThietBi(){
   document.getElementById("sltvitri").value = 0;
 }
 function XoaThietBi(){
-  var id;
+  var id, parentid;
   id = document.getElementById("mathietbi").innerHTML;
+  parentid = document.getElementById(id).parentNode.id;
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function () {
+    if(document.getElementById(id).parentNode.innerText.split('\n').length == 3) {
+      document.getElementById(id).parentNode.innerHTML = "<span id='"+parentid+"' class='none-icon mtree-p-icon'></span><span class='mtree-text'><a id='"+parentid+"' class='1' href='#' style='font-weight: normal;'>"+document.getElementById(id).parentNode.innerText.split('\n')[1]+"</a></span>";
+      document.getElementById(parentid).classList.remove("row-tree-tb");
+      document.getElementById(parentid).classList.remove("0");
+      document.getElementById(parentid).classList.add("row-tree-tbc");
+    };
     document.getElementById("center-ct").innerHTML = ""; 
-    document.getElementById("ccimg").innerHTML = ""; 
+    document.getElementById("ccimg").innerHTML = "";
     document.getElementById(id).remove();
   };
   xhttp.open("POST", "Resourcers/AJAX/XoaThietBi.aspx?mathietbi="+id);
@@ -647,4 +685,57 @@ function selectvitri(obj) {
   xhttp.send();
   //tim vi tri ung voi thiet bi cha vua chon
   //chon vi tri tren frm nhap thiet bi
+}
+function setCookie(cname,cvalue,exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+function modelthemthietbi(){
+  //thay doi thong tin tren dll
+  //lay duoc lastchoose tren cookie
+  //gui laschoose tren cookie cho AJAX
+  //thay doi noi dung selected cua dll vi tri
+  //thay doi phu hop voi thiet bi cha
+  var lastchoose, mathietbi;
+  lastchoose = getCookie("lastchoose");
+  document.getElementsByClassName("ddl-thiet-bi-cha")[0].value = lastchoose;
+  mathietbi = lastchoose;
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function () {      
+      document.getElementsByClassName("ddlvitri")[0].value = parseInt(this.responseText);
+  };
+  xhttp.open("GET", "Resourcers/AJAX/ThietBiViTri.aspx?mathietbi="+mathietbi);
+  xhttp.send();
+}
+function ddlThietBiChaClick() {
+  //document.getElementsByClassName("ddlvitri")[0].value;
+  //document.getElementsByClassName("ddl-thiet-bi-cha")[0].value;
+  //thay doi noi dung cua thiet bi vi tri khi ddlthietbicha dươc tac dong vao
+  //virtri thiet bi khi thay doi theo thiet bi cha la ket qua tra ve của AJAX TimViTriUngVoiThietBiCha.aspx
+  var mathietbi;
+  mathietbi = document.getElementsByClassName("ddl-thiet-bi-cha")[0].value;
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function () {      
+      document.getElementsByClassName("ddlvitri")[0].value = parseInt(this.responseText);
+  };
+  xhttp.open("GET", "Resourcers/AJAX/TimViTriUngVoiThietBiCha.aspx?mathietbicha="+mathietbi);
+  xhttp.send();
 }

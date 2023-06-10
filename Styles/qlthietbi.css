@@ -522,7 +522,7 @@ td {font-size: 15px;}
 }
 .row-tree-tb {
     padding-left: 25px;
-    margin: 3px 0px 9px 0px;
+    padding: 3px 0px 0px 25px;
 }
 .row-tree-tbc {
     padding-left: 52px;
@@ -556,7 +556,7 @@ td {font-size: 15px;}
     background-color: White;
     float: left;
     width: 786px;
-    height: 700px;
+    height: 1085px;
     border-right: 1px solid gainsboro;
     padding-right: 3px;
 }
@@ -1955,7 +1955,7 @@ textarea {
     float: left;
     margin-right: 5px;
     margin-left: 6px;
-    top: 2px;
+    top: 7px;
 }
 .div-minus-icon {
     background-image: url(../Resourcers/Images/minus-left-icon.png);
@@ -1964,7 +1964,7 @@ textarea {
     float: left;
     margin-right: 6px;
     margin-left: 6px;
-    top: 2px;
+    top: 7px;
 }
 .position-row-icon{
     margin-left: 3px;
@@ -1986,4 +1986,15 @@ textarea {
 }
 .db-model-sltvitri {
     width: 126px;
+}
+.mtree-text a {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.model-them-tltb {
+    display:none;
+}
+.btn-modal-tai-lieu {
+    margin-top: 94px;
+    position: absolute;
 }

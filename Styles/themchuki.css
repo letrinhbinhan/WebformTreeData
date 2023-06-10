@@ -1,0 +1,145 @@
+﻿.tbt-chu-ki-tuan td {
+    width: 330px;
+    height: 50px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+.tooltip-insert-chuky {
+    position: absolute;
+    width: 32.5rem;
+    height: 21rem;
+    background-color: white;
+    color: black;
+    text-align: left;
+    border: 0.1rem solid black;
+}
+.TitleThemChuKi {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+.lblngaybatdauchuki {
+    margin-right: 0.7rem;
+}
+.ddlngaybatdau {
+    margin-right: 0.1rem;
+    margin-bottom: 0.3rem;
+}
+.ddlthangbatdau {
+    margin-right: 0.1rem;
+}
+.tooltip-header-insert-chuky {
+    height: 4.5rem;
+    border-bottom: 0.1rem solid black;
+    margin-bottom: 0.8rem;
+}
+.tooltip-body-insert-chuky ul {
+    padding-left: 1.3rem;
+    margin-bottom: 0;
+}
+.lblngayketthucchuki {
+    margin-right: 0.5rem;
+}
+.ddlngayketthuc {
+    margin-right: 0.1rem;
+    margin-bottom: 0.3rem;
+}
+.ddlthangketthuc {
+    margin-right: 0.1rem;
+}
+.txtgiobatdau {
+    width: 3rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0.3rem;
+    margin-left: 1.5rem;
+}
+.txtphutbatdau {
+    margin-left: 0.1rem;
+    width: 2.5rem;
+    margin-right: 0.1rem;
+}
+.txtgioketthuc {
+    width: 3rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0.3rem;
+    margin-left: 1.4rem;
+}
+.txtphutketthuc {
+    margin-left: 0.1rem;
+    width: 2.5rem;
+    margin-right: 0.1rem;
+}
+.txtloaihinh {
+    width: 10rem;
+    margin-left: 0.35rem;
+    margin-bottom: 0.3rem;
+}
+.radio-muc-do-uu-tien label {
+    margin-right: 0.9rem;
+    margin-left: 0.3rem;
+    margin-bottom: 0.2rem;
+}
+.radio-muc-do-uu-tien label:nth-child(2) {
+    background-color: #ffcc80;
+}
+.radio-muc-do-uu-tien label:nth-child(4) {
+    background-color: #ff9900;
+}
+.radio-muc-do-uu-tien label:nth-child(6) {
+    background-color: #00e600;
+}
+.btn-them-chu-ki {
+    margin-left: 1.2rem;
+    margin-top: 0.5rem;
+    width: 9rem;
+}
+.btn-exit-popup {
+    float: right;
+    margin-top: 1rem;
+    margin-right: 1.4rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+.tbt-chu-ki-tuan {
+    margin-top: 0.7rem;
+    margin-bottom: 0.3rem;
+}
+.them-chu-ki-button {
+    margin-top: 0.3rem;
+}
+.title-tên-thiết-bị {
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+.title-label-tên-thiết-bị {
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding-right: 0.2rem;
+}
+.title-mã-thiết-bị {
+    font-size: 0.9rem;
+    font-weight: 300;
+    text-align:center;
+}
+.title-ngày-nhập-thiết-bị {
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+.đường-kẻ-dọc {
+    height: 0.9rem;
+    width: 0.01rem;
+    background-color: #999966;
+    margin-right: 0.4rem;
+}
+.tbl-title-thiết-bị {
+    margin-bottom: 1.9rem;
+}
+.txt-nhan-vien-nhap-lieu {
+    margin-top: 0.2rem;
+}
+.tbt-chu-ki-tuan td {
+    cursor: pointer;
+}

@@ -1,0 +1,76 @@
+﻿.lbl-ten-thiet-bi {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.tbl-lich-bao-tri tr td {
+    border: none;
+}
+.tbl-lich-bao-tri tr {
+    padding: 10px;
+}
+.row-lich-bao-tri {
+    border: 1px solid black;
+    padding: 5px;
+    float: left;
+    margin: 5px;
+    font-size: 21px;
+    letter-spacing: 3px;
+}
+.tbl-danh-muc {
+    border-collapse: collapse;
+    max-width: 500px;
+    min-width: 116px;    
+    margin-bottom: 5px;
+    margin-left: 6px;
+}
+.tbl-danh-muc tr, td {
+    border: 1px solid black !important;
+    align-self: flex-end;
+}
+.left-panel-bao-tri {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin-left: 107px;
+    display: flexbox;
+    justify-content:flex-end;    
+}
+.danh-muc-1 {
+    width: 300px;
+}
+.left-panel-baotri {
+    display: flex;
+}
+.tbl-danh-muc tr {
+    height: 27px;
+}
+.danh-muc-vat-tu {
+    display: flex;
+    align-self: flex-end;
+}
+.grv-lich-bao-tri {
+    border-collapse: separate !important;
+    border-spacing: 5px;
+    border: 0px solid black;
+}
+.grv-lich-bao-tri tr {
+    border: 1px solid black;
+}
+.grv-lich-bao-tri td {
+    border: 0px solid black;
+}
+.dtl-lich-bao-tri {
+    border-collapse: separate !important;
+    border-spacing: 5px;
+    font-size: 23px !important;
+    padding-left: 10px;
+}
+.dtl-lich-bao-tri tr td span:nth-child(1) {
+    padding-left: 10px;
+}
+.dtl-lich-bao-tri span {
+    font-size: 22px;
+}
+.dtl-lich-bao-tri tr {
+    cursor: pointer;
+}

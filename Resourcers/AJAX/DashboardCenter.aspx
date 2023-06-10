@@ -92,11 +92,17 @@
                            { %>
                         <% if (NgayNhap.Day == i + 1)
                            { %>
-                        <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
-                        <% }
-                           else
-                           { %>
-                        <option value="<%= i+1 %>"><%= i + 1 %></option>
+                            <% if(i+1<10) { %>
+                            <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                            <% } else { %>
+                                <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                            <%} %>
+                        <% } else { %>
+                            <% if(i+1<10){%>
+                                <option value="<%= i+1 %>">0<%= i + 1 %></option>
+                            <% } else { %>
+                                <option value="<%= i+1 %>"><%= i + 1 %></option>
+                            <% } %>
                         <% } %>
                         <% } %>
                     </select>
@@ -105,12 +111,18 @@
                            { %>
                         <% if (NgayNhap.Month == i + 1)
                            { %>
+                        <%if(i+1<10){ %>
+                        <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                        <%} else { %>
                         <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
-                        <% }
-                           else
-                           { %>
-                        <option value="<%= i+1 %>"><%= i + 1 %></option>
-                        <% } %>
+                        <%} %>
+                        <% } else { %>
+                            <% if(i+1<10){ %>
+                                <option value="<%= i+1 %>">0<%= i + 1 %></option>
+                            <%} else { %>
+                                <option value="<%= i+1 %>"><%= i + 1 %></option>
+                            <%} %>
+                            <% } %>
                         <% } %>
                     </select>
                     <select id="sltnamnhap" class="dcsltthoigiannam">
@@ -121,9 +133,7 @@
                         <% if (NgayNhap.Year == nam + i)
                            { %>
                         <option value="<%= NgayNhap.Year %>" selected="selected"><%= NgayNhap.Year %></option>
-                        <% }
-                           else
-                           { %>
+                        <% } else { %>
                         <option value="<%= nam+i %>"><%= nam+i %></option>
                         <% } %>
                         <% } %>
@@ -207,11 +217,19 @@
                            { %>
                         <% if (NgayLapDat.Day == i + 1)
                            { %>
+                        <% if(i+1<10){ %>
+                        <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                        <%} else { %>
                         <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                        <%} %>
                         <% }
                            else
                            { %>
+                        <% if(i+1<10){ %>
+                        <option value="<%= i+1 %>">0<%= i + 1 %></option>
+                        <%} else { %>
                         <option value="<%= i+1 %>"><%= i + 1 %></option>
+                        <% } %>
                         <% } %>
                         <% } %>
                     </select>
@@ -220,11 +238,19 @@
                            { %>
                         <% if (NgayLapDat.Month == i + 1)
                            { %>
+                        <% if(i+1<10){ %>
+                        <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                        <%} else { %>
                         <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                        <%} %>
                         <% }
                            else
                            { %>
-                        <option value="<%= i+1 %>"><%= i + 1 %></option>
+                        <% if(i+1<10){ %>
+                            <option value="<%= i+1 %>">0<%= i + 1 %></option>
+                        <%} else { %>
+                            <option value="<%= i+1 %>"><%= i + 1 %></option>
+                        <%} %>
                         <% } %>
                         <% } %>
                     </select>
@@ -252,11 +278,19 @@
                            { %>
                         <% if (NgayMua.Day == i + 1)
                            { %>
+                        <%if(i+1<10){ %>
+                        <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                        <%} else { %>
                         <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                        <%} %>
                         <% }
                            else
                            { %>
+                        <% if(i+1<10){ %>
+                        <option value="<%= i+1 %>">0<%= i + 1 %></option>
+                        <%} else { %>
                         <option value="<%= i+1 %>"><%= i + 1 %></option>
+                        <%} %>
                         <% } %>
                         <% } %>
                     </select>
@@ -265,11 +299,19 @@
                            { %>
                         <% if (NgayMua.Month == i + 1)
                            { %>
+                        <% if(i+1<10){ %>
+                        <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
+                        <%} else { %>
                         <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
+                        <%} %>
                         <% }
                            else
                            { %>
+                        <% if(i+1<10){ %>
+                        <option value="<%= i+1 %>">0<%= i + 1 %></option>
+                        <%} else { %>
                         <option value="<%= i+1 %>"><%= i + 1 %></option>
+                        <%} %>
                         <% } %>
                         <% } %>
                     </select>
@@ -546,10 +588,13 @@
         <p class="dashboardlbllichbaotri">Lịch bảo trì:</p>        
     </div>
     <div id="paneltailieu" class="tcgm-noidung-tailieuthietbi">
+        <br /><br />
         <p class="dashboardlbltailieuthietbi">Tài liệu thiết bị:</p>
-        <a
+        
+        
+        <!-- <a
             href="/Pages/ThemTaiLieu.aspx?mathietbi=<%= mathietbi %>"
-            class="dcbtnthemtailieu">Thêm</a>
+            class="dcbtnthemtailieu">Thêm</a> -->
         <table class="dctbltailieu">
             <% for (int tl = 0; tl < dsThietBiTaiLieu.Count; tl++)
                {%>

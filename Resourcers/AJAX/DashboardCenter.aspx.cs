@@ -260,6 +260,10 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
                 NgayLapDat = new DateTime(2000, 1, 1);
                 NgayMua = new DateTime(2000, 1, 1);
             }
+        HttpCookie cookie = new HttpCookie("mathietbi");
+        cookie.Value = MaThietBi;
+        cookie.Expires = DateTime.Now.AddHours(3);
+        Response.SetCookie(cookie);
     }
 
     public string FormatVND(int x) {
