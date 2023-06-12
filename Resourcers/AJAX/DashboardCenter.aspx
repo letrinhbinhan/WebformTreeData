@@ -369,18 +369,11 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label class="lbldonvi">Đơn vị:</label><input id="txtdonvi" type="text" class="txt-don-vi" /></td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <label class="lblmodel">Model:</label><input id="txtctmodel" type="text" class="txt-model" />
+                                        <label class="lbldonvi">Đơn vị:</label><input id="txtdonvi" type="text" class="txt-don-vi" />
+                                        <label class="lblmodel">Model:</label><input id="txtctmodel" type="text" class="txt-model" />
+                                        <label class="lblpartno">Part No:</label><input id="txtpartno" type="text" class="txt-partno" />
                                     </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <label class="lblpartno">Part No:</label><input id="txtpartno" type="text" class="txt-partno" />
-                                  </td>
-                                </tr>
+                                </tr>                                
                                 <tr>
                                     <td>
                                         <label id="kqthemchitiet"></label>
@@ -593,7 +586,7 @@
         
         
         <!-- <a
-            href="/Pages/ThemTaiLieu.aspx?mathietbi=<%= mathietbi %>"
+            href="/Pages/ThemTaiLieu.aspx?mathietbi=<= mathietbi >"
             class="dcbtnthemtailieu">Thêm</a> -->
         <table class="dctbltailieu">
             <% for (int tl = 0; tl < dsThietBiTaiLieu.Count; tl++)
@@ -602,13 +595,17 @@
                 <td colspan="2"></td>
                 <td>
                     <p
-                        id="<%= dsThietBiTaiLieu[tl].Tenfile %>"
+                        id="<%= dsThietBiTaiLieu[tl].Mathietbitailieu %>"
                         class="dstltb"
                         onclick="opentailieu(this)">
                         <%= dsThietBiTaiLieu[tl].Tentailieu %> <%--: <%=
               dsThietBiTaiLieu[tl].Linktailieu %>--%>
                     </p>
-                    <div class="dstltbbtnxoa" onclick="deletetailieu(this)">Xóa</div>
+                    <a href="../Resourcers/TaiLieu/<%=dsThietBiTaiLieu[tl].Tentailieu%>" download class="tai-lieu-download">Tải xuống</a>
+                    <!--<div class="dstltbbtnxoa" onclick="deletetailieu(this)">Xóa</div>  -->
+                    <button id="btn-model-tai-lieu" type="button" class="btn btn-primary dstltbbtnxoa" onclick="deletetailieu(this)">
+                        Xóa
+                    </button>
                 </td>
             </tr>
             <% } %>

@@ -288,7 +288,7 @@ td {font-size: 15px;}
     height: 51px;
     width: 100%;
     float: left;
-    background-color: Blue;
+    background-color: rgb(8,115,185);
 }
 .top-header img {
     cursor: pointer;
@@ -521,12 +521,10 @@ td {font-size: 15px;}
     padding-left:25px;
 }
 .row-tree-tb {
-    padding-left: 25px;
-    padding: 3px 0px 0px 25px;
+    padding-left: 25px;    
 }
 .row-tree-tbc {
     padding-left: 52px;
-    margin: 3px 0px 9px 0px;
 }
 .child-tree
 {
@@ -1669,14 +1667,8 @@ textarea {
 .dstltbbtnxoa {
     margin-left: 5px;
     float: left;
-    background-color: blue;
-    color: white;
-    padding-left: 6px;
-    padding-right: 5px;
-    cursor:pointer;
-}
-.dstltbbtnxoa:hover {
-    box-shadow: 1px 1px 1px black;
+    top: -6px;
+    position: relative;
 }
 .dstltb {
     float: left;
@@ -1798,23 +1790,24 @@ textarea {
     margin-bottom: 5px;
 }
 
-.txt-don-vi, .lblmodel, .txt-model, .lblpartno, .txt-partno {
+.txt-don-vi, .lblmodel, .txt-model, .txt-partno {
     margin-left: 5px;
 }
 .lblpartno {
-  margin-right: 6px;
+    margin-right: 13px;
 }
 .lblmodel {
   margin-left: 0px;
-  margin-right: 16px;
+  margin-right: 13px;
 }
 .txt-partno {
-  width: 209px;
+  width: 179px;
   margin-right: 6px;
   margin-left: 0px;
 }
 .txt-don-vi {
     width: 64px;
+    margin-right: 5px;
 }
 .txt-model {
   width: 152px;
@@ -1962,9 +1955,9 @@ textarea {
     background-repeat: no-repeat;
     width: 11px;
     float: left;
-    margin-right: 6px;
+    margin-right: 5px;
     margin-left: 6px;
-    top: 7px;
+    top: 5px;
 }
 .position-row-icon{
     margin-left: 3px;
@@ -1997,4 +1990,19 @@ textarea {
 .btn-modal-tai-lieu {
     margin-top: 94px;
     position: absolute;
+}
+@font-face {
+font-family: "Bahnschrift";
+src: url("http://localhost:51990/Resourcers/Fonts/bahnschrift.ttf");
+}
+.modal-title {
+    font-family: Bahnschrift;
+    font-weight: unset;
+}
+.font-weight-bold {
+    font-weight: bold;
+}
+.tai-lieu-download {
+    float: left;
+    margin-left: 12px;
 }

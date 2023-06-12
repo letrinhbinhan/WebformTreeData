@@ -395,8 +395,7 @@
                                     <td>                                        
                                         <asp:DropDownList ID="ddlthietbicha" class="ddl-thiet-bi-cha" runat="server" DataSourceID="SqlDataSource4" DataTextField="tentb" DataValueField="matb"  AutoPostBack="false"
 onChange="javascript:ddlThietBiChaClick()"></asp:DropDownList>
-                                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:QLThietBiMayTinhTungPhongBanConnectionString2 %>" SelectCommand="SELECT [matb], [tentb] FROM [tblthietbi]"></asp:SqlDataSource>
-                                        <asp:CheckBox ID="CheckBox1" runat="server" /><asp:Label ID="Label1" runat="server" Text="Không là con"></asp:Label>
+                                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:QLThietBiMayTinhTungPhongBanConnectionString2 %>" SelectCommand="SELECT [matb], [tentb] FROM [tblthietbi]"></asp:SqlDataSource>                                        
                                     </td>
                                   </tr>
                                 <tr>
@@ -445,7 +444,7 @@ onChange="javascript:ddlThietBiChaClick()"></asp:DropDownList>
         <div class="center-contain">      
             <div id="modeltailieuthietbi" class="model-them-tltb">
                 <div class="container mt-0">
-                <button type="button" class="btn btn-primary btn-modal-tai-lieu" data-bs-toggle="modal" data-bs-target="#themTaiLieuModal">
+                <button id="btn-model-tai-lieu" type="button" class="btn btn-primary btn-modal-tai-lieu" data-bs-toggle="modal" data-bs-target="#themTaiLieuModal">
                     Thêm
                 </button>
                 </div>

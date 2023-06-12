@@ -196,6 +196,10 @@ public partial class Dashboard : System.Web.UI.Page
     //bắt được sự kiên click trên cả li hình và li tên thiết bị
     protected void btnThemThietBi_Click(object sender, EventArgs e)
     {
+        if (txttenthietbi.Text == "")
+        {
+            return;
+        }
         Nullable<int> thietbicha = null;
         #region khai bao cac bien them thiet bi
         int loaithietbi, phongban, ngaynhap, thangnhap, namnhap, nhacungcap, ngaylapdat, thanglapdat, namlapdat, ngaymua, thangmua, nammua, vitri, mathietbilonnhat, mathietbi;
@@ -221,15 +225,8 @@ public partial class Dashboard : System.Web.UI.Page
         serial = txtserial.Text;
         model = txtmodel.Text;
         maquanly = txtmaquanly.Text;
-        mathietbilonnhat = 1;
-        if (CheckBox1.Checked == true)
-        {
-            thietbicha = null;
-        }
-        else
-        {
-            thietbicha = Int32.Parse(ddlthietbicha.SelectedValue);
-        }
+        mathietbilonnhat = 1;        
+        thietbicha = Int32.Parse(ddlthietbicha.SelectedValue);        
         #endregion
         for (int i = 0; i < data.dsThietBi().Count; i++)
         {
@@ -239,68 +236,35 @@ public partial class Dashboard : System.Web.UI.Page
             }
         }
         mathietbi = mathietbilonnhat + 1;
-        #region them du lieu thiet bi moi vao CSDL
-        if (thietbicha == null)
+        #region them du lieu thiet bi moi vao CSDL        
+        using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["QLThietBiConnectionString"].ConnectionString))
         {
-            using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["QLThietBiConnectionString"].ConnectionString))
+            connection.Open();
+            string sql = "INSERT INTO tblthietbi (loaitb, phongban, ngaynhap, tentb, NCC, huhong, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, ngaylapdat, ngaymua, linkimage, maql, thietbicha, vitri, matb) VALUES (@param1,@param2,@param3,@param4,@param5,@param6,@param7,@param8,@param9,@param10,@param11,@param12,@param13,@param14,@param15,@param16,@param17,@param18)";
+            using (System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, connection))
             {
-                connection.Open();
-                string sql = "INSERT INTO tblthietbi (loaitb, phongban, ngaynhap, tentb, NCC, huhong, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, ngaylapdat, ngaymua, linkimage, maql, vitri, matb) VALUES (@param1,@param2,@param3,@param4,@param5,@param6,@param7,@param8,@param9,@param10,@param11,@param12,@param13,@param14,@param15,@param16,@param17)";
-                using (System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, connection))
-                {
-                    cmd.Parameters.Add("@param1", System.Data.SqlDbType.Int).Value = loaithietbi;
-                    cmd.Parameters.Add("@param2", System.Data.SqlDbType.Int).Value = phongban;
-                    cmd.Parameters.Add("@param3", System.Data.SqlDbType.DateTime).Value = new DateTime(namnhap, thangnhap, ngaynhap);
-                    cmd.Parameters.Add("@param4", System.Data.SqlDbType.NVarChar).Value = tenthietbi;
-                    cmd.Parameters.Add("@param5", System.Data.SqlDbType.Int).Value = nhacungcap;
-                    cmd.Parameters.Add("@param6", System.Data.SqlDbType.NVarChar).Value = huhong;
-                    cmd.Parameters.Add("@param7", System.Data.SqlDbType.NVarChar).Value = thoihanbaohanh;
-                    cmd.Parameters.Add("@param8", System.Data.SqlDbType.NVarChar).Value = nhasanxuat;
-                    cmd.Parameters.Add("@param9", System.Data.SqlDbType.NVarChar).Value = nuocsanxuat;
-                    cmd.Parameters.Add("@param10", System.Data.SqlDbType.NVarChar).Value = serial;
-                    cmd.Parameters.Add("@param11", System.Data.SqlDbType.NVarChar).Value = model;
-                    cmd.Parameters.Add("@param12", System.Data.SqlDbType.DateTime).Value = new DateTime(namlapdat, thanglapdat, ngaylapdat);
-                    cmd.Parameters.Add("@param13", System.Data.SqlDbType.DateTime).Value = new DateTime(nammua, thangmua, ngaymua);
-                    cmd.Parameters.Add("@param14", System.Data.SqlDbType.NVarChar).Value = FileUpload2.FileName;
-                    cmd.Parameters.Add("@param15", System.Data.SqlDbType.NVarChar).Value = maquanly;
-                    cmd.Parameters.Add("@param16", System.Data.SqlDbType.NVarChar).Value = vitri;
-                    cmd.Parameters.Add("@param17", System.Data.SqlDbType.NVarChar).Value = mathietbi;
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.ExecuteNonQuery();
-                }
+                cmd.Parameters.Add("@param1", System.Data.SqlDbType.Int).Value = loaithietbi;
+                cmd.Parameters.Add("@param2", System.Data.SqlDbType.Int).Value = phongban;
+                cmd.Parameters.Add("@param3", System.Data.SqlDbType.DateTime).Value = new DateTime(namnhap, thangnhap, ngaynhap);
+                cmd.Parameters.Add("@param4", System.Data.SqlDbType.NVarChar).Value = tenthietbi;
+                cmd.Parameters.Add("@param5", System.Data.SqlDbType.Int).Value = nhacungcap;
+                cmd.Parameters.Add("@param6", System.Data.SqlDbType.NVarChar).Value = huhong;
+                cmd.Parameters.Add("@param7", System.Data.SqlDbType.NVarChar).Value = thoihanbaohanh;
+                cmd.Parameters.Add("@param8", System.Data.SqlDbType.NVarChar).Value = nhasanxuat;
+                cmd.Parameters.Add("@param9", System.Data.SqlDbType.NVarChar).Value = nuocsanxuat;
+                cmd.Parameters.Add("@param10", System.Data.SqlDbType.NVarChar).Value = serial;
+                cmd.Parameters.Add("@param11", System.Data.SqlDbType.NVarChar).Value = model;
+                cmd.Parameters.Add("@param12", System.Data.SqlDbType.DateTime).Value = new DateTime(namlapdat, thanglapdat, ngaylapdat);
+                cmd.Parameters.Add("@param13", System.Data.SqlDbType.DateTime).Value = new DateTime(nammua, thangmua, ngaymua);
+                cmd.Parameters.Add("@param14", System.Data.SqlDbType.NVarChar).Value = FileUpload2.FileName;
+                cmd.Parameters.Add("@param15", System.Data.SqlDbType.NVarChar).Value = maquanly;
+                cmd.Parameters.Add("@param16", System.Data.SqlDbType.Int).Value = thietbicha;
+                cmd.Parameters.Add("@param17", System.Data.SqlDbType.NVarChar).Value = vitri;
+                cmd.Parameters.Add("@param18", System.Data.SqlDbType.NVarChar).Value = mathietbi;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
             }
-        }
-        else
-        {
-            using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["QLThietBiConnectionString"].ConnectionString))
-            {
-                connection.Open();
-                string sql = "INSERT INTO tblthietbi (loaitb, phongban, ngaynhap, tentb, NCC, huhong, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, ngaylapdat, ngaymua, linkimage, maql, thietbicha, vitri, matb) VALUES (@param1,@param2,@param3,@param4,@param5,@param6,@param7,@param8,@param9,@param10,@param11,@param12,@param13,@param14,@param15,@param16,@param17,@param18)";
-                using (System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, connection))
-                {
-                    cmd.Parameters.Add("@param1", System.Data.SqlDbType.Int).Value = loaithietbi;
-                    cmd.Parameters.Add("@param2", System.Data.SqlDbType.Int).Value = phongban;
-                    cmd.Parameters.Add("@param3", System.Data.SqlDbType.DateTime).Value = new DateTime(namnhap, thangnhap, ngaynhap);
-                    cmd.Parameters.Add("@param4", System.Data.SqlDbType.NVarChar).Value = tenthietbi;
-                    cmd.Parameters.Add("@param5", System.Data.SqlDbType.Int).Value = nhacungcap;
-                    cmd.Parameters.Add("@param6", System.Data.SqlDbType.NVarChar).Value = huhong;
-                    cmd.Parameters.Add("@param7", System.Data.SqlDbType.NVarChar).Value = thoihanbaohanh;
-                    cmd.Parameters.Add("@param8", System.Data.SqlDbType.NVarChar).Value = nhasanxuat;
-                    cmd.Parameters.Add("@param9", System.Data.SqlDbType.NVarChar).Value = nuocsanxuat;
-                    cmd.Parameters.Add("@param10", System.Data.SqlDbType.NVarChar).Value = serial;
-                    cmd.Parameters.Add("@param11", System.Data.SqlDbType.NVarChar).Value = model;
-                    cmd.Parameters.Add("@param12", System.Data.SqlDbType.DateTime).Value = new DateTime(namlapdat, thanglapdat, ngaylapdat);
-                    cmd.Parameters.Add("@param13", System.Data.SqlDbType.DateTime).Value = new DateTime(nammua, thangmua, ngaymua);
-                    cmd.Parameters.Add("@param14", System.Data.SqlDbType.NVarChar).Value = FileUpload2.FileName;
-                    cmd.Parameters.Add("@param15", System.Data.SqlDbType.NVarChar).Value = maquanly;
-                    cmd.Parameters.Add("@param16", System.Data.SqlDbType.Int).Value = thietbicha;
-                    cmd.Parameters.Add("@param17", System.Data.SqlDbType.NVarChar).Value = vitri;
-                    cmd.Parameters.Add("@param18", System.Data.SqlDbType.NVarChar).Value = mathietbi;
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
+        }        
         #endregion
         #region upload file
         //LabelThongBao.Text = FileUpload2.FileName;
@@ -322,6 +286,10 @@ public partial class Dashboard : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+        if (FileUpload1.FileName == "")
+        {
+            return;
+        }
         #region upload file 2
         //LabelThongBao.Text = FileUpload2.FileName;
         string mathietbi;

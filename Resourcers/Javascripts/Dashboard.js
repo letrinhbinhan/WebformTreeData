@@ -5,6 +5,7 @@ function showThongtinChung() {
     document.getElementById("panelbaotri").style.display = "none";
     document.getElementById("paneltailieu").style.display = "none";
     document.getElementById("modeltailieuthietbi").style.display = "none";
+    document.getElementById("btn-model-tai-lieu").style.display = "none";
 }
 function showChiTiet() {
     document.getElementById("panelchitiet").style.display = "block";
@@ -13,6 +14,7 @@ function showChiTiet() {
     document.getElementById("panelbaotri").style.display = "none";
     document.getElementById("paneltailieu").style.display = "none";
     document.getElementById("modeltailieuthietbi").style.display = "none";
+    document.getElementById("btn-model-tai-lieu").style.display = "none";
 }
 function showPhuTung() {
     document.getElementById("panelchitiet").style.display = "none";
@@ -21,6 +23,7 @@ function showPhuTung() {
     document.getElementById("panelbaotri").style.display = "none";
     document.getElementById("paneltailieu").style.display = "none";
     document.getElementById("modeltailieuthietbi").style.display = "none";
+    document.getElementById("btn-model-tai-lieu").style.display = "none";
 }
 function showBaoTri() {
     document.getElementById("panelchitiet").style.display = "none";
@@ -29,6 +32,7 @@ function showBaoTri() {
     document.getElementById("panelbaotri").style.display = "block";
     document.getElementById("paneltailieu").style.display = "none";
     document.getElementById("modeltailieuthietbi").style.display = "none";
+    document.getElementById("btn-model-tai-lieu").style.display = "none";
 }
 function showTaiLieu() {
     document.getElementById("panelchitiet").style.display = "none";
@@ -37,6 +41,7 @@ function showTaiLieu() {
     document.getElementById("panelbaotri").style.display = "none";
     document.getElementById("paneltailieu").style.display = "block";
     document.getElementById("modeltailieuthietbi").style.display = "block";
+    document.getElementById("btn-model-tai-lieu").style.display = "block";
 }
 function SuaThietBi() {
     var mathietbi, loaithietbi, phongban, ngaynhap, thangnhap, namnhap, tenthietbi, nhacungcap, tinhtrang, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, ngaylapdat, thanglapdat, namlapdat, ngaymua, thangmua, nammua, maquanly;
@@ -114,7 +119,7 @@ function Row_Device_Show_Close(str, pst, state) {
         xhttp2.send();
         const xhttp3 = new XMLHttpRequest();
         xhttp3.onload = function () {
-            document.getElementById("ccimg").innerHTML = this.responseText; 
+            document.getElementById("ccimg").innerHTML = this.responseText;
         };
         xhttp3.open("GET", "Resourcers/AJAX/DashboardImage.aspx?ID=" + pst); 
         xhttp3.send();
@@ -130,6 +135,12 @@ function Row_Position_Show(str, pst, state) {
             document.getElementById("center-ct").innerHTML = ""; 
             document.getElementById("ccimg").innerHTML = ""; 
         }
+        //document.getElementsByTagName("a").style.fontWeight = "Normal";
+        //document.getElementById("vt"+pst).getElementsByTagName("a")[1].style.fontWeight = "Bold";
+        changeRowsStyle(pst);
+        if(typeof document.getElementById(getCookie("lastchoose")).getElementsByTagName("a")[1] != 'undefined') {
+          document.getElementById(getCookie("lastchoose")).getElementsByTagName("a")[1].style.fontWeight = "Normal";
+        }
     };
     xhttp.open(
       "GET",
@@ -144,10 +155,12 @@ var row = 3;
 const buttons = document.getElementsByTagName("li");
 const result = document.getElementById("result");
 const buttonPressed = (e) => { 
-  setCookie("lastchoose", e.target.id, 1);
+    setCookie("lastchoose", e.target.id, 1);
+  document.getElementById("btn-model-tai-lieu").style.display = "none";
   document.getElementById("mathietbi").innerHTML = e.target.id;
   if (e.target.classList[0] == "1") { 
-  //in dam khi click vao li (row) thiet bi
+      //in dam khi click vao li (row) thiet bi
+      console.log(e.target.id.substring(3));
   Row_Device_Show("open", e.target.id);  
   var lastpst = getCookie('lastpst');
   document.getElementById(e.target.id).style.removeProperty("padding-left");
@@ -156,7 +169,9 @@ const buttonPressed = (e) => {
   {
       document.getElementById(e.target.id).getElementsByTagName("span")[0].className = "minus-icon 0 mtree-p-icon";
   }
-  document.getElementById(e.target.id).getElementsByTagName("span")[1].className = document.getElementById(e.target.id).getElementsByTagName("span")[1].classList[0] + " 0";
+  if(typeof document.getElementById(e.target.id).getElementsByTagName("span")[1] != 'undefined') {
+    document.getElementById(e.target.id).getElementsByTagName("span")[1].className = document.getElementById(e.target.id).getElementsByTagName("span")[1].classList[0] + " 0";
+  }
   document.getElementById(e.target.id).getElementsByTagName("a")[0].className = 0;
   row = e.target.id;
 }
@@ -166,19 +181,21 @@ else if (e.target.classList[0] == "0")
   {
       if (document.getElementById(e.target.id).innerText.indexOf("\n") != -1) 
       {
-          Row_Device_Show_Close("open", e.target.id);           
+          console.log(e.target.id.substring(3));
+          Row_Device_Show_Close("open", e.target.id);
           var noidung;
           noidung = document.getElementById(e.target.id).innerText.trim().split("\n")[0];
           //"<li id='"+e.target.id+"' class='1 row-tree-tb'>"
           //</li>
           document.getElementById(e.target.id).innerHTML = "<li id='"+e.target.id+"' class='1 row-tree-tb'><span class='1 mtree-text'><a id='"+e.target.id+"' class='1' href='#'> <span id='"+e.target.id+"' class='plus-icon mtree-p-icon'></span>"+noidung+"</a></span></li>";
-          console.log(document.getElementById(e.target.id).classList);          
           // document.getElementById(e.target.id).classList.remove("0");
           // document.getElementById(e.target.id).classList.remove("row-tree-tb");
           // document.getElementById(e.target.id).classList.add("1");
           // document.getElementById(e.target.id).classList.add("row-tree-tb");
           document.getElementById(e.target.id).style.paddingLeft = 0;
-          row = e.target.id;                    
+          document.getElementsByTagName("a").style.fontWeight = "Normal";
+          document.getElementById(e.target.id).getElementsByTagName("a")[0].style.fontWeight = "Bold";
+          row = e.target.id;        
       }
   }
 } else if(e.target.classList[0] == "2") 
@@ -191,19 +208,26 @@ else if (e.target.classList[0] == "0")
                 document.getElementById("center-ct").innerHTML = "";
                 document.getElementById("ccimg").innerHTML = "";
             }
-            if (e.target.getElementsByTagName("span")[0].classList[0] == "plus-icon") 
-            {
-                tinhtrang = 1;
+            if(typeof e.target.getElementsByTagName("span")[0] != 'undefined'){
+              if (e.target.getElementsByTagName("span")[0].classList[0] == "plus-icon") 
+              {
+                  tinhtrang = 1;
+              }
             }
-            if (e.target.getElementsByTagName("span")[0].classList[0] == "minus-icon") 
-            {
-                tinhtrang = 2;
+            if(typeof e.target.getElementsByTagName("span")[0] != 'undefined') {
+              if (e.target.getElementsByTagName("span")[0].classList[0] == "minus-icon") 
+              {
+                  tinhtrang = 2;
+              }
             }
-            if (e.target.getElementsByTagName("span")[0].classList[0] == "none-icon") 
-            {
-                tinhtrang = 3;
+            if(typeof e.target.getElementsByTagName("span")[0] != 'undefined') {
+              if (e.target.getElementsByTagName("span")[0].classList[0] == "none-icon") 
+              {
+                  tinhtrang = 3;
+              }
             }
             Row_Position_Show("open", e.target.id, tinhtrang); 
+            console.log(e.target.id);
         }
       }
 };
@@ -219,11 +243,15 @@ function UploadTaiLieu(str, pst, state) {
   xhttp.send();
 }
 function opentailieu(obj) {
-    var tentailieu = obj.id;
+    var tentailieu = obj.innerHTML;
+    var extension;
+    extension = tentailieu.replace("\n","").trim().split(".")[tentailieu.replace("\n","").trim().split(".").length-1];  
+    if(extension == "pdf"){
     document.getElementById("ccimg").innerHTML =
       "<embed src='/Resourcers/TaiLieu/" +
-      tentailieu +
+      tentailieu.trim() +
       "' width='800px' height='2100px' />";
+    } else { return; }
 }
 function xoachitiet(obj) {
     var id = obj.value;
@@ -235,19 +263,18 @@ function xoachitiet(obj) {
     xhttp.send();
 }
 function deletetailieu(obj) {
-  console.log(obj.parentNode.getElementsByTagName("p")[0].id);
-    // var id = obj.parentNode.getElementsByTagName("p")[0].id;
-    // const xhttp = new XMLHttpRequest();
-    // xhttp.onload = function () {
-    //     var soluongdstltb = document.getElementsByClassName("dstltb").length;
-    //     for (var i = 0; i < soluongdstltb; i++) {
-    //         if (document.getElementsByClassName("dstltb")[i].id == id) {
-    //             document.getElementsByClassName("dstltb")[i].parentNode.parentNode.remove();
-    //         }
-    //     }
-    // };
-    // xhttp.open("POST", "Resourcers/AJAX/XoaTaiLieu.aspx?matailieu=" + id);
-    // xhttp.send();
+    var id = obj.parentNode.getElementsByTagName("p")[0].id;
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        var soluongdstltb = document.getElementsByClassName("dstltb").length;
+        for (var i = 0; i < soluongdstltb; i++) {
+            if (document.getElementsByClassName("dstltb")[i].id == id) {
+                document.getElementsByClassName("dstltb")[i].parentNode.parentNode.remove();
+            } 
+        }
+    };
+    xhttp.open("POST", "Resourcers/AJAX/XoaTaiLieu.aspx?matailieu=" + id);
+    xhttp.send();
 }
 function ThemChiTiet() {
     var thietbi, tenchitiet, thongsokythuat, donvi, model, partno;
@@ -692,7 +719,6 @@ function setCookie(cname,cvalue,exdays) {
     let expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
-
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -738,4 +764,52 @@ function ddlThietBiChaClick() {
   };
   xhttp.open("GET", "Resourcers/AJAX/TimViTriUngVoiThietBiCha.aspx?mathietbicha="+mathietbi);
   xhttp.send();
+}
+//code async/await
+// const verifyUser = async function(username, password) {
+//   try {
+//     const userInfo = await dataBase.verifyUser(username, password);
+//     const rolesInfo = await dataBase.getRoles(userInfo);
+//     const logStatus = await dataBase.logAccess(userInfo);
+//     return userInfo;
+//   }catch (e){
+//       //handle errors as needed
+//   }
+// };
+//1
+// const changeRowsStyle = async function() {
+//   try {
+//     const liNormal = await liNormal();
+//     const liPositionBold = await liPositionBold();
+//     liNormal();
+//     liPositionBold();
+//   }catch (e){
+//       //handle errors as needed
+//   }
+// };
+
+// function liNormal() {
+//   document.getElementsByTagName("a").style.fontWeight = "Normal";
+// }
+// function liPositionBold() {
+//   console.log(document.getElementById("cvt"+pst).getElementsByTagName("a"));
+//   document.getElementById("cvt"+pst).getElementsByTagName("a")[1].style.fontWeight = "Bold";
+// }
+//document.getElementsByTagName("a").style.fontWeight = "Normal";
+//document.getElementById("vt"+pst).getElementsByTagName("a")[1].style.fontWeight = "Bold";
+
+async function changeRowsStyle(obj) {
+  await promise1(50); // Wait 50ms…
+  await promise2(obj); // …then wait another 50ms.
+  return "done!";
+}
+function promise1(){
+  for(var i=0; i<document.getElementsByTagName("a").length;i++) {
+    document.getElementsByTagName("a")[i].style.fontWeight = "Normal";
+  }
+  //document.getElementsByTagName("a").style.fontWeight = "Normal";
+}
+function promise2(id){
+  console.log(document.getElementById("cvt"+id).getElementsByTagName("a"));
+  document.getElementById("cvt"+id).getElementsByTagName("a")[1].style.fontWeight = "Bold";  
 }
