@@ -7,9 +7,9 @@
 <head runat="server"></head>
 <body>
     <% DataUtil data = new DataUtil();%>
-  <div id="mathietbi" class="d-none"><%= MaThietBi %></div>  
+  <div id="mathietbi" class="d-none"><%= MaThietBi %></div>
     <div class="dbctdivtitle">
-        <h1 class="center-title"><%= TenThietBi %></h1>        
+        <h1 class="center-title"><%= TenThietBi %></h1>
     </div>
     <div class="top-chm">
         <div class="tchm-thongtinchung" onclick="showThongtinChung()">
@@ -35,7 +35,7 @@
                     Xóa
                 </button>
             </div>
-        </div>    
+        </div>
         <table class="dctblthongtinchitiet">
             <tr>
                 <td>Mã thiết bị:</td>
@@ -54,14 +54,11 @@
                     <select id="sltloaithietbi">
                         <% for (int i = 0; i < data.dsLoaiThietBi().Count; i++)
                            { %>
-                        <%if (data.dsLoaiThietBi()[i].Maloaitb == MaLoaiThietBi)
-                          { %>
-                        <option value="<%= data.dsLoaiThietBi()[i].Maloaitb %>" selected="selected"><%= data.dsLoaiThietBi()[i].Tenloaitb %></option>
-                        <% }
-                          else
-                          { %>
-                        <option value="<%= data.dsLoaiThietBi()[i].Maloaitb %>"><%= data.dsLoaiThietBi()[i].Tenloaitb %></option>
-                        <% } %>
+                            <%if (data.dsLoaiThietBi()[i].Maloaitb == MaLoaiThietBi) { %>
+                                <option value="<%= data.dsLoaiThietBi()[i].Maloaitb %>" selected="selected"><%= data.dsLoaiThietBi()[i].Tenloaitb %></option>
+                            <% } else { %>
+                                <option value="<%= data.dsLoaiThietBi()[i].Maloaitb %>"><%= data.dsLoaiThietBi()[i].Tenloaitb %></option>
+                            <% } %>
                         <% } %>
                     </select>
                 </td>
@@ -373,7 +370,7 @@
                                         <label class="lblmodel">Model:</label><input id="txtctmodel" type="text" class="txt-model" />
                                         <label class="lblpartno">Part No:</label><input id="txtpartno" type="text" class="txt-partno" />
                                     </td>
-                                </tr>                                
+                                </tr>
                                 <tr>
                                     <td>
                                         <label id="kqthemchitiet"></label>
@@ -403,31 +400,22 @@
             </tr>
             <% for (int ct = 0; ct < dsChiTietThietBi.Count; ct++)
                {%>
-            <tr id="cttbrow<%= dsChiTietThietBi[ct].Id %>" class="tbl-row-chitiet">
-                <td class="tdchitiet" onclick="suachitietthietbi()">
-                    <input
-                        type="checkbox"
-                        onchange="xoachitiet(this)"
-                        value="<%= dsChiTietThietBi[ct].Id %>" />
-                </td>
-                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= ct + 1 %></td>
-                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Tenchitiet %></td>
-                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Thongsokythuat %></td>
-                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Donvi %></td>
-                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Model %></td>
-                <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Partno %></td>
-                <td class="tdchitiet d-none"><button type="button" class="btn-sua-chi-tiet-thiet-bi btn btn-primary" onclick="luusuachitiet(this)">
-                    Lưu
-                </button></td>
-            </tr>
+                <tr id="cttbrow<%= dsChiTietThietBi[ct].Id %>" class="tbl-row-chitiet">
+                    <td class="tdchitiet" onclick="suachitietthietbi()"><input type="checkbox" onchange="xoachitiet(this)" value="<%= dsChiTietThietBi[ct].Id %>" /></td>
+                    <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= ct + 1 %></td>
+                    <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Tenchitiet %></td>
+                    <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Thongsokythuat %></td>
+                    <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Donvi %></td>
+                    <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Model %></td>
+                    <td class="tdchitiet" onclick="suachitietthietbi(this)"><%= dsChiTietThietBi[ct].Partno %></td>
+                    <td class="tdchitiet d-none"><button type="button" class="btn-sua-chi-tiet-thiet-bi btn btn-primary" onclick="luusuachitiet(this)">Lưu</button></td>
+                </tr>
             <% } %>
         </table>
     </div>
     <div id="panelphutung" class="tcgm-noidung-phutung">
       <div class="container mt-3">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#themPhuTungModal">
-              Thêm phụ tùng
-          </button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#themPhuTungModal">Thêm phụ tùng</button>
       </div>
       <!-- The Modal -->
       <div class="modal" id="themPhuTungModal">
@@ -440,7 +428,7 @@
                   </div>
                   <!-- Modal body -->
                   <div class="modal-body">
-                      <table class="tbl-table-them-phu-tung">                         
+                      <table class="tbl-table-them-phu-tung">
                           <tr>
                               <td>
                                   <label>Tên phụ tùng:</label>
@@ -462,13 +450,13 @@
                                             <%} else {%>
                                                 <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
                                             <%}%>
-                                          
+
                                       <%} else {%>
                                             <% if(i+1 < 10){%>
                                                 <option value="<%= i+1 %>">0<%= i+1 %></option>
                                             <%} else {%>
                                                 <option value="<%= i+1 %>"><%= i+1 %></option>
-                                            <%}%>                                        
+                                            <%}%>
                                         <%} %>
                                   <%} %>
                                 </select>
@@ -479,13 +467,13 @@
                                                 <option value="<%= i+1 %>" selected="selected">0<%= i+1 %></option>
                                             <%} else {%>
                                                 <option value="<%= i+1 %>" selected="selected"><%= i+1 %></option>
-                                            <%}%>                                          
+                                            <%}%>
                                       <%} else {%>
                                             <% if(i+1 <10){ %>
                                                 <option value="<%= i+1 %>">0<%= i+1 %></option>
                                             <%} else {%>
                                                 <option value="<%= i+1 %>"><%= i+1 %></option>
-                                            <%}%>                                          
+                                            <%}%>
                                       <%} %>
                                   <%} %>
                                 </select>
@@ -539,7 +527,7 @@
               </div>
           </div>
       </div>
-        <p class="dashboardlblphutung">Danh sách phụ tùng:</p>        
+        <p class="dashboardlblphutung">Danh sách phụ tùng:</p>
         <table id="dcdanhsachphutung" class="tbborder <%= tblvsb %>">
             <tr>
                 <th>Xóa</th>
@@ -577,14 +565,14 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#themBaoTriModal">
                 Thêm bảo trì
             </button>
-        </div>        
-        <p class="dashboardlbllichbaotri">Lịch bảo trì:</p>        
+        </div>
+        <p class="dashboardlbllichbaotri">Lịch bảo trì:</p>
     </div>
     <div id="paneltailieu" class="tcgm-noidung-tailieuthietbi">
         <br /><br />
         <p class="dashboardlbltailieuthietbi">Tài liệu thiết bị:</p>
-        
-        
+
+
         <!-- <a
             href="/Pages/ThemTaiLieu.aspx?mathietbi=<= mathietbi >"
             class="dcbtnthemtailieu">Thêm</a> -->
@@ -601,7 +589,7 @@
                         <%= dsThietBiTaiLieu[tl].Tentailieu %> <%--: <%=
               dsThietBiTaiLieu[tl].Linktailieu %>--%>
                     </p>
-                    <a href="../Resourcers/TaiLieu/<%=dsThietBiTaiLieu[tl].Tentailieu%>" download class="tai-lieu-download">Tải xuống</a>
+                    <a href="../Resourcers/TaiLieu/<%=dsThietBiTaiLieu[tl].Tentailieu%>" download class="tai-lieu-download"><i class="fa fa-download fa-2x text-success" aria-hidden="true"></i></a><a href="../Resourcers/TaiLieu/<%=dsThietBiTaiLieu[tl].Tentailieu%>" download class="tai-lieu-download"><span class="tai-lieu-label-tai-ve">Tải về</span></a>
                     <!--<div class="dstltbbtnxoa" onclick="deletetailieu(this)">Xóa</div>  -->
                     <button id="btn-model-tai-lieu" type="button" class="btn btn-primary dstltbbtnxoa" onclick="deletetailieu(this)">
                         Xóa

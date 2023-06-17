@@ -35,33 +35,33 @@ public partial class Resources_AJAX_DashboardChildTree : System.Web.UI.Page
             {
                 if (data.dsThietBi()[i].Matb == idch)
                 {
-                    caythumuccon += "<div class='mtree-text div-minus-icon'><a id='" + data.dsThietBi()[i].Matb + "' class='0' href='#'>&nbsp;&nbsp;</a></div>";    
-                    caythumuccon += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='0' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";    
+                    caythumuccon += "<div class='mtree-text div-minus-icon'><a id='" + data.dsThietBi()[i].Matb + "' class='0' href='#'>&nbsp;&nbsp;</a></div>";
+                    caythumuccon += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='0' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";
                 }
                 if (data.dsThietBi()[i].Thietbicha == idch)
                 {
                     for (int j = 0; j < data.dsThietBi().Count; j++)
-                    {                        
-                        if (data.dsThietBi()[j].Thietbicha == data.dsThietBi()[i].Matb) 
+                    {
+                        if (data.dsThietBi()[j].Thietbicha == data.dsThietBi()[i].Matb)
                         {
                             haveChild = true;
-                        }                        
+                        }
                     }
                     if (haveChild == true)
                     {
-                        caythumuccon += "<li id='" + data.dsThietBi()[i].Matb + "' class='row-tree-tb'>";                                                                       
-                        caythumuccon += "<div class='mtree-text div-plus-icon'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>&nbsp;&nbsp;</a></div>";             
-                        caythumuccon += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";    
+                        caythumuccon += "<li id='" + data.dsThietBi()[i].Matb + "' class='row-tree-tb'>";
+                        caythumuccon += "<div class='mtree-text div-plus-icon'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>&nbsp;&nbsp;</a></div>";
+                        caythumuccon += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";
                         caythumuccon += "</li>";
                         haveChild = false;
-                    }                    
-                    else 
+                    }
+                    else
                     {
                         caythumuccon += "<li id='" + data.dsThietBi()[i].Matb + "' class='row-tree-tbc'>";
                         caythumuccon += "<span id='" + data.dsThietBi()[i].Matb + "' class='none-icon mtree-p-icon'></span>";
                         caythumuccon += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";
                         caythumuccon += "</li>";
-                    }                    
+                    }
                 }
             }
         }

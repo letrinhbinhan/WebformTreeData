@@ -8,17 +8,18 @@
     <link href="Resourcers/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css" rel="stylesheet" />
     <script src="Resourcers/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js" type="text/javascript"></script>
     <script src="Resourcers/Javascripts/jquery-3.7.0.min.js" type="text/javascript"></script>
+    <link href="Resourcers/fontawesome/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <div class="top-header">
         <asp:Image ID="Image5" runat="server" class="logo-header" ImageUrl="~/Resourcers/Images/logo-vietsugar.png" onclick="vetrangchu()" />
-        <div id="maintitle" class="header-menu" onclick="vetrangchu()"><h1>QUẢN LÝ THIẾT BỊ - BẢO TRÌ</h1></div>        
+        <div id="maintitle" class="header-menu" onclick="vetrangchu()"><h1>QUẢN LÝ THIẾT BỊ - BẢO TRÌ</h1></div>
     </div>
     <form id="form1" runat="server">
     <div>
-        <div class="left-menu-qltbbt">            
+        <div class="left-menu-qltbbt">
             <div id="main-left-menu" class="left-menu">
                 <div class="menu-tl-2">
                     <asp:Image runat="server" class="menu-icon-2" ImageUrl="~/Resourcers/Images/menu-icon.png" />
@@ -28,7 +29,7 @@
                         function hideleftmenu() {
                             document.getElementById("main-left-menu").style.display = "none";
                             document.getElementById("pin-image").style.display = "block";
-                        }                        
+                        }
                     </script>--%>
                     <asp:Image ID="Image6" runat="server" ImageUrl="~/Resourcers/Images/thumbtacks.png" Width="20px" onclick="hideleftmenu()" CssClass="pin-icon-close"/>
                     <script type="text/javascript">
@@ -44,8 +45,8 @@
                 </div>
                 <div class="menu-chl">
                     <asp:Image ID="Image1" runat="server" class="menu-icon-cl" ImageUrl="~/Resourcers/Images/icons8-dashboard-50.png" />
-                    <asp:LinkButton 
-                        ID="LinkButton1" runat="server" PostBackUrl="~/Dashboard.aspx">Dashboard</asp:LinkButton>                    
+                    <asp:LinkButton
+                        ID="LinkButton1" runat="server" PostBackUrl="~/Dashboard.aspx">Dashboard</asp:LinkButton>
                 </div>
                 <div class="menu-chl">                    
                     <asp:Image ID="Image2" runat="server" class="menu-icon-cl" ImageUrl="~/Resourcers/Images/icons8-manager-16.png" />
@@ -64,6 +65,12 @@
                 </div>
             </div>
         </div>
+        <%--naox bi up xuong--%>
+        <%--dua phan nao phai len--%>
+        <%--gay uc che phan nao phia sau va nao duoi--%>
+        <%--nang phan nao phia tren o ben trai phia truoc len--%>
+        <%--day phan nao o giua phia sau len--%>
+         <%--cho no phan ben phai o giua phia sau--%>
         <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
         </asp:contentplaceholder>
     </div>

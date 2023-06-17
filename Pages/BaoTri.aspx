@@ -3,24 +3,23 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<div class="main-content">    
+<div class="main-content">
     <div class="center-content-qltb">
-        <div class="center-tree">            
-            <%= showGocCayThuMuc() %>              
-              </div>          
+        <div class="center-tree">
+            <%= showGocCayThuMuc() %>
+              </div>
         </div>
         <div class="center-contain">
             <div id="center-ct" class="center-contain-form">
-                
+
             </div>
         </div>
         <div id="ccimg" class="ccimg">
 
         </div>
     </div>
-<script charset="utf-8" type="text/javascript">    
-    
-    //công việc khi click vào một row đang hiện có
+<script charset="utf-8" type="text/javascript">
+    //show
     function Show(str,pst,state) {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
@@ -53,21 +52,20 @@
     const buttonPressed = e => {
     //class 1 thì thẻ đang đóng
         if(e.target.classList[0] == "1")
-        {  
-            Show("open",e.target.id);         
+        {
+            Show("open",e.target.id);
             document.getElementById(e.target.id).className = document.getElementById(e.target.id).classList[0] + " 0";
             if(document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon" && document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon-m")
                 document.getElementById(e.target.id).getElementsByTagName("span")[0].className = "minus-icon 0 mtree-p-icon";
             document.getElementById(e.target.id).getElementsByTagName("span")[1].className = document.getElementById(e.target.id).getElementsByTagName("span")[1].classList[0] + " 0";
-            document.getElementById(e.target.id).getElementsByTagName("a")[0].className = 0;            
-                  
+            document.getElementById(e.target.id).getElementsByTagName("a")[0].className = 0;
             row = e.target.id;
-            
+
         }
         //class 0 thì thẻ mở
         else
             if(e.target.classList[0] == "0")
-            { 
+            {
                 if(document.getElementById(e.target.id).innerText.indexOf("\n") != -1)
                     {
                         document.getElementById(e.target.id).innerHTML = document.getElementById(e.target.id).innerText.slice(0,document.getElementById(e.target.id).innerText.indexOf("\n")+1);
@@ -75,42 +73,23 @@
                         var noidung = document.getElementById(e.target.id).innerHTML;
                         document.getElementById(e.target.id).innerHTML = "<span id='"+e.target.id+"' class='plus-icon mtree-p-icon'></span> <span class='mtree-text'><a id='"+ e.target.id+ "' class='1'>"+noidung+"</a></span>";
                         document.getElementById(e.target.id).getElementsByTagName("a")[0].className = 1;
-                        document.getElementById(e.target.id).getElementsByTagName("span")[0].style.marginRight = 0;   
+                        document.getElementById(e.target.id).getElementsByTagName("span")[0].style.marginRight = 0;
 
                         row = e.target.id;
                     }
-            } 
+            }
     }
-    for (let button of buttons) {            
+    for (let button of buttons) {
         button.addEventListener("click", buttonPressed);
-    }    
-//    function Del(str,pst,state) {
-//        const xhttp = new XMLHttpRequest();
-//        xhttp.onload = function() {
-//            document.getElementById(pst).innerHTML =
-//            this.responseText;
-//            
-//        }
-//        xhttp.open("GET", "../Resourcers/AJAX/Xoathoigianbaotri.aspx?ID=" + pst);
-//        xhttp.send();
-//    }
-//    const buttons2 = document.getElementsByClassName("btnxbt");
-//    const buttonPressed2 = e => {
-//    //class 1 thì thẻ đang đóng
-//        console.log("xoa");
-//    }
-//    for (let button2 of buttons2) {            
-//        button2.addEventListener("click", buttonPressed2);
-//    }    
-// công việc khi click vào một row và bấm xóa
-function xoaclick(e){ 
-    
+    }
+function xoaclick(e){
+        //AJAX
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
             document.getElementById("tr"+e).innerHTML =
             "";
         }
-        xhttp.open("GET", "../Resourcers/AJAX/Xoathoigianbaotri.aspx?ID=" + e);
+        xhttp.open("GET", "../Resourcers/AJAX/Xoathoigianbaotri.aspx?ID=" + e); //xóa
         xhttp.send();
 }
 </script>

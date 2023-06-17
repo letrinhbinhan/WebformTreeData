@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LamChaThietBi.aspx.cs" Inherits="Resourcers_AJAX_LamChaThietBi" %>
-<% 
+<%
     DataUtil data = new DataUtil();
     //&mathietbi=134&tenphutung=ruotbut&ngaynhap=2023&thangnhap=01&namnhap=01&giaca=1000&tinhtrang=true
     string mavitri;
@@ -15,6 +15,6 @@
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.ExecuteNonQuery();
         }
-    }    
+    }
     %>
 <%= mavitri %>

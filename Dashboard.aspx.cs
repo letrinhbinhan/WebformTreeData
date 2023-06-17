@@ -16,9 +16,9 @@ public partial class Dashboard : System.Web.UI.Page
     public int IntMaThietBiLonNhat;
     DataUtil data = new DataUtil();
     string ctm = "";
-    bool haveChild = false;    
+    bool haveChild = false;
     protected void Page_Load(object sender, EventArgs e)
-    {        
+    {
         if (!IsPostBack)
         {
             #region fill data ddlngay,thang,nam
@@ -39,13 +39,13 @@ public partial class Dashboard : System.Web.UI.Page
                     listNgayLapDat.Add(new ListItem((i + 1).ToString()));
                     listNgayMua.Add(new ListItem((i + 1).ToString()));
                 }
-                
+
             }
             // For now, just bind the data to the DropDownList.
             ddlngaynhap.DataSource = listNgayNhap;
             ddlngaynhap.DataBind();
             ddlngaylapdat.DataSource = listNgayLapDat;
-            ddlngaylapdat.DataBind();            
+            ddlngaylapdat.DataBind();
             ddlngaymua.DataSource = listNgayMua;
             ddlngaymua.DataBind();
             if (DateTime.Now.Day < 10)
@@ -118,15 +118,15 @@ public partial class Dashboard : System.Web.UI.Page
             ddlnamlapdat.SelectedValue = DateTime.Now.Year.ToString();
             ddlnammua.DataSource = listNamMua;
             ddlnammua.DataBind();
-            ddlnammua.SelectedValue = DateTime.Now.Year.ToString();            
+            ddlnammua.SelectedValue = DateTime.Now.Year.ToString();
         }
         #endregion
             IntMaThietBiLonNhat = 1;
             for(int i = 0; i< data.dsThietBi().Count; i++) {
-            if(data.dsThietBi()[i].Matb > IntMaThietBiLonNhat) {
-                IntMaThietBiLonNhat = data.dsThietBi()[i].Matb;
+                if(data.dsThietBi()[i].Matb > IntMaThietBiLonNhat) {
+                    IntMaThietBiLonNhat = data.dsThietBi()[i].Matb;
+                }
             }
-        }
         MaThietBiLonNhat = IntMaThietBiLonNhat.ToString();
         #region them khoang trang dll
         //ddlloaithietbi.Items.Add("1");
@@ -134,66 +134,66 @@ public partial class Dashboard : System.Web.UI.Page
         #endregion
     }
     public string showGocCayThuMuc()
-    {        
-        ctm += "<ul id='ul-ctm' class='tree-ul-v2'>";        
+    {
+        //<ul>
+        ctm += "<ul id='ul-ctm' class='tree-ul-v2'>";
         for (int i = 0; i < data.dsThietBi().Count; i++)
         {
             for (int j = 0; j < data.dsThietBi().Count; j++)
             {
-                if (data.dsThietBi()[j].Thietbicha == data.dsThietBi()[i].Matb)
-                    haveChild = true;
+                if (data.dsThietBi()[j].Thietbicha == data.dsThietBi()[i].Matb) { haveChild = true; }
             }
             if (haveChild == true && data.dsThietBi()[i].Thietbicha == 0)
             {
                 ctm += "<li id='" + data.dsThietBi()[i].Matb + "' class='row-tree-tb'>";
-                ctm += "<img src='/Resourcers/Images/ngoi-nha.ico' alt='ngoinhaicon' class='position-row-icon'/>";
-                ctm += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'> <span id='" + data.dsThietBi()[i].Matb + "' class='plus-icon mtree-p-icon'></span> " + data.dsThietBi()[i].Tentb + "</a></span>";
+                ctm +=      "<img src='/Resourcers/Images/ngoi-nha.ico' alt='icon vị trí' class='position-row-icon'/>";
+                ctm +=      "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='1 cay-vi-tri' href='#'> <span id='" + data.dsThietBi()[i].Matb + "' class='plus-icon mtree-p-icon'></span> " + data.dsThietBi()[i].Tentb + "</a></span>";
                 ctm += "</li>";
                 haveChild = false;
             }
             else if (haveChild == false && data.dsThietBi()[i].Thietbicha == 0)
             {
                 ctm += "<li id='" + data.dsThietBi()[i].Matb + "' class='row-tree-tb'>";
-                ctm += "<img src='/Resourcers/Images/ngoi-nha.ico' alt='ngoinhaicon' class='position-row-icon'/>";
-                ctm += "<span id='" + data.dsThietBi()[i].Matb + "' class='none-icon mtree-p-icon'></span>";
-                ctm += "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";
+                ctm +=      "<img src='/Resourcers/Images/ngoi-nha.ico' alt='icon vị trí' class='position-row-icon'/>";
+                ctm +=      "<span id='" + data.dsThietBi()[i].Matb + "' class='none-icon mtree-p-icon'></span>";
+                ctm +=      "<span class='mtree-text'><a id='" + data.dsThietBi()[i].Matb + "' class='1' href='#'>" + data.dsThietBi()[i].Tentb + "</a></span>";
                 ctm += "</li>";
             }
-        }        
-        ctm += "</ul";
+        }
+        //</ul>
+        ctm += "</ul>";
+        //<ul>
+        //  <li></li>
+        //  <li></li>
+        //  <li></li>
+        //</ul>
         return ctm;
     }
     public string showGocCayThuMucViTri()
     {
+        //<ul>
         ctm += "<ul id='ul-ctm' class='tree-ul-v2'>";
         for (int vt = 0; vt < data.dsViTri().Count; vt++)
         {
             if (data.dsViTri()[vt].Chathietbi)
             {
-                ctm += "<li id='vt" + data.dsViTri()[vt].Id1 + "' class='row-tree-tb'>";                
-                ctm += "<span class='mtree-text'><a id='" + data.dsViTri()[vt].Id1 + "' class='2' href='#'> <span id='" + data.dsViTri()[vt].Id1 + "' class='plus-icon mtree-p-icon'></span><img src='/Resourcers/Images/ngoi-nha.ico' alt='ngoinhaicon' class='position-row-icon'/>" + data.dsViTri()[vt].Tenvitri + "</a></span>";
+                ctm += "<li id='" + data.dsViTri()[vt].Id1 + "' class='row-tree-tb'>";
+                ctm +=      "<span class='mtree-text'><a id='" + data.dsViTri()[vt].Id1 + "' class='2' href='#'> <span id='" + data.dsViTri()[vt].Id1 + "' class='plus-icon mtree-p-icon'></span><img src='/Resourcers/Images/ngoi-nha.ico' alt='ngoinhaicon' class='position-row-icon'/>" + data.dsViTri()[vt].Tenvitri + "</a></span>";
                 ctm += "</li>";
             }
             else
-            {				                
-				ctm += "<span id='"+data.dsViTri()[vt]+"' class='none-icon mtree-p-icon'></span>";
-                ctm += "<li id='vt"+data.dsViTri()[vt].Id1+"' class='row-tree-tb row-tree-none-icon'>";
-                ctm += "<img src='/Resourcers/Images/ngoi-nha.ico' alt='ngoinhaicon' class='position-row-icon-nc'/>";
+            {				
+                ctm += "<li id='"+data.dsViTri()[vt].Id1+"' class='row-tree-tb row-tree-none-icon'>";
+                ctm += "<span id='" + data.dsViTri()[vt] + "' class='none-icon mtree-p-icon'></span>";
+                ctm += "<img src='/Resourcers/Images/ngoi-nha.ico' alt='icon vị trí' class='position-row-icon-nc'/>";
 				ctm += "<span class='mtree-text'><a id='"+ data.dsViTri()[vt].Id1+"' class='2 0' href='#'>"+data.dsViTri()[vt].Tenvitri+"</a></span>";
                 ctm += "</li>";
             }
         }
+        //</ul>
         ctm += "</ul>";
         return ctm;
     }
-    //cây thư mục
-    //<ul>
-    //  <li><span>Hình ảnh</span><span>Tên của thiết bị</span></li>
-    //</ul>
-    //trạng thái cho ẩn đi 
-    //cho thêm vào trong li
-    //thay đổi class để li hiển thị ảnh khác nhau
-    //bắt được sự kiên click trên cả li hình và li tên thiết bị
     protected void btnThemThietBi_Click(object sender, EventArgs e)
     {
         if (txttenthietbi.Text == "")
@@ -203,7 +203,7 @@ public partial class Dashboard : System.Web.UI.Page
         Nullable<int> thietbicha = null;
         #region khai bao cac bien them thiet bi
         int loaithietbi, phongban, ngaynhap, thangnhap, namnhap, nhacungcap, ngaylapdat, thanglapdat, namlapdat, ngaymua, thangmua, nammua, vitri, mathietbilonnhat, mathietbi;
-        string tenthietbi, huhong, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, maquanly;        
+        string tenthietbi, huhong, thoihanbaohanh, nhasanxuat, nuocsanxuat, serial, model, maquanly;
         loaithietbi = Int32.Parse(ddlloaithietbi.SelectedValue);
         phongban = Int32.Parse(ddlphongban.SelectedValue);
         ngaynhap = Int32.Parse(ddlngaynhap.SelectedValue);
@@ -215,7 +215,7 @@ public partial class Dashboard : System.Web.UI.Page
         namlapdat = Int32.Parse(ddlnamlapdat.SelectedValue);
         ngaymua = Int32.Parse(ddlngaymua.SelectedValue);
         thangmua = Int32.Parse(ddlthangmua.SelectedValue);
-        nammua = Int32.Parse(ddlnammua.SelectedValue);        
+        nammua = Int32.Parse(ddlnammua.SelectedValue);
         vitri = Int32.Parse(ddlvitri.SelectedValue);
         tenthietbi = txttenthietbi.Text;
         huhong = txthuhong.Text;
@@ -225,8 +225,8 @@ public partial class Dashboard : System.Web.UI.Page
         serial = txtserial.Text;
         model = txtmodel.Text;
         maquanly = txtmaquanly.Text;
-        mathietbilonnhat = 1;        
-        thietbicha = Int32.Parse(ddlthietbicha.SelectedValue);        
+        mathietbilonnhat = 1;
+        thietbicha = Int32.Parse(ddlthietbicha.SelectedValue);
         #endregion
         for (int i = 0; i < data.dsThietBi().Count; i++)
         {
@@ -236,7 +236,7 @@ public partial class Dashboard : System.Web.UI.Page
             }
         }
         mathietbi = mathietbilonnhat + 1;
-        #region them du lieu thiet bi moi vao CSDL        
+        #region them du lieu thiet bi moi vao CSDL
         using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["QLThietBiConnectionString"].ConnectionString))
         {
             connection.Open();
@@ -264,7 +264,7 @@ public partial class Dashboard : System.Web.UI.Page
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.ExecuteNonQuery();
             }
-        }        
+        }
         #endregion
         #region upload file
         //LabelThongBao.Text = FileUpload2.FileName;
@@ -279,7 +279,7 @@ public partial class Dashboard : System.Web.UI.Page
             }
             // save file in the specified folder and path
             // could not find a part of the path
-            FileUpload2.SaveAs(folderPath + Path.GetFileName(FileUpload2.FileName));    
+            FileUpload2.SaveAs(folderPath + Path.GetFileName(FileUpload2.FileName));
         }
         #endregion
         lblthietbicha.Text = thietbicha.ToString();

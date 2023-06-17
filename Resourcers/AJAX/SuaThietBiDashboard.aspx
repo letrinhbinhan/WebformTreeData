@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-    <% 
+    <%
        string mathietbi = Request.QueryString["mathietbi"];
        string loaithietbi = Request.QueryString["loaithietbi"];
        string phongban = Request.QueryString["phongban"];
@@ -54,7 +54,7 @@
                cmd.CommandType = System.Data.CommandType.Text;
                cmd.ExecuteNonQuery();
            }
-       }       
+       }
        %>
 </body>
 </html>

@@ -83,7 +83,7 @@
                     <p>Ngày duyệt: <%= ngayduyet %></p>
                 </div>
                 <div id="ndaghichu" class="cttttbkho">
-                    
+
                 </div>
                 <div id="ndakho" class="cttttbkho">
                     <p>Nhập kho: <%= nhapkho %></p>
@@ -95,9 +95,9 @@
                     <p>Cây thư mục: <%= capcaythumuc %></p>
                     <p>Thiết bị cha: <%= thietbicha %></p>
                 </div>
-        </div>   
-        </div>             
-    </div>        
+        </div>
+        </div>
+    </div>
     <script type="text/javascript">
         function showThongTin(){
             document.getElementById("ndamuahang").style.display = "none";

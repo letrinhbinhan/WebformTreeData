@@ -27,4 +27,3 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:QLThietBiMayTinhTungPhongBanConnectionString2 %>" SelectCommand="SELECT * FROM [tblthietbi]"></asp:SqlDataSource>
     </div>
 </asp:Content>
-

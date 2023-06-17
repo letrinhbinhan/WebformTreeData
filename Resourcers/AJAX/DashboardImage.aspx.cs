@@ -22,7 +22,7 @@ public partial class Resourcers_AJAX_DashboardImage : System.Web.UI.Page
         {
             if (data.dsThietBi()[i].Matb == idch)
             {
-                LinkImage = data.dsThietBi()[i].Linkimage;                
+                LinkImage = data.dsThietBi()[i].Linkimage;
                 AltImage = data.dsThietBi()[i].Imagedescription;
             }
         }
@@ -36,7 +36,7 @@ public partial class Resourcers_AJAX_DashboardImage : System.Web.UI.Page
         if (words[words.Length-1] == "png" || words[words.Length-1] == "jpeg" || words[words.Length-1] == "jpg")
         {
             return true;
-        }            
+        }
         else {
             return false;
         }

@@ -104,7 +104,7 @@
                     <option value="0"></option>
                     <%--thiết bị cha--%>
                     <% for (int nld = 0; nld < data.dsThietBi().Count ; nld++)
-                       {%>               
+                       {%>
                             <option value="<%= data.dsThietBi()[nld].Matb %>"><%= data.dsThietBi()[nld].Tentb %></option>
                         <% } %>
                 </select>
@@ -131,19 +131,19 @@
             <td>
                 <select id="sltngaylapdat" class="ngaythang">
                     <% for (int nld = 0; nld < 31; nld++)
-                       {%>               
+                       {%>
                             <option value="<%= nld + 1 %>"><%= nld + 1 %></option>
                         <% } %>
                 </select>
                 <select id="sltthanglapdat" class="ngaythang">
                     <% for (int tld = 0; tld < 31; tld++)
-                       {%>               
+                       {%>
                             <option value="<%= tld + 1 %>"><%= tld + 1 %></option>
                         <% } %>
                 </select>
                 <select id="sltnamlapdat" class="ngaythang">
                     <% for (int nld = 1989; nld < 2035; nld++)
-                       {%>               
+                       {%>
                             <option value="<%= nld + 1 %>"><%= nld + 1 %></option>
                         <% } %>
                 </select>
@@ -154,19 +154,19 @@
             <td>
                 <select id="sltngaymua" class="ngaythang">
                     <% for (int nma = 0; nma < 31; nma++)
-                       {%>               
+                       {%>
                             <option value="<%= nma + 1 %>"><%= nma + 1 %></option>
                         <% } %>
                 </select>
                 <select id="sltthangmua" class="ngaythang">
                     <% for (int tma = 0; tma < 12; tma++)
-                       {%>               
+                       {%>
                             <option value="<%= tma + 1 %>"><%= tma + 1 %></option>
                         <% } %>
                 </select>
                 <select id="sltnammua" class="ngaythang">
                     <% for (int nma = 1989; nma < 2035; nma++)
-                       {%>               
+                       {%>
                             <option value="<%= nma + 1 %>"><%= nma + 1 %></option>
                         <% } %>
                 </select>

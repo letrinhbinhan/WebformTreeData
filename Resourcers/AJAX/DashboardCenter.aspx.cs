@@ -189,7 +189,7 @@ public partial class Resourcers_AJAX_DashboardCenter : System.Web.UI.Page
                 thietbicha = data.dsThietBi()[i].Tentb;
             }
         }
-        
+
             try
             {
                 MaLoaiThietBi = maloaithietbi;

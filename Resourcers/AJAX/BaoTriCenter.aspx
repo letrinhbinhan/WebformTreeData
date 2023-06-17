@@ -15,9 +15,9 @@
             <%--<th>Thời gian bảo trì</th>--%>
             <th></th>
         </tr>
-        
+
         <% for (int tb = 0; tb < listTBBT.Count; tb++)
-           {%>               
+           {%>
                 <tr id="tr<%= listTBBT[tb].Matbbt %>">
                     <td>
                         <%= listTBBT[tb].Matbbt %>
@@ -32,7 +32,7 @@
                     <div class="btnxbt" onclick="xoaclick(<%= listTBBT[tb].Matbbt %>)">Xóa</div>
                     </td>
                 </tr>
-            <% } %> 
+            <% } %>
     </table>
 </body>
 </html>

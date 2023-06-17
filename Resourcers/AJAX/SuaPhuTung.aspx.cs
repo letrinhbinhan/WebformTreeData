@@ -20,11 +20,11 @@ public partial class Resourcers_AJAX_SuaPhuTung : System.Web.UI.Page
             return;
         }
         string tenphutung, thangnhap, namnhap, ngaynhap, giaca, tinhtrang, thietbi, maphutung;
-        bool fkthietbi;        
+        bool fkthietbi;
         tenphutung = "";
         thangnhap = "";
         namnhap = "";
-        ngaynhap = "";        
+        ngaynhap = "";
         tinhtrang = "";
         thietbi = "";
         maphutung = "";
@@ -54,15 +54,15 @@ public partial class Resourcers_AJAX_SuaPhuTung : System.Web.UI.Page
         {
             connection.Open();
             string sql = "UPDATE tblphutung SET tenpt = @param1, ngaynhap = @param2, giaca = @param3, tinhtrang = @param4, thietbi = @param5 WHERE mapt = @param6";
-			
+
             using (SqlCommand cmd = new SqlCommand(sql, connection))
             {
-                cmd.Parameters.Add("@param1", SqlDbType.NVarChar).Value = tenphutung;                
+                cmd.Parameters.Add("@param1", SqlDbType.NVarChar).Value = tenphutung;
                 cmd.Parameters.Add("@param2", SqlDbType.DateTime).Value = new DateTime(Int32.Parse(namnhap), Int32.Parse(thangnhap), Int32.Parse(ngaynhap));
                 cmd.Parameters.Add("@param3", SqlDbType.Int).Value = giaca;
                 cmd.Parameters.Add("@param4", SqlDbType.Bit).Value = tinhtrang;
                 cmd.Parameters.Add("@param5", SqlDbType.Int).Value = Int32.Parse(thietbi);
-                cmd.Parameters.Add("@param6", SqlDbType.Int).Value = Int32.Parse(maphutung);                
+                cmd.Parameters.Add("@param6", SqlDbType.Int).Value = Int32.Parse(maphutung);
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
                 thongbao = "Sửa thành công phụ tùng  " + maphutung + ".";

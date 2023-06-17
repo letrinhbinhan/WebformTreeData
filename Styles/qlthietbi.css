@@ -1,4 +1,4 @@
-﻿body {
+body {
     color: #52575C;
     font-size: 16px;
     font-weight: 400;
@@ -97,7 +97,7 @@ ul
 }
 li
 {
-    line-height: 1.1;
+    /* line-height: 1.1; */
 }
 li:hover
 {
@@ -130,8 +130,10 @@ li:active > .mt
     display: inline-block;
     vertical-align: top;
     margin-top: 3px;
-    margin-right: 5px;    
+    margin-right: 5px;
+    top: 5px;
     pointer-events: none;
+    position: relative;
 }
 .none-icon
 {
@@ -148,8 +150,11 @@ li:active > .mt
     display: inline-block;
     vertical-align: top;
     margin-top: 3px;
-    margin-right: 5px;    
+    margin-right: 5px;
     pointer-events: none;
+    top: 5px;
+    pointer-events: none;
+    position: relative;
 }
 
 .content
@@ -474,12 +479,13 @@ td {font-size: 15px;}
 {
     font-weight:normal;
     position: relative;
+    line-height: 1.1;
 }
 .mtree-text a
 {
     text-decoration: none;
     display: inline-block;
-    color: blue;
+    line-height: 1.7;
 }
 .mtree-p-icon
 {
@@ -506,11 +512,6 @@ td {font-size: 15px;}
     margin-top: 2px;
     margin-bottom: 3px;
 }
-/*.row-tree li
-{
-    height: 29px;
-    margin-top: 2px;
-}*/
 .row-tree
 {
     margin-top: 2px;
@@ -521,7 +522,7 @@ td {font-size: 15px;}
     padding-left:25px;
 }
 .row-tree-tb {
-    padding-left: 25px;    
+    padding-left: 25px;
 }
 .row-tree-tbc {
     padding-left: 52px;
@@ -1885,7 +1886,7 @@ textarea {
     width: 530px;
 }
 .header-title-ql-thiet-bi {
-    font-family: system-ui;    
+    font-family: system-ui;
     top: -1px !important;
     font-weight: lighter;
     font-size: 15px;
@@ -1927,7 +1928,7 @@ textarea {
 .txt-mpt-so-luong {
     width: 365px !important;
 }
-.p-none {    
+.p-none {
     pointer-events: none;
 }
 .dc-tbl-model-them-thiet-bi tr {
@@ -1956,15 +1957,14 @@ textarea {
     width: 11px;
     float: left;
     margin-right: 5px;
-    margin-left: 6px;
-    top: 5px;
+    margin-left: 13px;
+    top: 7px;
 }
 .position-row-icon{
     margin-left: 3px;
-    margin-right: 5px;    
+    margin-right: 5px;
 }
 .position-row-icon-nc {
-    
     margin-left: 21px;
     margin-right: 5px;
 }
@@ -1979,10 +1979,6 @@ textarea {
 }
 .db-model-sltvitri {
     width: 126px;
-}
-.mtree-text a {
-    padding-top: 2px;
-    padding-bottom: 2px;
 }
 .model-them-tltb {
     display:none;
@@ -2005,4 +2001,39 @@ src: url("http://localhost:51990/Resourcers/Fonts/bahnschrift.ttf");
 .tai-lieu-download {
     float: left;
     margin-left: 12px;
+}
+#ul-ctm li {
+    padding-top: 6px;
+    position: relative;
+    left: 6px;
+}
+#ul-ctm li {
+    width: 200px;
+}
+.tai-lieu-label-tai-ve {
+    font-size: 13px;
+    float: left;
+    top: 9px;
+    position: relative;
+    margin-right: 6px;
+    left: -7px;
+    text-decoration: underline;
+    color: black;
+}
+.dstltb {
+    top: 7px;
+    position: relative;
+}
+.row-dl-vi-tri {
+    margin-left: 0px;
+    position: relative;
+    left: -10px;
+}
+.cay-vi-tri {
+    /* background-color: blue; */
+}
+.row-tree-tb {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    line-height: 1.1;
 }

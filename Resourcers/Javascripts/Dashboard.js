@@ -193,9 +193,12 @@ else if (e.target.classList[0] == "0")
           // document.getElementById(e.target.id).classList.add("1");
           // document.getElementById(e.target.id).classList.add("row-tree-tb");
           document.getElementById(e.target.id).style.paddingLeft = 0;
-          document.getElementsByTagName("a").style.fontWeight = "Normal";
+          if(typeof document.getElementsByTagName("a").style.fontWeight != 'undefined')
+          {
+            document.getElementsByTagName("a").style.fontWeight = "Normal";
+          }
           document.getElementById(e.target.id).getElementsByTagName("a")[0].style.fontWeight = "Bold";
-          row = e.target.id;        
+          row = e.target.id;
       }
   }
 } else if(e.target.classList[0] == "2") 
@@ -226,11 +229,34 @@ else if (e.target.classList[0] == "0")
                   tinhtrang = 3;
               }
             }
-            Row_Position_Show("open", e.target.id, tinhtrang); 
-            console.log(e.target.id);
+            boldRowPosition.then(() => { setNormalAllRow(); console.log("1");}).then(() => {setBoldRowPosition(e.target.id, tinhtrang);console.log("2");});
         }
       }
 };
+//lam promise
+
+
+let boldRowPosition = new Promise(function(myResolve, myReject) {
+  let x = 0;
+
+// The producing code (this may take some time)
+
+  if (x == 0) {
+    myResolve("OK");
+  } else {
+    myReject("Error");
+  }
+});
+function setNormalAllRow() {
+  document.getElementsByTagName("a");
+  for(var i = 0; i < document.getElementsByTagName("a").length; i++){
+    document.getElementsByTagName("a")[i].style.fontWeight = "Normal";
+  }
+}
+function setBoldRowPosition(id, state) {
+  Row_Position_Show("open", id, state);
+  document.getElementById(id).style.fontWeight = "Bold";
+}
 for (let button of buttons) {
   button.addEventListener("click", buttonPressed);
 }
@@ -798,18 +824,18 @@ function ddlThietBiChaClick() {
 //document.getElementsByTagName("a").style.fontWeight = "Normal";
 //document.getElementById("vt"+pst).getElementsByTagName("a")[1].style.fontWeight = "Bold";
 
-async function changeRowsStyle(obj) {
-  await promise1(50); // Wait 50ms…
-  await promise2(obj); // …then wait another 50ms.
-  return "done!";
-}
-function promise1(){
-  for(var i=0; i<document.getElementsByTagName("a").length;i++) {
-    document.getElementsByTagName("a")[i].style.fontWeight = "Normal";
-  }
-  //document.getElementsByTagName("a").style.fontWeight = "Normal";
-}
-function promise2(id){
-  console.log(document.getElementById("cvt"+id).getElementsByTagName("a"));
-  document.getElementById("cvt"+id).getElementsByTagName("a")[1].style.fontWeight = "Bold";  
-}
+// async function changeRowsStyle(obj) {
+//   await promise1(50); // Wait 50ms…
+//   await promise2(obj); // …then wait another 50ms.
+//   return "done!";
+// }
+// function promise1(){
+//   for(var i=0; i<document.getElementsByTagName("a").length;i++) {
+//     document.getElementsByTagName("a")[i].style.fontWeight = "Normal";
+//   }
+//   //document.getElementsByTagName("a").style.fontWeight = "Normal";
+// }
+// function promise2(id){
+//   console.log(document.getElementById("cvt"+id).getElementsByTagName("a"));
+//   document.getElementById("cvt"+id).getElementsByTagName("a")[1].style.fontWeight = "Bold";  
+// }
