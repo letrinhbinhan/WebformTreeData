@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ThemChiTiet.aspx.cs" Inherits="Resourcers_AJAX_ThemChiTiet" %>
     <%
+        DataUtil data = new DataUtil();
         //&tenchitiet=ocvit&thongsokythuat=thepkhongri&donvi=con&model=123&partno=123&thietbi=134
-        DataUtil data= new DataUtil();
         //&tenchitiet=ocvit&thongsokythuat=thepkhongri&donvi=con&model=123&partno=21&kyhieu=123&thietbi=123
         string tenchitiet, thongsokythuat, donvi, model, partno, thietbi;
         tenchitiet = Request.QueryString["tenchitiet"];

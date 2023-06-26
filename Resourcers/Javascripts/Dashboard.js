@@ -151,57 +151,64 @@ function Row_Position_Show(str, pst, state) {
     );
     xhttp.send();
 }
+function Row_Loading_Icon(pst) {
+    document.getElementById(pst).innerHTML = "<img src='Resourcers/Images/ZZ5H.gif' class='loading-icon'/>";
+}
 var row = 3;
 const buttons = document.getElementsByTagName("li");
 const result = document.getElementById("result");
+//sự kiện click vào một li, tương đương click vào một dòng dữ liệu
 const buttonPressed = (e) => { 
+    //Phần I
+    //hiển thị loading
+    //tạo cookie cho thiết bị cuối cùng được chọn
+    //cho ẩn đi nút model tài liệu có trong trang
+    //lưu mã thiết bị vào thẻ HTML chứa mã thiết bị
+    //loading icon
+    Row_Loading_Icon(e.target.id);
+    //set cookie
     setCookie("lastchoose", e.target.id, 1);
-  document.getElementById("btn-model-tai-lieu").style.display = "none";
-  document.getElementById("mathietbi").innerHTML = e.target.id;
-  if (e.target.classList[0] == "1") { 
-      //in dam khi click vao li (row) thiet bi
-      console.log(e.target.id.substring(3));
-  Row_Device_Show("open", e.target.id);  
-  var lastpst = getCookie('lastpst');
-  document.getElementById(e.target.id).style.removeProperty("padding-left");
-  document.getElementById(e.target.id).className = document.getElementById(e.target.id).classList[0] + " 0";
-  if (document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon" && document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon-m")
-  {
-      document.getElementById(e.target.id).getElementsByTagName("span")[0].className = "minus-icon 0 mtree-p-icon";
-  }
-  if(typeof document.getElementById(e.target.id).getElementsByTagName("span")[1] != 'undefined') {
-    document.getElementById(e.target.id).getElementsByTagName("span")[1].className = document.getElementById(e.target.id).getElementsByTagName("span")[1].classList[0] + " 0";
-  }
-  document.getElementById(e.target.id).getElementsByTagName("a")[0].className = 0;
-  row = e.target.id;
-}
-else if (e.target.classList[0] == "0")
-{
-  if (e.target.classList[0] == "0") 
-  {
-      if (document.getElementById(e.target.id).innerText.indexOf("\n") != -1) 
+    document.getElementById("btn-model-tai-lieu").style.display = "none";
+    //set mã thiết bị
+    document.getElementById("mathietbi").innerHTML = e.target.id;
+    //điều kiện thứ nhất
+    if (e.target.classList[0] == "1") {
+        Row_Device_Show("open", e.target.id);
+        var lastpst = getCookie('lastpst');
+        document.getElementById(e.target.id).style.removeProperty("padding-left");
+        document.getElementById(e.target.id).className = document.getElementById(e.target.id).classList[0] + " 0";
+        if (document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon" && document.getElementById(e.target.id).getElementsByTagName("span")[0].classList[0] != "none-icon-m")
+        {
+            document.getElementById(e.target.id).getElementsByTagName("span")[0].className = "minus-icon 0 mtree-p-icon";
+        }
+        if(typeof document.getElementById(e.target.id).getElementsByTagName("span")[1] != 'undefined') {
+            document.getElementById(e.target.id).getElementsByTagName("span")[1].className = document.getElementById(e.target.id).getElementsByTagName("span")[1].classList[0] + " 0";
+        }
+        document.getElementById(e.target.id).getElementsByTagName("a")[0].className = 0;
+        row = e.target.id;
+    }        
+    else if (e.target.classList[0] == "0") //điều kiện thứ 2
+    {
+      if (e.target.classList[0] == "0") 
       {
-          console.log(e.target.id.substring(3));
-          Row_Device_Show_Close("open", e.target.id);
-          var noidung;
-          noidung = document.getElementById(e.target.id).innerText.trim().split("\n")[0];
-          //"<li id='"+e.target.id+"' class='1 row-tree-tb'>"
-          //</li>
-          document.getElementById(e.target.id).innerHTML = "<li id='"+e.target.id+"' class='1 row-tree-tb'><span class='1 mtree-text'><a id='"+e.target.id+"' class='1' href='#'> <span id='"+e.target.id+"' class='plus-icon mtree-p-icon'></span>"+noidung+"</a></span></li>";
-          // document.getElementById(e.target.id).classList.remove("0");
-          // document.getElementById(e.target.id).classList.remove("row-tree-tb");
-          // document.getElementById(e.target.id).classList.add("1");
-          // document.getElementById(e.target.id).classList.add("row-tree-tb");
-          document.getElementById(e.target.id).style.paddingLeft = 0;
-          if(typeof document.getElementsByTagName("a").style.fontWeight != 'undefined')
+          if (document.getElementById(e.target.id).innerText.indexOf("\n") != -1)   //tồn tại dấu hiệu xuống dòng, tồn tại nội dung 
           {
-            document.getElementsByTagName("a").style.fontWeight = "Normal";
+              console.log(e.target.id.substring(3));
+              Row_Device_Show_Close("open", e.target.id); //đóng dòng vừa click vào bằng cách thay đổi html
+              var noidung;
+              //lấy nội dung đầu tiên
+              noidung = document.getElementById(e.target.id).innerText.trim().split("\n")[0];
+              document.getElementById(e.target.id).innerHTML = "<li id='"+e.target.id+"' class='1 row-tree-tb'><span class='1 mtree-text'><a id='"+e.target.id+"' class='1' href='#'> <span id='"+e.target.id+"' class='plus-icon mtree-p-icon'></span>"+noidung+"</a></span></li>";              
+              document.getElementById(e.target.id).style.paddingLeft = 0;
+              if(typeof document.getElementsByTagName("a").style.fontWeight != 'undefined')
+              {
+                document.getElementsByTagName("a").style.fontWeight = "Normal";
+              }
+              document.getElementById(e.target.id).getElementsByTagName("a")[0].style.fontWeight = "Bold";
+              row = e.target.id;
           }
-          document.getElementById(e.target.id).getElementsByTagName("a")[0].style.fontWeight = "Bold";
-          row = e.target.id;
       }
-  }
-} else if(e.target.classList[0] == "2") 
+    } else if(e.target.classList[0] == "2")     //điều kiện thứ 3
       {
         if (e.target.classList[0] == "2") {
             var tinhtrang;
@@ -214,33 +221,31 @@ else if (e.target.classList[0] == "0")
             if(typeof e.target.getElementsByTagName("span")[0] != 'undefined'){
               if (e.target.getElementsByTagName("span")[0].classList[0] == "plus-icon") 
               {
-                  tinhtrang = 1;
+                  tinhtrang = 1;                                                                //tình trạng 1, thẻ đang chọn hiện chưa được mở ra, nội dung bên trong vẫn chưa được AJAX tới
               }
             }
             if(typeof e.target.getElementsByTagName("span")[0] != 'undefined') {
               if (e.target.getElementsByTagName("span")[0].classList[0] == "minus-icon") 
               {
-                  tinhtrang = 2;
+                  tinhtrang = 2;                                                                //tình trạng 2, thẻ đang chọn đã được mở ra, các thẻ con đã được AJAX load vào cây thư mục
               }
             }
             if(typeof e.target.getElementsByTagName("span")[0] != 'undefined') {
               if (e.target.getElementsByTagName("span")[0].classList[0] == "none-icon") 
               {
-                  tinhtrang = 3;
+                  tinhtrang = 3;                                                                //tinh trang 3, thẻ đang chọn không có thẻ con bên trong, các lệnh mở thẻ, lệnh đóng thẻ sẽ không áp dụng
               }
             }
-            boldRowPosition.then(() => { setNormalAllRow(); console.log("1");}).then(() => {setBoldRowPosition(e.target.id, tinhtrang);console.log("2");});
+            boldRowPosition
+                .then(() => { setNormalAllRow(); console.log("1");})                            //thiết lập các dòng khác trong danh sách các dòng trở nên bình thường, không in đậm
+                .then(() => {setBoldRowPosition(e.target.id, tinhtrang);console.log("2");});    //in đậm dòng mà mình vừa chọn vào và dòng đó sẽ được in đậm nhờ thay đổi HTML
         }
       }
-};
+}; //kết thúc const buttonPressed = (e)
 //lam promise
-
-
 let boldRowPosition = new Promise(function(myResolve, myReject) {
   let x = 0;
-
 // The producing code (this may take some time)
-
   if (x == 0) {
     myResolve("OK");
   } else {
@@ -272,6 +277,7 @@ function opentailieu(obj) {
     var tentailieu = obj.innerHTML;
     var extension;
     extension = tentailieu.replace("\n","").trim().split(".")[tentailieu.replace("\n","").trim().split(".").length-1];  
+    console.log(extension);
     if(extension == "pdf"){
     document.getElementById("ccimg").innerHTML =
       "<embed src='/Resourcers/TaiLieu/" +

@@ -589,7 +589,7 @@
                         <%= dsThietBiTaiLieu[tl].Tentailieu %> <%--: <%=
               dsThietBiTaiLieu[tl].Linktailieu %>--%>
                     </p>
-                    <a href="../Resourcers/TaiLieu/<%=dsThietBiTaiLieu[tl].Tentailieu%>" download class="tai-lieu-download"><i class="fa fa-download fa-2x text-success" aria-hidden="true"></i></a><a href="../Resourcers/TaiLieu/<%=dsThietBiTaiLieu[tl].Tentailieu%>" download class="tai-lieu-download"><span class="tai-lieu-label-tai-ve">Tải về</span></a>
+                    <a href="../Resourcers/TaiLieu/<%=dsThietBiTaiLieu[tl].Tentailieu%>" download class="tai-lieu-download"><i class="fa fa-download fa-2x download-icon" aria-hidden="true"></i></a><a href="../Resourcers/TaiLieu/<%=dsThietBiTaiLieu[tl].Tentailieu%>" download class="tai-lieu-download"><span class="tai-lieu-label-tai-ve">Tải về</span></a>
                     <!--<div class="dstltbbtnxoa" onclick="deletetailieu(this)">Xóa</div>  -->
                     <button id="btn-model-tai-lieu" type="button" class="btn btn-primary dstltbbtnxoa" onclick="deletetailieu(this)">
                         Xóa
