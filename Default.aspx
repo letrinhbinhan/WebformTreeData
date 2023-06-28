@@ -1,7 +1,8 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" Title="Untitled Page" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title>Trang chính</title>
+﻿<%@ Page Language="C#" MasterPageFile="~/Login.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" Title="Untitled Page" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <title>Trang đăng nhập</title>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 </asp:Content>
 

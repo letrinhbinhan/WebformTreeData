@@ -1,0 +1,47 @@
+﻿.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+.inputbox {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+    .inputbox i {
+        position: absolute;
+        left: 8px;
+        top: 18px;
+        color: #dadada;
+    }
+
+.btn-show {
+    position: absolute;
+    left: 8px;
+    top: 2px;
+    left: unset !important;
+    right: 5px;
+    color: #dadada;
+    border:none !important;
+    height:44px;
+    width:40px;
+}
+
+.fa-eye-slash {
+    position: absolute;
+    top: 15px !important;
+    left: 13px !important;
+}
